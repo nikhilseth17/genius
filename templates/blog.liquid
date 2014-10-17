@@ -1,0 +1,156 @@
+<section class="page-content-body">
+  <div class="container">
+    <div id="blog">
+      
+      <div class="row title blog-title">
+        <div class="col-md-12">
+          <h1>{{ blog.title }} </h1>
+        </div> 
+      </div> 
+        
+      <!-- Begin content -->
+      <div class="row">
+
+        
+        
+        {% paginate blog.articles by 40 %}
+        
+        
+
+          {% if blog.handle == 'careers' %}
+           <div class="col-md-9 articles">
+            <div class="">
+              
+                <p>
+                  At ESSIO we have a unified mission of enhancing quality of life through intuitive design and organic ingredients. Our first product transforms the everyday shower into a spa-like experience. We dreamed it, designed it and built it!
+                </p>
+                <p>
+                  We are building the next generation of personal care products, creating massive opportunity and having fun in the process. We’re looking for ambitious, driven self-starters who want to be on the ground-floor and help build a world-class business. If that sounds like you, then send your resume to careers@essioshower.com even if you don’t see a relevant position below.
+                </p>
+              
+            </div>
+          
+
+          {% endif %}
+          {% if blog.handle == 'faq-s' %}
+          
+            <div class="col-md-12">
+              
+                <h3>ABOUT THE PRODUCT</h3>
+              
+            </div>
+          {% endif %}
+          {% if blog.handle == 'faq-s' or blog.handle == 'careers' %}
+            <div class="col-md-12">
+              {% for article in blog.articles %}
+
+                <div class="article clearfix">
+                  <div class="panel">
+                    <div class="panel-body">
+                      <h1>{{ article.title }}</h1>
+                      {{ article.content | truncate: '1000' }}
+                    </div>
+                  </div>
+                </div>
+              {% unless forloop.last %}
+
+
+             
+              {% endunless %}
+              {% endfor %}
+            </div>
+            
+          {% elsif blog.handle == 'news' %}
+         
+          <div class="col-md-12 articles">
+            {% for article in blog.articles %}
+
+
+            <div class="article clearfix article-news">
+              <div class="panel">
+                <div class="panel-body">
+                  {% if article.metafields.blog.thumb %}
+                  <div class="article-thumb">
+                    <img src="{{ article.metafields.blog.thumb }}">
+                  </div>
+                  {% endif %}
+                   {% if article.metafields.blog.logo %}
+                   <div class="logo-container">
+                      <div class="row">
+                        <div class="col-sm-10 logo-col">
+                          <img class="news-logo" src="{{ article.metafields.blog.logo }}">
+                        </div>
+                        <div class="col-sm-2">
+                          <div class="date">
+                            <span class="month">{{ article.published_at | date: "%B" }}</span>
+                            <span class="day">{{ article.published_at | date: "%d" }}</span>
+                            <span class="year">{{ article.published_at | date: "%Y" }}</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  {% endif %}
+                  <h1>{{ article.title }} </h1>
+
+                  
+                 
+                  <div class="article-content">
+                    {{ article.content | truncate: '350' }}
+                    <div class="text-right read-more-container">
+                      {% if article.metafields.blog.link %}
+                      <a href="{{ article.metafields.blog.link }}" class="btn btn-primary">Read Article</a>
+                      {% endif %}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {% unless forloop.last %}
+           
+            {% endunless %}
+            {% endfor %}
+          </div>
+          {% else %}
+          <div class="col-md-9 articles">
+            {% for article in blog.articles %}
+            <div class="article clearfix">
+              <div class="panel">
+                <div class="panel-body">
+                  <h1><a href="{{ article.url }}">{{ article.title }}</a> <span class="date" style="display: block;">{{ article.published_at | date: "%B %d %Y" }}{% if article.comments_enabled? %}, <span>{{ article.comments_count }} {{ article.comments_count | pluralize: "Comment", "Comments" }}</span>{% endif %}</span></h1>
+                  {{ article.content | truncate: '500' }}
+                </div>
+              </div>
+            </div>
+            {% unless forloop.last %}
+           
+            {% endunless %}
+            {% endfor %}
+          </div>
+          {% endif %}
+          {% include 'pagination' %}
+       
+        
+        {% endpaginate %}
+        
+        <!-- Begin sidebar -->
+        {% if blog.handle != 'faq-s' and blog.handle != 'careers' and blog.handle != 'news' %}
+        {% include 'blog_sidebar' %}
+        {% endif %}
+
+        {% if blog.handle == 'careers' %}
+        </div>
+        <div class="col-md-3 sidebar">
+          <div class="widget-container">
+            <img src="{{ 'office.jpg' | asset_url }}">
+            <div class="widget-text">Enjoy our ocean side view!</div>
+          </div>
+        </div>
+        {% endif %}
+        <!-- End sidebar -->
+        
+      </div>
+      <!-- End content -->
+      
+    </div>
+  </div>
+</section>

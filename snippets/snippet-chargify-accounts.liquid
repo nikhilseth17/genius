@@ -1,0 +1,146 @@
+{% if customer %}
+                    <script type="text/javascript">
+                    if (!jQuery) {  
+                            alert("JQuery not loaded; chargify accounts plugin will not load properly.");
+                    }
+                    else {
+                            get_subscriptions();
+                    }
+
+					function get_subscriptions() {
+                        $.ajax({ 
+    						url: "{{shop.url}}/apps/chargify-accounts/getsubscriptions",
+    						type: "POST",
+    						data: {
+    							"email": "{{customer.email}}",
+    							"shared-secret": "{{ customer.metafields['chargify-accounts']['shared-secret'] }}"
+    						},
+    						dataType: "json",
+    						statusCode: { 
+    							204: function() { 
+    								$("#chargify-accounts table").append("<tr><td colspan=6>You have no active Chargify subscriptions. Please contact the store owner for more information</td></tr>");
+    							},
+								205: function() { 
+    								$("#chargify-accounts table").append("<tr><td colspan=6>You have no active Chargify subscriptions. Please contact the store owner for more information</td></tr>");
+    							}
+    						},
+                          	success: function(data){
+                            	if (data) {
+    							if (data.subscriptions.length > 0) {
+    								for (var i in data.subscriptions) {
+    									var subscription = data.subscriptions[i];
+										if(subscription.activated_at == null){
+    										var start_date = "N/A";
+										}
+										else{
+    										var start_date = (new Date(subscription.activated_at)).toDateString();
+										}
+										if(subscription.activated_at == null){
+    										var period_start = "N/A";
+										}
+										else{
+    										var period_start = (new Date(subscription.current_period_started_at)).toDateString();
+										}
+										if(subscription.activated_at == null){
+    										var period_end = "N/A";
+										}
+										else{
+    										var period_end = (new Date(subscription.current_period_ends_at)).toDateString();
+										}
+    									var $row = $("<tr>");
+    									$row.append("<td>" + subscription.product_name + "</td>");
+    									$row.append("<td class='state'>" + subscription.state + "</td>");
+    									$row.append("<td>" + start_date + "</td>");
+    									$row.append("<td>" + period_start + "</td>");
+    									$row.append("<td>" + period_end + "</td>");
+    									if(subscription.state == "active" || subscription.state == "trialing"){
+    										$row.append("<td><a style='cursor:pointer;' class='unsubscribe' id='" + subscription.id + "'>Cancel Subscription</a></td>")
+    									}
+    									else{
+    										$row.append("<td>");
+    									}
+    									$("#chargify-accounts table").append($row);
+    								}
+    							}
+    							else {
+    								$("#chargify-accounts table").append("<tr><td colspan=6>You have no subscriptions.</td></tr>");
+    							}
+    						}
+                          },
+                          error: function(data){
+                            $("#chargify-accounts table").append("<tr><td colspan=6>Error retrieving subscription data.</td></tr>");
+                          },
+                          complete: function(data){
+                            $("#loading-row").remove();
+                          }
+                        }); 
+    				}
+                      $("body").delegate("#chargify-accounts .unsubscribe", "click", function(){
+    					$.ajax({ 
+    						url: "{{shop.url}}/apps/chargify-accounts/cancelsubscription",
+    						type: "POST",
+    						data: {
+    							"subscription_id": $(this).attr("id"),
+    							"email": "{{customer.email}}",
+    							"shared-secret": "{{ customer.metafields['chargify-accounts']['shared-secret'] }}"
+    						},
+    						dataType: "json",
+    						statusCode: { 
+    							204: function() { 
+    								$("#chargify-accounts table").append("<tr><td colspan=6>Customer has invalid credentials. Please contact the store owner for more information</td></tr>");
+    							},
+								205: function() { 
+    								$("#chargify-accounts table").append("<tr><td colspan=6>Customer information could not be found. Please contact the store owner for more information</td></tr>");
+    							}
+    						},
+                          	success: function(data){
+	    						if (data) {
+	    							if (data.canceled == true) {
+	    								$("#" + data.subscription_id).parent().parent().find(".state").text("canceled");
+	    								$("#" + data.subscription_id).parent().text("");
+	    							}
+	    							else {
+	    								alert("There was an error unsubscribing. Please try again later or contact the store owner.");
+	    							}
+	    						}
+                          },
+                          error: function(data){
+    						alert("There was an error unsubscribing. Please try again later or contact the store owner.");
+                          }
+    					})
+    				})
+                </script>
+
+                <div id="chargify-accounts">
+                <div id="customer_email" style="display:none;">{{customer.email}}</div>
+                <div id="customer_shared_secret" style="display:none;">{{customer.metafields['chargify-accounts']['shared-secret']}}</div>
+                	<h2>Subscriptions</h2>
+                	<table>
+                		<tr>
+                			<th>Name</th>
+                			<th>State</th>
+                    		<th>Started At</th>
+                        	<th>Current Period Started At</th>
+                        	<th>Current Period Ends At</th>
+                        	<th></th>
+                		</tr>
+                        <tr id="loading-row">
+                			<td colspan=6>{{ "chargify-accounts-spinner.gif" | asset_url | img_tag }}</td>
+                		</tr>
+                	</table>
+                </div>
+
+                <style>
+                  #chargify-accounts > table{
+                    width:100%;
+                  }
+                  #chargify-accounts > table th{
+                    font-weight:bold;
+                  }
+                  #chargify-accounts > table td,
+                  #chargify-accounts > table th {
+                    padding: 2px;
+                    text-align: center;
+                  }
+                </style>
+        {% endif %}

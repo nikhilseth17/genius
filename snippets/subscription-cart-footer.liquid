@@ -1,0 +1,96 @@
+<!-- insert at bottom of cart page -->
+
+<script>
+  
+  //shopify subscription javascript 
+  
+
+  
+   checkIfCartHasCustomItems()
+
+   function checkIfCartHasCustomItems() {
+     jQuery.ajax({
+        type: 'GET',
+        url: '/cart.js',
+        dataType: 'json',
+        success: function(response) { 
+          window.cart_token=response.token
+		  cart_info = response
+          
+          window.has_autorenew = false
+          for (i=0;i<cart_info.items.length;i++) {
+              if(cart_info.items[i].properties != null ) {
+                  if(cart_info.items[i].properties.shipping_interval_frequency != null) {
+                      has_autorenew=true
+
+                  }
+              }
+          } //end for
+
+          if(has_autorenew){
+           setCustomCheckoutListener()
+          } 
+          
+        } //end success
+      }); //end ajax
+  } //end checkCart
+  
+  
+  
+	function setCustomCheckoutListener() {
+    
+      $('.extra-checkout-buttons').hide()
+
+      var parent = $('#checkout').parent()
+      $('#checkout').remove()
+      parent.prepend('<button id="checkout" class="btn btn-primary" name="recurring_checkout" value="Check out">Check out</button>')
+
+      checkout_buttons = $("#checkout");
+
+      checkout_buttons.click(function(event) {
+        event.preventDefault();
+        form = $("form[action='/cart']");
+        $(form).attr('onsubmit','return false')
+        console.log( "default " + event.type + " prevented" )
+        console.log('checkout clicked')
+        redirectToCustomCheckout()
+      });
+   
+  }
+  
+  
+  function redirectToCustomCheckout() {
+	console.log('redirecting to checkout')
+
+    token = window.cart_token
+    //shop = window.location.hostname
+    var myshopify_domain='essio.myshopify.com'
+    checkout_url="https://shopifysubscriptions.com/checkout?myshopify_domain="+myshopify_domain+"&cart_token="+token+"&subscription_id=19";
+    
+    window.location.href= checkout_url;
+    
+    
+    
+        
+  }
+  
+ $(document).ready(function() { 
+   console.log('ready')
+   
+    if(window.has_autorenew == true ) {
+        $('.extra-checkout-buttons').hide()
+          console.log('has auto renew')
+
+        setCustomCheckoutListener()
+    }
+   
+   
+
+   
+ });
+ 
+  //window.onload = function() {
+  //}
+</script>
+
+

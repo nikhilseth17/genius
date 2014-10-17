@@ -1,0 +1,347 @@
+<!-- subscription -->
+{% if product.metafields.subscriptions.has_subscription == "true" %}
+
+  <style>
+  /* Tool Tip CSS */
+  a.subscription-tooltip {
+      outline:none; 
+      position:relative !important;
+  }
+  a.subscription-tooltip strong {line-height:30px;}
+  a.subscription-tooltip:hover {text-decoration:none;}
+  a.subscription-tooltip span {
+      z-index:10;
+      display:none;
+      padding:14px 20px;
+      margin-top: 20px;
+      margin-left:28px;
+      width:240px;
+      line-height:16px;
+  }
+  a.subscription-tooltip:hover span{
+      display:inline;
+      position:absolute;
+      left:-250px;
+      color:#111;
+      border:1px solid #333;
+      background:white;
+  }
+  a.subscription-tooltip span{
+      -moz-box-shadow: 5px 5px 8px #CCC;
+      -webkit-box-shadow: 5px 5px 8px #CCC;
+      box-shadow: 5px 5px 8px #CCC;
+  }
+
+  /* Recurring Upsell Widget CSS */
+  .radio_option {
+      border-radius:4px;
+      cursor:pointer;
+      margin:0;
+      padding:8px;
+      font-family:"Arial","Helvetica",sans-serif;
+      width:98%;
+      border: 1px solid transparent;
+  }
+  .radio_option.active {
+      border:1px solid #d9d9d9 !important;
+      background-color:#f1f1f1 !important;
+  }
+  .radio_option input {
+      margin:0 4px 0 0;
+      padding:0 0 0 5px;
+  }
+  .radio_option input[type="number"] {
+      width:40px;
+  }
+ 
+  .radio_option label {
+      width:auto;
+      font-weight:normal !important;
+      position:relative;
+      display:inline-block
+  }
+  .label_black_text {
+      color:rgb(0,0,0);
+      font-family:"Arial";
+      font-weight:bold;
+      margin-left:21px;
+  }
+  .offer_newline {
+      margin-top:5px;
+  }
+  #see-details {
+      color:rgb(86,148,82);
+      text-decoration:underline;
+      text-transform:none;
+      opacity:1;
+      margin-left:0px;
+      text-transform:none;
+  }
+  .ui-widget-content {
+      font-family:Verdana,Arial,sans-serif;
+      color: red !important;
+  }
+
+  #recurring_choice {
+      width: 100%;
+      margin-left: 0px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      font-size:13px;
+  }
+  
+  #single_purchase {
+      margin-bottom:5px; 
+  }
+    
+  /*Client requested changes */
+  #see-details, #save-percentage {
+      color:#f89c34;
+  }
+  
+  #save-percentage {
+	  font-weight:bold;
+  }
+  .main_label_text {
+   	  color:black;
+      font-weight:bold;
+  }
+  #deliver_every_text {
+      color:black;
+      margin-left:0px;
+  }
+  /* Recurring Upsell Widget HTML */
+  </style>
+  <section id="recurring_choice">
+    
+    <div class="radio_option" id="single_purchase">
+        <label for="autodeliver_off_radio" >
+            <input type="radio" name="autodeliver" class="autodeliver" value="onetime" checked="" id="autodeliver_off_radio"> 
+            <span class="main_label_text">One-time purchase</span>
+        </label>
+    </div><!--#single_purchase-->
+
+    <div class="radio_option" id="recurring_purchase">
+        <label for="autodeliver_on_radio"  >
+            <input type="radio" name="autodeliver" class="autodeliver" value="autodeliver" id="autodeliver_on_radio"> 
+            <span class="main_label_text" >Subscribe &amp; Save:</span>
+            <span id="save-percentage">{{ product.metafields.subscriptions.discount_percentage | floor }}% Off &amp; Free Shipping</span>
+        </label>
+        <div class="offer_newline">
+            <label>
+                <span id="deliver_every_text">Deliver every
+                    <select name="shipping_interval_frequency" id="shipping_interval_frequency" >
+                        <option value="30">30</option>
+                        <option value="60">60</option>
+                        <option value="90">90</option>
+                    </select>
+                    days
+                </span>
+            </label>
+
+          <a class="subscription-tooltip" href="#" id="see-details" style="">See details 
+              <span><strong>Here's How It Works:</strong>
+                  <br/> • {{ product.metafields.subscriptions.discount_percentage | floor }}% Savings and complimentary shipping <br>
+                  <br>• Your favorite products automatically delivered on your schedule<br>
+                  <br>• No obligation, modify or cancel anytime
+              </span>
+          </a><!--#see-details-->
+        </div><!--.offer_newline-->
+    </div><!--#recurring_purchase-->
+    
+  </section><!--#recurring_choice-->
+
+  <script>
+    //set checked item background color if bottom one is checked
+    if( $('#autodeliver_on_radio').prop('checked')==true ) {
+      $('#recurring_purchase').addClass('active')
+    } else {
+      $('#single_purchase').addClass('active')
+    }
+  </script>
+
+  <script>
+	//set listener for price change so we can update it if a recurring item is selected currently
+      $(document).ready(function(){
+
+          $('#price-preview').bind("DOMSubtreeModified",function(){
+              updatePrice()
+          });
+
+          $('#quantity').on("change",function(){
+              updatePrice()
+          });
+
+      }) //end document ready
+
+
+
+      /* Javascript for changing background color */
+      $('body').on('click','.autodeliver',function() {
+
+          $('.radio_option').removeClass('active')
+          $(this).parent().parent().addClass('active')
+
+          if( $(this).val()=='autodeliver' ) {
+            $('#recurring_purchase').addClass('active')
+            $('#single_purchase').removeClass('active')
+
+          } else if( $(this).val()=='onetime' ) {
+            $('#recurring_purchase').removeClass('active')
+            $('#single_purchase').addClass('active')
+          }
+
+          updatePrice()
+
+      }) //end body .autodeliver on click
+    </script>
+
+  <script>
+
+      $('body').on("submit","form[action='/cart/add']",function () {
+          return false;
+      });
+
+      function getSubscriptionVariantId (variant_id, quantity) {
+          //if the mapping has been assigned, use it
+          //call the additemtocart with the corresponding mapped variant id (or if no mapping, use the original)
+
+          if( $('#autodeliver_on_radio').prop('checked')==true ) {
+              if(variant_mapping[variant_id]['discount_variant_id'] !='') {
+                  discount_variant_id = variant_mapping[variant_id]['discount_variant_id']
+                  var shipping_interval_frequency = $('#shipping_interval_frequency').val()
+              }
+
+              addItemToCart(discount_variant_id, quantity, shipping_interval_frequency )
+
+          } else {
+              addItemToCart(variant_id, quantity, false)
+          }
+
+      }//end getSubscriptionVariantId()
+
+      function addItemToCart(variant_id, quantity, shipping_interval_frequency) {
+
+        data = {
+              "quantity": quantity,
+              "id": variant_id
+            }
+        if(shipping_interval_frequency) {
+          data['properties[shipping_interval_frequency]']=shipping_interval_frequency
+        } 
+        //debugger;
+        jQuery.ajax({
+            type: 'POST',
+            url: '/cart/add.js',
+            data: data,
+            dataType: 'json',
+            success: function() { 
+              console.log('add success');
+                window.location.href = '/cart'; //reload page
+            },
+            fail: function() {
+                console.log('fail')
+            }
+          });
+      }
+
+      $(document).ready(function(){
+      $( '#add-to-cart, .add-to-cart' ).unbind();
+      $( '#add-to-cart, .add-to-cart' ).off(); 
+      })
+
+      $('body').on('click','#add-to-cart, .add-to-cart',function(event) {
+          event.preventDefault()
+          var variant_id = $('[name="id"]').val()
+          var quantity = $('[name="quantity"]').val()
+          getSubscriptionVariantId(variant_id, quantity)
+        }) 
+
+  </script>
+
+
+
+  <script>
+    //if the autodeliver is checked, then make the proper background active
+
+    setActiveBackground()
+
+    function setActiveBackground () {
+        if( $('#autodeliver_on_radio').prop('checked')==true ) {
+          $('#recurring_purchase').addClass('active');
+          $('#single_purchase').removeClass('active');
+        } else {
+          $('#single_purchase').addClass('active');
+          $('#recurring_purchase').removeClass('active');
+        }
+    }
+
+    $(document).ready( function() {
+         setActiveBackground()
+    })
+
+  </script>
+
+  <script>
+    //update price dynamically
+
+    function updatePrice () {
+      var variant_id = $('[name="id"]').val()
+      var quantity = $('[name="quantity"]').val()
+      var variant_price =0
+
+      if( $('#autodeliver_on_radio').prop('checked')==true ) {
+          if(variant_mapping[variant_id]['discount_variant_id'] !='') {
+             variant_price = variant_price_mapping[variant_id]['discount_variant_price']
+          }
+      } else {
+            variant_price = (variant_prices[variant_id] / 100) 
+      }
+
+      variant_price = parseFloat(variant_price).toFixed(2)
+      var displayed_price = parseFloat(quantity * variant_price).toFixed(2)
+      var price_string = '$'+displayed_price
+      $('#price-preview').html(price_string)
+    }
+
+    //map original prices for updated price calculations
+      variant_prices={}
+    {% for variant in product.variants %}
+          variant_prices['{{variant.id}}'] ="{{variant.price}}"
+    {% endfor %} 
+  </script>
+
+
+
+  <script >
+    //map variants so we can add the proper discount variant if one exists
+    var variant_mapping = {};
+    var variant_price_mapping ={}    
+
+    {% for variant in product.variants %}
+
+        var discount_variant_id = '{{ variant.metafields.subscriptions.discount_variant_id }}'
+        variant_mapping['{{variant.id}}']='' 
+
+        if(discount_variant_id) {
+          variant_mapping['{{variant.id}}'] = {"discount_variant_id":discount_variant_id};
+        }
+
+        var discount_variant_price = '{{ variant.metafields.subscriptions.discount_variant_price }}'
+        variant_price_mapping['{{variant.id}}']=''
+        if(discount_variant_price) {
+          variant_price_mapping['{{variant.id}}'] = {"discount_variant_price":discount_variant_price};
+        }                
+
+
+    {% endfor %}
+
+  </script> 
+
+
+
+
+{% endif %}
+
+
+

@@ -1,0 +1,71 @@
+{% if collection.handle == 'pods' %}
+<section class="content-body pod-category">
+  <div class="content-layer">
+    <div class="container">
+        
+    </div>
+    <div class="container pod-list-container">
+      <div class="row pod-list">
+        {% for product in collection.all_products %} 
+          <!-- Bold: Discount - D&H -->
+          {% if product.metafields.inventory.ShappifyHidden == "true" %}
+          {% else %}             
+                          
+            <div class="col-sm-4 pod-thumb">
+              <div class="buy-now-container">
+                <a href="{{ product.url }}" class="btn btn-white">Buy Now</a>
+              </div>
+                <a href="{{ product.url }}">
+                  <div class="prod-image-container">
+                    <img src="{{ product.featured_image | product_img_url: 'grande' }}">
+                  </div>
+                  <div class="product-description-container prod-{{ product.handle }}">
+                      <div class="product-title">{{ product.title }} <span class="prod-price">From 16.99</span></div>
+                      <div class="product-description">
+                          {{ product.description }}
+                      </div>
+                  </div>
+                </a>
+            </div>
+          {% endif %} <!-- Bold: Discount D&H -->
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+
+
+
+            
+  <div class="bg-top" {% if product.metafields.pods.line-art-top %} style="background-image: url({{ product.metafields.pods.line-art-top }});"{% endif %}></div>
+
+  <div class="bg-bottom" {% if product.metafields.pods.line-art-bottom %} style="background-image: url({{ product.metafields.pods.line-art-bottom }});"{% endif %}></div>
+
+  <div class="pod-tray-container" {% if product.metafields.pods.trey-image %} style="background-image: url({{ product.metafields.pods.trey-image }});"{% endif %}></div>
+
+</section>
+
+
+
+{% endif %}
+
+<section class="content-wrapper">
+            
+
+           
+    <div class="container">
+      <div class="row">
+        <h2 class="section-title"><span>As Featured in</span></h2>
+
+      </div><!--end row-->
+      <div class="row featuredin-container">
+          <div class="media-logo"><img src="{{ 'media_02.png' | asset_url }}"></div>
+          <div class="media-logo"><img src="{{ 'media_04.png' | asset_url }}"></div>
+          <div class="media-logo"><img src="{{ 'media_06.png' | asset_url }}"></div>
+          <div class="media-logo"><img src="{{ 'media_08.png' | asset_url }}"></div>
+          <div class="media-logo"><img src="{{ 'media_10.png' | asset_url }}"></div>
+
+      </div>
+    </div>
+  </section>
+

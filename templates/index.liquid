@@ -1,0 +1,282 @@
+
+<section class="home-carousel">
+  
+  
+
+            <div id="home-hero" class="carousel slide" data-ride="carousel">
+                <!-- Indicators -->
+                <ol class="carousel-indicators" style="display:none">
+                    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                </ol>
+
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner">
+                    <div class="item active slide-1">
+                        <div class="hero-caption">
+                            <div class="hero-text">
+                                {{ shop.metafields.slideshow.slide1-header }}
+                                
+
+                            </div>
+
+                            <div class="video-thumb-wrapper">
+                                <div class="video-container">
+
+
+                                <div id="player"></div>
+                                <script>
+                                    var tag = document.createElement('script');
+                                    tag.src = "http://www.youtube.com/player_api";
+                                    var firstScriptTag = document.getElementsByTagName('script')[0];
+                                    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag); 
+
+                                    var player;
+                                    var lastAction = '';
+                                        function onYouTubePlayerAPIReady() {
+                                            player = new YT.Player('player', {
+                                                height: '259',
+                                                width: '460',
+                                                playerVars: {
+                                                  autohide: 1
+                                                  
+                                                  /* this hides title
+                                                  autohide: 1,
+                                                  showinfo: 0
+                                                   */
+                                                },
+                                                videoId: '3UzJ2iajZWo',
+                                                events: {
+                                                    'onStateChange': onPlayerStateChange
+                                                }
+                                            });
+                                        }
+
+                                        function onPlayerStateChange(event) {
+                                            switch (event.data){
+                                                case YT.PlayerState.PLAYING:
+                                                     ga('send', 'event', 'video', 'Playing', player.getVideoUrl());
+                                        
+                                                    break;
+                                                case YT.PlayerState.ENDED:
+                                                     ga('send', 'event', 'video', 'Completed', player.getVideoUrl());
+                                                    break;
+                                                case YT.PlayerState.PAUSED:
+                                                    if (lastAction != 'paused'){
+                                                     ga('send', 'event', 'video', 'Paused', player.getVideoUrl());
+                                                    }else{
+                                                        lastAction = 'paused';
+                                                    }
+                                                    break;
+                                                }
+                                            }
+                                </script>
+                                    
+                                    
+                                </div>
+
+                                <div class="video-caption">
+                                    
+                                    
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="buy-container">
+                                <div class="button-caption">
+                                    <small>Make Your Shower</small><br>
+                                    Amazing
+                                </div>
+                                <div class="call-to-action-container">
+                                    <a href="/products/starter-kit" class="btn btn-primary">{{ shop.metafields.slideshow.slide1-button-text }}</a>
+                                </div>
+                                
+                            </div>
+                        </div>
+
+                        <img class="slide-img" src="{{ 'slide-1.png' | asset_url }}" alt="aromatherapy diffuser">
+
+                    </div>
+
+                    <div class="item slide-2">
+
+                        <div class="hero-caption">
+                            <div class="hero-text">
+                                
+                                <div>
+                                    {{ shop.metafields.slideshow.slide2-header }}
+                                    
+                                </div>
+                                
+                            </div>
+
+
+
+                        </div>
+
+                        <div class="buy-container">
+                            {{ shop.metafields.slideshow.slide2-bottom-text }}
+                            
+                            <a href="/products/starter-kit" class="btn btn-primary">{{ shop.metafields.slideshow.slide2-button-text }}</a>
+                        </div>
+                        <img src="{{ 'slide-2.png' | asset_url }}" alt="">
+
+                    </div>
+
+                    <div class="item slide-3">
+
+                        <div class="hero-caption">
+                            <div class="hero-text">
+                                
+                                <span class="text-main">
+                                    {{ shop.metafields.slideshow.slide3-header }}
+                                    
+                                </span>
+                                <span class="text-introducing">{{ shop.metafields.slideshow.slide3-footer-text }}</span>
+
+                            </div>
+
+                            <div class="buy-container">
+                                <a href="/pages/what-is-essio" class="btn btn-primary">{{ shop.metafields.slideshow.slide3-button-text }}</a>
+                            </div>
+                        </div>
+                        <img src="{{ 'slide-3.png' | asset_url }}">
+
+                    </div>
+
+                </div>
+
+
+            </div>
+            
+
+        </section>
+        <section class="content-wrapper">
+            <div class="container">
+                <div class="row">
+                    <h2 class="section-title"><span> {{ shop.metafields.home.h2-subhero }}</span></h2>
+
+                </div><!--end row-->
+                <div class="row main-buttons">
+                    <div class="col-md-4 col-circle">
+                        <h3 class="btn-desc">{{ shop.metafields.home.box-1-heading }}</h3>
+                        <div class="circle-btn-container green">
+                            <div class="content-hoveroff">
+                                <div class="btn-image"><img src="{{ 'btn-bg-1.png' | asset_url }}"></div>
+                                <div class="btn-title">How It Works</div>
+                            </div>
+                            <div class="content-hover">
+                                <div class="bg-art"></div>
+                                <div class="circle-content">
+                                   
+                                    <a href="/pages/what-is-essio" class="btn btn-primary">See Our Secret</a>
+                                    <div class="btn-title">How It Works</div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div><!--end col md 4-->
+                    <div class="col-md-4 col-circle">
+                        <h3 class="btn-desc">{{ shop.metafields.home.box-2-heading }}</h3>
+                        <div class="circle-btn-container purple">
+                            <div class="content-hoveroff">
+                                <div class="btn-image"><img src="{{ 'btn-bg-2.png' | asset_url }}"></div>
+                                <div class="btn-title">Starter Kit</div>
+                            </div>
+                            <div class="content-hover">
+                                <div class="bg-art"></div>
+                                <div class="circle-content">
+                                    <span class="starting-at">Starting at</span>
+                                    <span class="circle-price"><sup>$</sup>44.99</span>
+                                    <a href="/products/starter-kit" class="btn btn-primary">Shop Now</a>
+                                    <div class="btn-title">Starter Kit</div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div><!--end col md 4-->
+                    <div class="col-md-4 col-circle">
+                        <h3 class="btn-desc">{{ shop.metafields.home.box-3-heading }}</h3>
+                        <div class="circle-btn-container orange">
+                            <div class="content-hoveroff">
+                                <div class="btn-image"><img src="{{ 'btn-bg-3.png' | asset_url }}"></div>
+                                <div class="btn-title">Refills</div>
+                            </div>
+                            <div class="content-hover">
+                                <div class="bg-art"></div>
+                                <div class="circle-content">
+                                    <span class="starting-at">Starting at</span>
+                                    <span class="circle-price"><sup>$</sup>19.99</span>
+                                    <a href="/collections/pods" class="btn btn-primary">Shop Now</a>
+                                    <div class="btn-title">Refills</div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div><!--end col md 4-->
+                </div><!--end row-->
+            </div>
+
+            <div class="container testimonial-row">
+
+                <div class="row">
+                    <div class="featured-wrap col-md-5">
+                        <div class="featured-title">{{ shop.metafields.featured-partner.title }}</div>
+                        <div class="featured-container">
+                            <div class="featured-img"><img src="{{ shop.metafields.featured-partner.image }}" ></div>
+                            <div class="featured-graidient"></div>
+                            <div class="featured-description-bg"></div>
+                            <div class="featured-text">
+                                {{ shop.metafields.featured-partner.description }}
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="col-md-7 testimonial-wrapper">
+                        <a href="/pages/testimonials">
+                            {% for article in blogs.testimonials.articles limit:2 %}
+                            
+                            <div class="testimonial-container">
+                                <div class="testimonial-thumb">
+                                    <div class="thumb-overlay"></div>
+                                    {{ article.excerpt }}
+                                </div>
+                                <div class="testimonial-text">
+                                    {{ article.content }}
+                                    <div class="testimonial-name">{{ article.title }}</div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div><!--end testimonial container-->
+                            {% endfor %}
+                        </a>
+
+
+
+                    </div><!--end testimonial wrapper-->
+                </div>
+            </div><!--end container-->
+            
+
+        </section>
+
+<section>
+                 
+    <div class="container">
+      <div class="row">
+        <h2 class="section-title"><span>As featured in</span></h2>
+
+      </div><!--end row-->
+      <div class="row featuredin-container">
+          <div class="media-logo"><img src="{{ 'media_02.png' | asset_url }}"></div>
+          <div class="media-logo"><img src="{{ 'media_04.png' | asset_url }}"></div>
+          <div class="media-logo"><img src="{{ 'media_06.png' | asset_url }}"></div>
+          <div class="media-logo"><img src="{{ 'media_08.png' | asset_url }}"></div>
+          <div class="media-logo new-beauty"><img src="{{ 'media_10.png' | asset_url }}"></div>
+
+      </div>
+    </div>
+</section>
+

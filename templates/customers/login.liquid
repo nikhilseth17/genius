@@ -1,0 +1,89 @@
+<section class="page-content-body">
+  <div class="container">
+    {% layout settings.customer_layout %}
+    <div id="customer-login" class="center-panels">
+      <div class="row">
+        <div id="login" class="col-md-4">
+          <div class="panel login-panel">
+            <div class="panel-body">
+              <h2 class="title">Login</h2>
+
+              {% form 'customer_login' %}
+              {{ form.errors | default_errors }}
+
+              <label for="customer_email" class="label">Email Address</label>
+              <input type="email" value="" name="customer[email]" id="customer_email" class="text form-control" placeholder="Email" />
+
+              {% if form.password_needed %}
+              <label for="customer_password" class="label">Password</label>
+              <input type="password" value="" name="customer[password]" id="customer_password" class="text form-control" size="16" placeholder="Password" />
+              <a href="#" onclick="showRecoverPasswordForm();return false;">Forgot your password?</a>
+              {% endif %}
+
+              <div class="action_bottom">
+                <button class="btn btn-primary" type="submit" value="Sign In" />Sign In</button>
+              </div>
+              {% endform %}
+            </div>
+          </div>
+        </div>
+        
+        <div id="recover-password" style="display:none;" class="col-md-4">
+          <div class="panel login-panel">
+            <div class="panel-body">
+              <h2>Reset Password</h2>
+              <p class="note">We will send you an email to reset your password.</p>
+
+              {% form 'recover_customer_password' %}
+              {{ form.errors | default_errors }}
+
+              <label for="email" class="label">Email Address</label>
+              <input type="email" value="" size="30" name="email" id="recover-email" class="text form-control" placeholder="Email" />
+              <div class="action_bottom">
+                <button class="btn btn-primary">Submit</button>
+              </div><br>
+              <div align="center">
+                <span class="note">or <a href="#" onclick="hideRecoverPasswordForm();return false;">Cancel</a></span>
+              </div>
+              {% endform %}
+            </div>
+          </div>
+        </div>
+        
+        {% if shop.checkout.guest_login %}
+        <div id="guest" class="col-md-4">
+          <div class="panel login-panel">
+            <div class="panel-body">
+              <h2>Guest Login</h2>
+              <p>Checkout without logging in.</p>
+              <p>Optional: Register with Essio to recieve:
+                <ul>
+                  <li>Free and easy returns on orders</li>
+                  <li>Express checkout and order tracking</li>
+                </ul>
+              </p>
+              {% form 'guest_login' %}
+              <button class="btn btn-primary"  value="Continue as Guest" />Continue as Guest</button>
+              {% endform %}
+            </div>
+          </div>
+        </div>
+        {% endif %}
+        
+      </div>
+    </div>
+  </div>
+</section>
+<script type="text/javascript">
+  function showRecoverPasswordForm() {
+    document.getElementById('recover-password').style.display = 'inline-block';
+    document.getElementById('login').style.display='none';
+  }
+
+  function hideRecoverPasswordForm() {
+    document.getElementById('recover-password').style.display = 'none';
+    document.getElementById('login').style.display = 'inline-block';
+  }
+
+  if (window.location.hash == '#recover') { showRecoverPasswordForm() }
+</script>

@@ -1,0 +1,49 @@
+<style>
+  
+  header, footer{
+    display:none;
+  }
+  
+  body{
+     background: url( {{'bluedots.jpg' | asset_url }} );
+  } 
+  
+  #curebit_c_wrapper{
+    margin-top:25px;
+  }
+ 
+
+</style>
+
+
+<div id='curebit_c_wrapper'></div> 
+<script>
+  //<![CDATA[
+    var _curebitq = _curebitq || [];
+    _curebitq.push(['init', {
+      site_id: '7592', // REQUIRED - Curebit Site ID
+      
+      // server: 'https://www.curebit.com' // OPTIONAL - use your own domain, that suppose to be setup as alias to curebit.com (this option is only possible for Enterprise client)
+    }]);
+
+    _curebitq.push(['register_affiliate', {
+      iframe: { // REQUIRED - html attributes for iframe tag to fit page design
+        width: '100%', // REQUIRED - width of the iframe
+        height: 960,
+        //id: 'curebit_container',
+        container: "curebit_c_wrapper"
+       
+      },
+
+      
+      responsive: true, // OPTIONAL - fit iframe into viewport (also on resize) and allow Curebit display mobile templates
+      // device: 'desktop', // OPTIONAL - enforce mobile/tablet/desktop view or skip this to allow Curebit choose corresponding template
+      campaign_tags: ['essio'] // OPTIONAL - campaign tags for offer targeting
+    }]);
+  //]]>
+</script>
+<script src="//d2jjzw81hqbuqv.cloudfront.net/integration/curebit-1.0.min.js" type="text/javascript"></script>
+  
+ 
+
+     

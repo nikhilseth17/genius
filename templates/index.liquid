@@ -1,7 +1,7 @@
 
 <section class="home-carousel">
-  
-  
+
+
 
             <div id="home-hero" class="carousel slide" data-ride="carousel">
                 <!-- Indicators -->
@@ -17,7 +17,7 @@
                         <div class="hero-caption">
                             <div class="hero-text">
                                 {{ shop.metafields.slideshow.slide1-header }}
-                                
+
 
                             </div>
 
@@ -30,7 +30,7 @@
                                     var tag = document.createElement('script');
                                     tag.src = "http://www.youtube.com/player_api";
                                     var firstScriptTag = document.getElementsByTagName('script')[0];
-                                    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag); 
+                                    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
                                     var player;
                                     var lastAction = '';
@@ -40,7 +40,7 @@
                                                 width: '460',
                                                 playerVars: {
                                                   autohide: 1
-                                                  
+
                                                   /* this hides title
                                                   autohide: 1,
                                                   showinfo: 0
@@ -57,7 +57,7 @@
                                             switch (event.data){
                                                 case YT.PlayerState.PLAYING:
                                                      ga('send', 'event', 'video', 'Playing', player.getVideoUrl());
-                                        
+
                                                     break;
                                                 case YT.PlayerState.ENDED:
                                                      ga('send', 'event', 'video', 'Completed', player.getVideoUrl());
@@ -72,25 +72,25 @@
                                                 }
                                             }
                                 </script>
-                                    
-                                    
+
+
                                 </div>
 
                                 <div class="video-caption">
-                                    
-                                    
+
+
                                 </div>
                             </div>
                             <div class="clearfix"></div>
                             <div class="buy-container">
                                 <div class="button-caption">
-                                    <small>Make Your Shower</small><br>
+                                    <small>Make Your Shower the best</small><br>
                                     Amazing
                                 </div>
                                 <div class="call-to-action-container">
                                     <a href="/products/starter-kit" class="btn btn-primary">{{ shop.metafields.slideshow.slide1-button-text }}</a>
                                 </div>
-                                
+
                             </div>
                         </div>
 
@@ -102,12 +102,12 @@
 
                         <div class="hero-caption">
                             <div class="hero-text">
-                                
+
                                 <div>
                                     {{ shop.metafields.slideshow.slide2-header }}
-                                    
+
                                 </div>
-                                
+
                             </div>
 
 
@@ -116,7 +116,7 @@
 
                         <div class="buy-container">
                             {{ shop.metafields.slideshow.slide2-bottom-text }}
-                            
+
                             <a href="/products/starter-kit" class="btn btn-primary">{{ shop.metafields.slideshow.slide2-button-text }}</a>
                         </div>
                         <img src="{{ 'slide-2.png' | asset_url }}" alt="">
@@ -127,10 +127,10 @@
 
                         <div class="hero-caption">
                             <div class="hero-text">
-                                
+
                                 <span class="text-main">
                                     {{ shop.metafields.slideshow.slide3-header }}
-                                    
+
                                 </span>
                                 <span class="text-introducing">{{ shop.metafields.slideshow.slide3-footer-text }}</span>
 
@@ -148,7 +148,7 @@
 
 
             </div>
-            
+
 
         </section>
         <section class="content-wrapper">
@@ -168,7 +168,7 @@
                             <div class="content-hover">
                                 <div class="bg-art"></div>
                                 <div class="circle-content">
-                                   
+
                                     <a href="/pages/what-is-essio" class="btn btn-primary">See Our Secret</a>
                                     <div class="btn-title">How It Works</div>
                                 </div>
@@ -232,13 +232,13 @@
                             <div class="featured-text">
                                 {{ shop.metafields.featured-partner.description }}
                             </div>
-                            
+
                         </div>
                     </div>
                     <div class="col-md-7 testimonial-wrapper">
                         <a href="/pages/testimonials">
                             {% for article in blogs.testimonials.articles limit:2 %}
-                            
+
                             <div class="testimonial-container">
                                 <div class="testimonial-thumb">
                                     <div class="thumb-overlay"></div>
@@ -258,12 +258,12 @@
                     </div><!--end testimonial wrapper-->
                 </div>
             </div><!--end container-->
-            
+
 
         </section>
 
 <section>
-                 
+
     <div class="container">
       <div class="row">
         <h2 class="section-title"><span>As featured in</span></h2>
@@ -279,4 +279,3 @@
       </div>
     </div>
 </section>
-

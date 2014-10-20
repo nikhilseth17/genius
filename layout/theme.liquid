@@ -227,7 +227,7 @@ _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
                             {% endif %}
                             <li class="nav-item{% if forloop.first %} first{% elsif forloop.last %} last{% endif %}{% if link.active %}{% if has_sub_menu or has_sub_categories %} {% else %} active{% endif %}{% endif %}{% if has_sub_menu or has_sub_categories or pod_link %} dropdown{% endif %}">
 
-                              <a href="{% if hw_link %}/pages/what-is-essio{% else %}{{ link.url }}{% endif %}" {% if has_sub_menu or has_sub_categories or pod_link %}class="dropdown-toggle link-{{ link.handle }}" data-toggle="dropdown"{% endif %}>{{ link.title }} {% if has_sub_menu or has_sub_categories or pod_link %}<b class="caret"></b>{% endif %}</a>
+                              <a href="{% if hw_link %}/pages/what-is-essio{% else %}{{ link.url }}{% endif %}" {% if has_sub_menu or has_sub_categories or pod_link %}class="dropdown-toggle link-{{ link.handle }}" data-toggle="dropdown"{% endif %}>{{ link.title }} {% if has_sub_menu or has_sub_categories or pod_link %}<span class="plus">+</span><span class="minus">&#150;</span>{% endif %}</a>
 
                               {% if pod_link %}
                                 <ul class="dropdown-menu">

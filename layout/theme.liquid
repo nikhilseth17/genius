@@ -176,7 +176,7 @@ _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
                   </div
 
                   <div class="visible-xs text-center mobile-logo">
-                    <h3>Essio</h3>
+                    <h3>Essios</h3>
                   </div>
 
               </div><!--end row-->
@@ -238,7 +238,7 @@ _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
                             {% endif %}
                             <li class="nav-item{% if forloop.first %} first{% elsif forloop.last %} last{% endif %}{% if link.active %}{% if has_sub_menu or has_sub_categories %} {% else %} active{% endif %}{% endif %}{% if has_sub_menu or has_sub_categories or pod_link %} dropdown{% endif %}">
 
-                              <a href="#" {% if has_sub_menu or has_sub_categories or pod_link %}class="dropdown-toggle link-{{ link.handle }}" data-toggle="dropdown"{% endif %}>{{ link.title }} {% if has_sub_menu or has_sub_categories or pod_link %}<b class="caret hidden-xs"></b><span class="plus hidden-sm hidden-md hidden-lg">+</span><span class="minus hidden-sm hidden-md hidden-lg">&#150;</span>{% endif %}</a>
+                              <a href="{% if hw_link %}/pages/what-is-essio{% else %}{{ link.url }}{% endif %}" {% if has_sub_menu or has_sub_categories or pod_link %}class="dropdown-toggle link-{{ link.handle }}" data-toggle="dropdown"{% endif %}>{{ link.title }} {% if has_sub_menu or has_sub_categories or pod_link %}<b class="caret hidden-xs"></b><span class="plus hidden-sm hidden-md hidden-lg">+</span><span class="minus hidden-sm hidden-md hidden-lg">&#150;</span>{% endif %}</a>
 
                               {% if pod_link %}
                                 <ul class="dropdown-menu">

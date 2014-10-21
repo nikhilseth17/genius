@@ -11275,30 +11275,12 @@ CSS Document  #sh_wrapper {
   font-weight: bold;
   }
 
-  header .nav-top .pull-right ul li{
-    position: relative;
-    top: 5px;
-  }
-
-  header .navbar-brand{
-    display: none;
-  }
-  header .nav-top{
-    background-image: none;
-    background-color: #333;
-    height: 45px;
-  }
-  header .nav-bottom{
-    height: 0;
-  }
-
   section.home-carousel .text-introducing{
     text-align: center;
     margin-bottom: 3px;
   }
 
   section.home-carousel .text-main h1{
-    font-size: 18px;
     text-align: center;
   }
 
@@ -11383,6 +11365,47 @@ CSS Document  #sh_wrapper {
   }
   .open .minus{
     display: inline-block;
+  }
+  header .nav-bottom .navbar-nav li a{
+    font-size: 14px;
+  }
+  .slide-img{
+    display: none !important;
+  }
+  section.home-carousel .carousel-inner > .item{
+    max-width: 100%;
+  }
+  section.home-carousel .carousel-inner > .item > .hero-caption{
+    max-width: 490px;
+    position: inherit;
+    margin: 21px auto 0;
+  }
+}
+
+@media (max-width: 768px){
+  header .nav-top{
+    background-image: none;
+    background-color: #333;
+    height: 45px;
+  }
+
+  header .nav-top .pull-right ul li{
+    position: relative;
+    top: 5px;
+  }
+
+  header .navbar-brand{
+    display: none;
+  }
+
+  header .nav-bottom{
+    height: 0;
+  }
+  section.home-carousel .text-main h1{
+    font-size: 18px;
+  }
+  section.home-carousel .carousel-inner > .item{
+    max-width: 90%;
   }
 }
 

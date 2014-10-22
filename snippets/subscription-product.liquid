@@ -4,7 +4,7 @@
   <style>
   /* Tool Tip CSS */
   a.subscription-tooltip {
-      outline:none; 
+      outline:none;
       position:relative !important;
   }
   a.subscription-tooltip strong {line-height:30px;}
@@ -53,7 +53,7 @@
   .radio_option input[type="number"] {
       width:40px;
   }
- 
+
   .radio_option label {
       width:auto;
       font-weight:normal !important;
@@ -89,16 +89,16 @@
       margin-bottom: 10px;
       font-size:13px;
   }
-  
+
   #single_purchase {
-      margin-bottom:5px; 
+      margin-bottom:5px;
   }
-    
+
   /*Client requested changes */
   #see-details, #save-percentage {
       color:#f89c34;
   }
-  
+
   #save-percentage {
 	  font-weight:bold;
   }
@@ -113,19 +113,19 @@
   /* Recurring Upsell Widget HTML */
   </style>
   <section id="recurring_choice">
-    
+
     <div class="radio_option" id="single_purchase">
         <label for="autodeliver_off_radio" >
-            <input type="radio" name="autodeliver" class="autodeliver" value="onetime" checked="" id="autodeliver_off_radio"> 
+            <input type="radio" name="autodeliver" class="autodeliver" value="onetime" checked="" id="autodeliver_off_radio">
             <span class="main_label_text">One-time purchase</span>
         </label>
     </div><!--#single_purchase-->
 
     <div class="radio_option" id="recurring_purchase">
         <label for="autodeliver_on_radio"  >
-            <input type="radio" name="autodeliver" class="autodeliver" value="autodeliver" id="autodeliver_on_radio"> 
+            <input type="radio" name="autodeliver" class="autodeliver" value="autodeliver" id="autodeliver_on_radio">
             <span class="main_label_text" >Subscribe &amp; Save:</span>
-            <span id="save-percentage">{{ product.metafields.subscriptions.discount_percentage | floor }}% Off &amp; Free Shipping</span>
+            <div id="save-percentage">{{ product.metafields.subscriptions.discount_percentage | floor }}% Off &amp; Free Shipping</duv>
         </label>
         <div class="offer_newline">
             <label>
@@ -139,7 +139,7 @@
                 </span>
             </label>
 
-          <a class="subscription-tooltip" href="#" id="see-details" style="">See details 
+          <a class="subscription-tooltip" href="#" id="see-details" style=""><br>See details 
               <span><strong>Here's How It Works:</strong>
                   <br/> • {{ product.metafields.subscriptions.discount_percentage | floor }}% Savings and complimentary shipping <br>
                   <br>• Your favorite products automatically delivered on your schedule<br>
@@ -148,7 +148,7 @@
           </a><!--#see-details-->
         </div><!--.offer_newline-->
     </div><!--#recurring_purchase-->
-    
+
   </section><!--#recurring_choice-->
 
   <script>
@@ -228,14 +228,14 @@
             }
         if(shipping_interval_frequency) {
           data['properties[shipping_interval_frequency]']=shipping_interval_frequency
-        } 
+        }
         //debugger;
         jQuery.ajax({
             type: 'POST',
             url: '/cart/add.js',
             data: data,
             dataType: 'json',
-            success: function() { 
+            success: function() {
               console.log('add success');
                 window.location.href = '/cart'; //reload page
             },
@@ -247,7 +247,7 @@
 
       $(document).ready(function(){
       $( '#add-to-cart, .add-to-cart' ).unbind();
-      $( '#add-to-cart, .add-to-cart' ).off(); 
+      $( '#add-to-cart, .add-to-cart' ).off();
       })
 
       $('body').on('click','#add-to-cart, .add-to-cart',function(event) {
@@ -255,7 +255,7 @@
           var variant_id = $('[name="id"]').val()
           var quantity = $('[name="quantity"]').val()
           getSubscriptionVariantId(variant_id, quantity)
-        }) 
+        })
 
   </script>
 
@@ -295,7 +295,7 @@
              variant_price = variant_price_mapping[variant_id]['discount_variant_price']
           }
       } else {
-            variant_price = (variant_prices[variant_id] / 100) 
+            variant_price = (variant_prices[variant_id] / 100)
       }
 
       variant_price = parseFloat(variant_price).toFixed(2)
@@ -308,7 +308,7 @@
       variant_prices={}
     {% for variant in product.variants %}
           variant_prices['{{variant.id}}'] ="{{variant.price}}"
-    {% endfor %} 
+    {% endfor %}
   </script>
 
 
@@ -316,12 +316,12 @@
   <script >
     //map variants so we can add the proper discount variant if one exists
     var variant_mapping = {};
-    var variant_price_mapping ={}    
+    var variant_price_mapping ={}
 
     {% for variant in product.variants %}
 
         var discount_variant_id = '{{ variant.metafields.subscriptions.discount_variant_id }}'
-        variant_mapping['{{variant.id}}']='' 
+        variant_mapping['{{variant.id}}']=''
 
         if(discount_variant_id) {
           variant_mapping['{{variant.id}}'] = {"discount_variant_id":discount_variant_id};
@@ -331,17 +331,14 @@
         variant_price_mapping['{{variant.id}}']=''
         if(discount_variant_price) {
           variant_price_mapping['{{variant.id}}'] = {"discount_variant_price":discount_variant_price};
-        }                
+        }
 
 
     {% endfor %}
 
-  </script> 
+  </script>
 
 
 
 
 {% endif %}
-
-
-

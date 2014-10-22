@@ -72,7 +72,7 @@
                                 {% endif %}
                               {% endfor %}
                             </div>
-                            <div id="product-images" data-product-url="{{ product.url }}" data-product-description="{{ product.description }}" class="carousel slide product-images fade" data-ride="carousel">
+                            <div id="product-images" data-product-url="{{ product.url }}" data-product-description="{{ product.description }}" class="carousel slide product-images fade hidden-xs" data-ride="carousel">
 
 
                                 <!-- Wrapper for slides -->
@@ -102,13 +102,16 @@
 
 
                             </div><!--end product image carousel-->
+                            <div class="mobile-starter-img"><!--added -->
+                              <img src="//cdn.shopify.com/s/files/1/0366/5265/products/starter_kit_2048x2048.jpg?v=1409357312" class="img-responsive" alt="Aromatherapy Shower Kit">
+                            </div>
                         </div>
 
                         <div class="col-md-4">
 
                             <div class="product-order-container">
                                 <h1 class="product-title">{{ product.title }}
-
+                                </h1>
                                   <div class="star-container">
                                   <div class="yotpo bottomLine"
                                     data-appkey="TFfj4XcOiyFvZ1bQBKwUfC7e76S7hq9TY1lEhEe1"
@@ -125,7 +128,7 @@
                                       <a href="#product-tabs" id="write-first-review" >Be the first to write a review.</a>
                                     </span>
                                   </div>
-                                  </h1>
+
                                   <h2 class="lead">{{ product.description }}</h2>
                                 <form id="add-item-form" action="/cart/add" method="post" class="variants clearfix">
                                   {% if podpage %}
@@ -233,8 +236,8 @@
                         <div class="col-md-12">
                             <!-- Nav tabs -->
                             <ul class="nav nav-tabs" id="product-tabs">
-                              <li class="active"><a href="#details" data-toggle="tab">Details</a></li>
-                              <li><a href="#reviews" id="tab-reviews" data-toggle="tab">Reviews</a></li>
+                              <li><a href="#details" data-toggle="tab">Details</a></li>
+                              <li class="active"><a href="#reviews" id="tab-reviews" data-toggle="tab">Reviews</a></li>
                               <li><a href="#videos" data-toggle="tab">Videos</a></li>
                               <li><a href="#shipping" data-toggle="tab">Shipping Info</a></li>
                             </ul>
@@ -242,7 +245,7 @@
 
                             <!-- Tab panes -->
                             <div class="tab-content">
-                              <div class="tab-pane active" id="details">
+                              <div class="tab-pane" id="details">
                                 <div class="row">
                                     {% if podpage %}
                                     <div class="col-md-4">
@@ -293,7 +296,7 @@
                                     </div>
                                 </div>
                               </div>
-                              <div class="tab-pane" id="reviews">
+                              <div class="tab-pane active" id="reviews">
                                 <div class="yotpo reviews"
                                   data-appkey="TFfj4XcOiyFvZ1bQBKwUfC7e76S7hq9TY1lEhEe1"
                                   data-domain="{{ shop.permanent_domain | escape }}"

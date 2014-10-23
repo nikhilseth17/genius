@@ -6,12 +6,13 @@
     </div>
     <div class="container pod-list-container">
       <div class="row pod-list">
+        <h1 class="page-heading visible-xs text-center pod-header"><span class="name">Turn your shower into a spa</span></h1> <!-- added -->
+
         {% for product in collection.all_products %}
           <!-- Bold: Discount - D&H -->
           {% if product.metafields.inventory.ShappifyHidden == "true" %}
           {% else %}
-            <h1 class="page-heading visible-xs text-center pod-header"><span class="name">Turn your shower into a spa</span></h1> <!-- added -->
-              
+
             <div class="col-sm-4 pod-thumb">
               <div class="buy-now-container">
                 <a href="{{ product.url }}" class="btn btn-white">Buy Now</a>

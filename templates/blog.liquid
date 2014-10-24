@@ -62,11 +62,11 @@
 
           {% elsif blog.handle == 'news' %}
 
-          <div class="col-md-12 articles">
+          <div class="col-md-12 articles hidden-xs">
             {% for article in blog.articles %}
 
 
-            <div class="article clearfix article-news hidden-xs">
+            <div class="article clearfix article-news">
               <div class="panel">
                 <div class="panel-body">
                   {% if article.metafields.blog.thumb %}

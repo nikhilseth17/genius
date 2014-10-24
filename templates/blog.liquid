@@ -111,6 +111,57 @@
             {% endfor %}
           </div>
           {% else %}
+
+          <div class="col-md-12 articles visible-xs">
+            {% for article in blog.articles %}
+
+
+            <div class="article clearfix article-news">
+              <div class="panel">
+                <div class="panel-body">
+                  {% if article.metafields.blog.thumb %}
+                  <div class="article-thumb">
+                    <img src="{{ article.metafields.blog.thumb }}">
+                  </div>
+                  {% endif %}
+                   {% if article.metafields.blog.logo %}
+                   <div class="logo-container">
+                      <div class="row">
+                        <div class="col-sm-10 logo-col">
+                          <img class="news-logo" src="{{ article.metafields.blog.logo }}">
+                        </div>
+                        <div class="col-sm-2">
+                          <div class="date">
+                            <span class="month">{{ article.published_at | date: "%B" }}</span>
+                            <span class="day">{{ article.published_at | date: "%d" }}</span>
+                            <span class="year">{{ article.published_at | date: "%Y" }}</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  {% endif %}
+                  <h1>{{ article.title }} </h1>
+
+
+
+                  <div class="article-content">
+                    {{ article.content | truncate: '350' }}
+                    <div class="text-right read-more-container">
+                      {% if article.metafields.blog.link %}
+                      <a href="{{ article.metafields.blog.link }}" class="btn btn-primary">Read Article</a>
+                      {% endif %}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {% unless forloop.last %}
+
+            {% endunless %}
+            {% endfor %}
+          </div>
+          {% else %}
+
           <div class="col-md-9 articles">
             {% for article in blog.articles %}
             <div class="article clearfix">

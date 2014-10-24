@@ -137,12 +137,11 @@
 
                   <div class="article-content">
                     {{ article.content | truncate: '350' }}
-
-                  </div>
-                  <div class="text-right read-more-container">
-                    {% if article.metafields.blog.link %}
-                    <a href="{{ article.metafields.blog.link }}" class="btn btn-primary">Read Article</a>
-                    {% endif %}
+                    <div class="text-right read-more-container">
+                      {% if article.metafields.blog.link %}
+                      <a href="{{ article.metafields.blog.link }}" class="btn btn-primary">Read Article</a>
+                      {% endif %}
+                    </div>
                   </div>
                 </div>
               </div>

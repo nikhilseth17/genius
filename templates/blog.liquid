@@ -113,7 +113,13 @@
 
           <div class="col-md-12 articles visible-xs">
             {% for article in blog.articles %}
-
+            <img class="news-logo" src="{{ article.metafields.blog.logo }}">
+            <h1>{{ article.title }} </h1>
+            <div class="date">
+              <span class="month">{{ article.published_at | date: "%B" }}</span>
+              <span class="day">{{ article.published_at | date: "%d" }}</span>
+              <span class="year">{{ article.published_at | date: "%Y" }}</span>
+            </div>
 
             <div class="article clearfix article-news">
               <div class="panel">
@@ -124,22 +130,8 @@
                   </div>
                   {% endif %}
                    {% if article.metafields.blog.logo %}
-                   <div class="logo-container">
-                      <div class="row">
-                        <div class="col-sm-10 logo-col">
-                          <img class="news-logo" src="{{ article.metafields.blog.logo }}">
-                        </div>
-                        <div class="col-sm-2">
-                          <div class="date">
-                            <span class="month">{{ article.published_at | date: "%B" }}</span>
-                            <span class="day">{{ article.published_at | date: "%d" }}</span>
-                            <span class="year">{{ article.published_at | date: "%Y" }}</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+
                   {% endif %}
-                  <h1>{{ article.title }} </h1>
 
 
 

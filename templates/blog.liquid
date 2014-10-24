@@ -110,10 +110,7 @@
             {% endunless %}
             {% endfor %}
           </div>
-          {% else %}
 
-          {% elsif blog.handle == 'news' %}
-          
           <div class="col-md-12 articles visible-xs">
             {% for article in blog.articles %}
 
@@ -162,8 +159,8 @@
             {% endunless %}
             {% endfor %}
           </div>
-          {% else %}
 
+          {% else %}
           <div class="col-md-9 articles">
             {% for article in blog.articles %}
             <div class="article clearfix">

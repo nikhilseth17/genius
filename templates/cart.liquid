@@ -206,6 +206,9 @@
                         {{ item.product.description }}
                       </div>
                     </div>
+                    <div class="qty-text-mobile">
+                      Quantity
+                    </div>
                     <div class="qty pull-left">
                       <input type="text" size="4" name="updates[]" id="updates_{{ item.id }}" value="{{ item.quantity }}" onfocus="this.select();" class="tc item-quantity" {% if item.product.metafields.inventory.ShappifyHidden == "true" %} readonly="readonly" {% endif %} />
                     </div>

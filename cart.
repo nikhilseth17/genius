@@ -1,7 +1,7 @@
 <section class="page-content-body">
   <div class="container">
     <div id="cart">
-      
+
       <!-- Begin empty cart -->
       {% if cart.item_count == 0 %}
       <div class="row">
@@ -12,7 +12,7 @@
         </div>
       </div>
       <!-- End empty cart -->
-      
+
       <!-- Begin cart -->
       {% else %}
       <div class="header-container">
@@ -21,7 +21,7 @@
       <div class="row">
         <form action="/cart" method="post" id="cartform">
         <div class="col-md-9">
-          
+
           <div class="panel panel-default">
             <div class="panel-body">
               <table>
@@ -37,9 +37,9 @@
                 <tbody>
                   {% for item in cart.items %}
                     {% assign url = item.url %}
-                    {% if item.product.metafields.subscriptions.original_handle %} 
+                    {% if item.product.metafields.subscriptions.original_handle %}
                       {% assign url =  '/products/'| append:item.product.metafields.subscriptions.original_handle %}
-                    {% endif %} 
+                    {% endif %}
                     {% if item.product.id == 235478761 %}
                       {% assign hasStarterKit = '1' %}
                     {% endif %}
@@ -47,14 +47,14 @@
                     <td class="image">
                       <div class="product_image">
                          <a href="{{ url }}">
-                          
+
                           {% if item.variant.title == '8 pack' %}
                             <img src="http://cdn.shopify.com/s/files/1/0366/5265/files/{{ item.product.handle }}-8pack.jpg"  alt="{{ item.product.title }}" />
                           {% else %}
                             <img src="{{ item.product.featured_image | product_img_url: 'original' }}"  alt="{{ item.product.title }}" />
                           {% endif %}
-                          
-                         
+
+
                         </a>
                       </div>
                     </td>
@@ -94,7 +94,7 @@
                   <button id="checkout" class="btn btn-primary" name="checkout" value="Check out" />Check out</button>
                   <button id="update-cart" class="btn btn-default" name="update" value="Update" />Update</button>
                 </div>
-                {% if additional_checkout_buttons %}        
+                {% if additional_checkout_buttons %}
                    <div class="extra-checkout-buttons">
                    {{ content_for_additional_checkout_buttons }}
                    </div>
@@ -103,10 +103,10 @@
               {% if hasStarterKit != '1' %}
               <div class="pull-left missing-container">
                 {% for product in collections.frontpage.products %}
-                  
-                
+
+
                   <div class="pull-left starter-kit-thumb">
-                   
+
                     <img src="{{ product.featured_image | product_img_url: 'original' }}">
                     <input type="hidden" name="return_to" value="/checkout" />
 
@@ -117,7 +117,7 @@
                       <input type="submit" value="ADD TO CART" class="btn btn-default" id="starter-kit-submit" />
                     </div>
                     {% endfor %}
-                    
+
                   </div>
                 {% endfor %}
                 <div class="pull-left alert alert-warning">
@@ -133,32 +133,32 @@
             <div class="panel panel-default">
               <div class="panel-body">
                 <div class="inner-left inner-right">
-                
-                  
+
+
                   <div class="checkout-buttons clearfix">
                     <label for="note">Add special instructions for your order...</label>
                     <textarea id="note" name="note" rows="8" cols="70" class="form-control">{{ cart.note }}</textarea>
                   </div>
-                  
-                 
+
+
                 </div>
               </div>
             </div>
 
             <div class="continue-shopping text-right"> <a href="/"> > Continue Shopping</a></div>
 
-            
 
-          
+
+
         </div>
       </form>
       </div>
       {% endif %}
-      
-      
+
+
       <!-- End cart -->
-      
-    </div> 
+
+    </div>
   </div>
   <!--end container-->
 </section>
@@ -175,11 +175,11 @@
         return_to: 'back',
 
       }, // or JSON.stringify ({name: 'jonas'}),
-      success: function(data) { 
+      success: function(data) {
         window.location = '/cart';
       }
     });
-  
+
   });
 </script>
 

@@ -169,7 +169,7 @@
                     <th class="remove">&nbsp;</th>
                   </tr> -->
 
-                <div>
+                <div class="cart-box">
                   {% for item in cart.items %}
                     {% assign url = item.url %}
                     {% if item.product.metafields.subscriptions.original_handle %}
@@ -206,7 +206,7 @@
                         {{ item.product.description }}
                       </div>
                     </div>
-                    <div class="qty">
+                    <div class="qty pull-left">
                       <input type="text" size="4" name="updates[]" id="updates_{{ item.id }}" value="{{ item.quantity }}" onfocus="this.select();" class="tc item-quantity" {% if item.product.metafields.inventory.ShappifyHidden == "true" %} readonly="readonly" {% endif %} />
                     </div>
                     <div class="price">{{ item.line_price | money }}</div>

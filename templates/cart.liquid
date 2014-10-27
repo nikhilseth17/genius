@@ -160,17 +160,16 @@
 
           <div class="panel panel-default">
             <div class="panel-body">
-              <table>
-                <thead>
-                  <tr>
+
+                  <!-- <tr>
                     <th class="image">&nbsp;</th>
                     <th class="item">Item</th>
                     <th class="qty">Quantity</th>
                     <th class="price">Price</th>
                     <th class="remove">&nbsp;</th>
-                  </tr>
-                </thead>
-                <tbody>
+                  </tr> -->
+
+                <div>
                   {% for item in cart.items %}
                     {% assign url = item.url %}
                     {% if item.product.metafields.subscriptions.original_handle %}
@@ -179,8 +178,7 @@
                     {% if item.product.id == 235478761 %}
                       {% assign hasStarterKit = '1' %}
                     {% endif %}
-                  <tr>
-                    <td class="image">
+                    <div class="image">
                       <div class="product_image">
                          <a href="{{ url }}">
 
@@ -193,8 +191,8 @@
 
                         </a>
                       </div>
-                    </td>
-                    <td class="item">
+                    </div>
+                    <div class="item">
                        <a href="{{ url }}">
                         <strong>{{ item.product.title }}</strong>
                         {% if item.product.variants.size > 1 %}
@@ -207,23 +205,22 @@
                       <div>
                         {{ item.product.description }}
                       </div>
-                    </td>
-                    <td class="qty">
+                    </div>
+                    <div class="qty">
                       <input type="text" size="4" name="updates[]" id="updates_{{ item.id }}" value="{{ item.quantity }}" onfocus="this.select();" class="tc item-quantity" {% if item.product.metafields.inventory.ShappifyHidden == "true" %} readonly="readonly" {% endif %} />
-                    </td>
-                    <td class="price">{{ item.line_price | money }}</td>
-                    <td class="remove"><a href="/cart/change?line={{ forloop.index }}&quantity=0" class="cart">Remove</a></td>
-                  </tr>
+                    </div>
+                    <div class="price">{{ item.line_price | money }}</div>
+                    <div class="remove"><a href="/cart/change?line={{ forloop.index }}&quantity=0" class="cart">Remove</a></div>
                   {% endfor %}
-                  <tr class="summary">
-                    <td class="image">&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td class="price"><span class="total"><strong>{{ cart.total_price | money }}</strong></span></td>
-                    <td>&nbsp;</td>
-                  </tr>
-                </tbody>
-              </table>
+                  <div class="summary">
+                    <div class="image">&nbsp;</div>
+                    <div>&nbsp;</div>
+                    <div>&nbsp;</div>
+                    <div class="price"><span class="total"><strong>{{ cart.total_price | money }}</strong></span></div>
+                    <div>&nbsp;</div>
+                  </div>
+                </div>
+
               <div class="clearfix"></div>
               <div class="cart-buttons inner-right inner-left pull-right">
                 <div class="buttons clearfix">

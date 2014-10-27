@@ -155,6 +155,142 @@
       </div>
       {% endif %}
 
+    <div class="row visible-xs">
+      <form action="/cart" method="post" id="cartform">
+      <div class="col-md-9">
+
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <table>
+              <thead>
+                <tr>
+                  <th class="image">&nbsp;</th>
+                  <th class="item">Item</th>
+                  <th class="qty">Quantity</th>
+                  <th class="price">Price</th>
+                  <th class="remove">&nbsp;</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for item in cart.items %}
+                  {% assign url = item.url %}
+                  {% if item.product.metafields.subscriptions.original_handle %}
+                    {% assign url =  '/products/'| append:item.product.metafields.subscriptions.original_handle %}
+                  {% endif %}
+                  {% if item.product.id == 235478761 %}
+                    {% assign hasStarterKit = '1' %}
+                  {% endif %}
+                <tr>
+                  <td class="image">
+                    <div class="product_image">
+                       <a href="{{ url }}">
+
+                        {% if item.variant.title == '8 pack' %}
+                          <img src="http://cdn.shopify.com/s/files/1/0366/5265/files/{{ item.product.handle }}-8pack.jpg"  alt="{{ item.product.title }}" />
+                        {% else %}
+                          <img src="{{ item.product.featured_image | product_img_url: 'original' }}"  alt="{{ item.product.title }}" />
+                        {% endif %}
+
+
+                      </a>
+                    </div>
+                  </td>
+                  <td class="item">
+                     <a href="{{ url }}">
+                      <strong>{{ item.product.title }}</strong>
+                      {% if item.product.variants.size > 1 %}
+                      <span class="variant_title">{{ item.variant.title }}</span>
+                      {% endif %}
+                    </a>
+                    {% if item.properties contains 'shipping_interval_frequency' %}
+                      <br><span class="variant_title">Auto renews each {{ item.properties.shipping_interval_frequency }} days</span>
+                    {% endif %}
+                    <div>
+                      {{ item.product.description }}
+                    </div>
+                  </td>
+                  <td class="qty">
+                    <input type="text" size="4" name="updates[]" id="updates_{{ item.id }}" value="{{ item.quantity }}" onfocus="this.select();" class="tc item-quantity" {% if item.product.metafields.inventory.ShappifyHidden == "true" %} readonly="readonly" {% endif %} />
+                  </td>
+                  <td class="price">{{ item.line_price | money }}</td>
+                  <td class="remove"><a href="/cart/change?line={{ forloop.index }}&quantity=0" class="cart">Remove</a></td>
+                </tr>
+                {% endfor %}
+                <tr class="summary">
+                  <td class="image">&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td class="price"><span class="total"><strong>{{ cart.total_price | money }}</strong></span></td>
+                  <td>&nbsp;</td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="clearfix"></div>
+            <div class="cart-buttons inner-right inner-left pull-right">
+              <div class="buttons clearfix">
+                <button id="checkout" class="btn btn-primary" name="checkout" value="Check out" />Check out</button>
+                <button id="update-cart" class="btn btn-default" name="update" value="Update" />Update</button>
+              </div>
+              {% if additional_checkout_buttons %}
+                 <div class="extra-checkout-buttons">
+                 {{ content_for_additional_checkout_buttons }}
+                 </div>
+              {% endif %}
+            </div>
+            {% if hasStarterKit != '1' %}
+            <div class="pull-left missing-container">
+              {% for product in collections.frontpage.products %}
+
+
+                <div class="pull-left starter-kit-thumb">
+
+                  <img src="{{ product.featured_image | product_img_url: 'original' }}">
+                  <input type="hidden" name="return_to" value="/checkout" />
+
+                  {% for variant in product.variants %}
+                  <div id="add-starter-kit">
+                    <input type="hidden" name="id" value="{{ variant.id }}" />
+                    <input type="hidden" name="return_to" value="back" />
+                    <input type="submit" value="ADD TO CART" class="btn btn-default" id="starter-kit-submit" />
+                  </div>
+                  {% endfor %}
+
+                </div>
+              {% endfor %}
+              <div class="pull-left alert alert-warning">
+                <strong>Don't own a starter kit?</strong> <br>Before checking out, be sure you already purchased an Essio Starter Kit.
+              </div>
+            </div><!--end missing starter kit container-->
+            {% endif %}
+
+          </div>
+        </div>
+        </div>
+        <div class="col-md-3">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <div class="inner-left inner-right">
+
+
+                <div class="checkout-buttons clearfix">
+                  <label for="note">Add special instructions for your order...</label>
+                  <textarea id="note" name="note" rows="8" cols="70" class="form-control">{{ cart.note }}</textarea>
+                </div>
+
+
+              </div>
+            </div>
+          </div>
+
+          <div class="continue-shopping text-right"> <a href="/"> > Continue Shopping</a></div>
+
+
+
+
+      </div>
+    </form>
+    </div>
+    {% endif %}
 
       <!-- End cart -->
 

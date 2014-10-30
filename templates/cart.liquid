@@ -272,9 +272,6 @@
                     <img src="{{ product.featured_image | product_img_url: 'original' }}">
                     <input type="hidden" name="return_to" value="/checkout" />
 
-
-                    {% endfor %}
-
                   </div>
                   {% for variant in product.variants %}
                   <div id="add-starter-kit">

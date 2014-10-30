@@ -263,26 +263,26 @@
 
               <div class="pull-left missing-container visible-xs">
                 {% for product in collections.frontpage.products %}
+
+
+                  <div class="pull-left starter-kit-thumb">
+
+                    <img src="{{ product.featured_image | product_img_url: 'original' }}">
+                    <input type="hidden" name="return_to" value="/checkout" />
+
+                    {% for variant in product.variants %}
+                    <div id="add-starter-kit">
+                      <input type="hidden" name="id" value="{{ variant.id }}" />
+                      <input type="hidden" name="return_to" value="back" />
+                      <input type="submit" value="ADD TO CART" class="btn btn-default" id="starter-kit-submit" />
+                    </div>
+                    {% endfor %}
+
+                  </div>
+                {% endfor %}
                 <div class="pull-left alert alert-warning">
                   <strong>Don't own a starter kit?</strong> <br>Before checking out, be sure you already purchased an Essio Starter Kit.
                 </div>
-                <br>
-                <div class="pull-left starter-kit-thumb">
-
-                  <img src="{{ product.featured_image | product_img_url: 'original' }}">
-                  <input type="hidden" name="return_to" value="/checkout" />
-
-                  {% for variant in product.variants %}
-                  <div id="add-starter-kit">
-                    <input type="hidden" name="id" value="{{ variant.id }}" />
-                    <input type="hidden" name="return_to" value="back" />
-                    <input type="submit" value="ADD TO CART" class="btn btn-default" id="starter-kit-submit" />
-                  </div>
-                  {% endfor %}
-
-                </div>
-
-
               </div><!--end missing starter kit container-->
               {% endif %}
 

@@ -263,10 +263,9 @@
 
               <div class="pull-left missing-container visible-xs">
                 {% for product in collections.frontpage.products %}
-                {% endfor %}
-                  <div class="pull-left alert alert-warning">
-                    <strong>Don't own a starter kit?</strong> <br>Before checking out, be sure you already purchased an Essio Starter Kit.
-                  </div>
+                <div class="pull-left alert alert-warning">
+                  <strong>Don't own a starter kit?</strong> <br>Before checking out, be sure you already purchased an Essio Starter Kit.
+                </div>
 
                   <div class="pull-left starter-kit-thumb">
 
@@ -282,6 +281,7 @@
                     {% endfor %}
 
                   </div>
+                {% endfor %}
 
               </div><!--end missing starter kit container-->
               {% endif %}

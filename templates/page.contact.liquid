@@ -3,28 +3,58 @@
        var n1 = Math.round(Math.random() * 10 + 1);
          var n2 = Math.round(Math.random() * 10 + 1);
        $("#question").val(n1 + " + " + n2);
-       $("#tabconsumer form.contact-form").submit(function (e) {
+       jQuery("#tabconsumer form.jotform-form").submit(function (e) {
           console.log('first form');
-               if (eval($("#question").val()) != $("#answer").val()) {
-                     $("#answer").css('box-shadow', '0px 0px 7px red');
+               if (eval(jQuery("#question").val()) != jQuery("#answer").val()) {
+                     jQuery("#answer").css('box-shadow', '0px 0px 7px red');
                      e.preventDefault(); 
                } 
+         
+            else {
+         jQuery("#msg_nwc").html('<div class="successForm feedback alert alert-success" style="padding: 0;margin: 0;line-height: 0px;"><iframe   width="100%" id="myifr" name="myifr" style="border:0; background:transparent; height:42px;"></iframe></div>');
+  
+  jQuery("#msg_nwc").css('height', '35px');
+         }
+         
+         
          });
 
 
        var n2_1 = Math.round(Math.random() * 10 + 1);
          var n2_2 = Math.round(Math.random() * 10 + 1);
        $("#question2").val(n2_1 + " + " + n2_2);
-       $("#tabbusiness form.contact-form").submit(function (e) {
+       jQuery("#tabbusiness form.jotform-form").submit(function (e) {
           console.log('second form');
-               if (eval($("#question2").val()) != $("#answer2").val()) {
-                     $("#answer2").css('box-shadow', '0px 0px 7px red');
+               if (eval(jQuery("#question2").val()) != jQuery("#answer2").val()) {
+                     jQuery("#answer2").css('box-shadow', '0px 0px 7px red');
                      e.preventDefault(); 
 
                } 
+         
+             else {
+         jQuery("#msg_nwc").html('<div class="successForm feedback alert alert-success" style="padding: 0;margin: 0;line-height: 0px;"><iframe   width="100%" id="myifr" name="myifr" style="border:0; background:transparent; height:42px;"></iframe></div>');
+  
+  jQuery("#msg_nwc").css('height', '35px');
+         }
+         
+         
          });
     });
  </script>
+
+<script src="http://max.jotfor.ms/static/prototype.forms.js" type="text/javascript"></script>
+<script src="http://max.jotfor.ms/static/jotform.forms.js?3.2.4158" type="text/javascript"></script>
+<script src="http://max.jotfor.ms/static/jotform.forms.js?3.2.4169" type="text/javascript"></script>
+<script type="text/javascript">
+   JotForm.init(function(){
+      $('input_4').hint('John');
+      $('input_5').hint('Doe');
+      $('input_7').hint('john@example.com');
+      $('input_11').hint('www.example.com');
+      $('input_10').hint('555-555-1234');
+      JotForm.setCustomHint( 'input_9', 'Your Message' );
+   });
+</script>
 
 <section class="page-content-body">
   <div class="container">
@@ -95,22 +125,8 @@
 
         <div class="tab-content">
           <div class="tab-pane fade in active" id="tabconsumer">
-             {% form 'contact' %}
-                {% if form.posted_successfully? %}
-                <div class="successForm feedback alert alert-success">
-                  <p>Thanks for contacting us! We'll get back to you as soon as possible.</p>
-                </div>
-                {% endif %}
-
-                {% if form.errors %}
-                  <div class="errorForm feedback alert alert-danger">
-                    <p>Oops, sorry. We were unable to submit your inquiry because it contained {{ form.errors | size | pluralize: 'an error', 'a few errors' }}. Please correct the following and submit again:</p>
-                    {% for field in form.errors %}
-                      <p>The {{ field | capitalize | replace: 'Body', 'Message' }} field {{ form.errors.messages[field] }}.</p>
-                    {% endfor %}
-                  </div>
-                  {% endif %}
-
+               <form class="jotform-form" action="http://submit.jotform.me/submit/43001504490441/" method="post" name="form_43001504490441" id="43001504490441" accept-charset="utf-8" target="myifr">
+         <input type="hidden" name="formID" value="43001504490441" />
                       <div class="row">
                         <div class="col-md-8">
                           <div id="contactFormWrapper">
@@ -120,27 +136,27 @@
                               <div class="col-md-6">
                                 <p>
                                   <label>First Name<sup>*</sup></label><br/>
-                                  <input type="text" id="contactFormName" name="contact[first name]" placeholder="John" class="form-control" required />
+                                  <input type="text" data-type="input-textbox" id="input_4" name="q4_firstName"  placeholder="John" class="form-control" required />
                                 </p>
                               </div>
                               <div class="col-md-6">
                                 <p>
                                   <label>Last Name<sup>*</sup></label><br/>
-                                  <input type="text" id="contactFormName" name="contact[last name]" placeholder="Doe" class="form-control" required />
+                                  <input type="text" data-type="input-textbox" id="input_5" name="q5_lastName"  placeholder="Doe" class="form-control" required />
                                 </p>
                               </div>
                             </div>
                             <p>
                               <label>Email<sup>*</sup></label><br/>
-                              <input type="email" id="contactFormEmail" name="contact[email]" placeholder="john@example.com" class="form-control" required />
+                              <input type="email" id="input_7" name="q7_email7" placeholder="john@example.com" class="form-control" required />
                             </p>
                             <p>
                               <label>Phone Number</label><br/>
-                              <input type="telephone" id="contactFormTelephone" name="contact[phone]" placeholder="555-555-1234" class="form-control" />
+                              <input type="telephone" data-type="input-textbox" id="input_10" name="q10_phoneNumber"  placeholder="555-555-1234" class="form-control" />
                             </p> 
                             <p>
                               <label>Message<sup>*</sup></label><br/>
-                              <textarea rows="5" cols="75" id="contactFormMessage" name="contact[body]" placeholder="Your Message" class="form-control" required ></textarea>
+                              <textarea rows="5" cols="75" id="input_9"name="q9_message"  placeholder="Your Message" class="form-control" required ></textarea>
                             </p>
 
                               <p>
@@ -150,7 +166,7 @@
                                 <input type="text"  class="form-control" disabled="disabled" id="question"/>
                                 <br/>
                                 <label>Answer<sup>*</sup> </label><br>
-                                <input type="text" id="answer" class="form-control"/>
+                                <input type="text" id="answer" class="form-control" required/>
                               </p>
                             
                             <p>
@@ -161,29 +177,20 @@
                         </div>
 
                       </div>
-                      {% endform %}
+            <input type="hidden" id="simple_spc1" name="simple_spc" value="43001504490441" />
+  <script type="text/javascript">
+  document.getElementById("si" + "mple" + "_spc1").value = "43001504490441-43001504490441";
+  </script>
+                      </form>
 
 
 
           </div>
           <div class="tab-pane fade" id="tabbusiness">
 
-            {% form 'contact' %}
-                {% if form.posted_successfully? %}
-                <div class="successForm feedback alert alert-success">
-                  <p>Thanks for contacting us! We'll get back to you as soon as possible.</p>
-                </div>
-                {% endif %}
+            <form class="jotform-form" action="http://submit.jotform.me/submit/43003365091445/" method="post" name="form_43003365091445" id="43003365091445" accept-charset="utf-8"  target="myifr">
 
-                {% if form.errors %}
-                  <div class="errorForm feedback alert alert-danger">
-                    <p>Oops, sorry. We were unable to submit your inquiry because it contained {{ form.errors | size | pluralize: 'an error', 'a few errors' }}. Please correct the following and submit again:</p>
-                    {% for field in form.errors %}
-                      <p>The {{ field | capitalize | replace: 'Body', 'Message' }} field {{ form.errors.messages[field] }}.</p>
-                    {% endfor %}
-                  </div>
-                  {% endif %}
-
+ <input type="hidden" name="formID" value="43003365091445" />
                       <div class="row">
                         <div class="col-md-8">
                           <div id="contactFormWrapper">
@@ -193,49 +200,49 @@
                               <div class="col-md-6">
                                 <p>
                                   <label>First Name<sup>*</sup></label><br/>
-                                  <input type="text" id="contactFormName" name="contact[first name]" placeholder="John" class="form-control" required />
+                                  <input type="text"  data-type="input-textbox" id="input_4" name="q4_firstName"  placeholder="John" class="form-control" required />
                                 </p>
                               </div>
                               <div class="col-md-6">
                                 <p>
                                   <label>Last Name<sup>*</sup></label><br/>
-                                  <input type="text" id="contactFormName" name="contact[last name]" placeholder="Doe" class="form-control" required />
+                                  <input type="text" data-type="input-textbox" id="input_5" name="q5_lastName"  placeholder="Doe" class="form-control" required />
                                 </p>
                               </div>
                             </div>
                             
                             <p>
                               <label>Email<sup>*</sup></label><br/>
-                              <input type="email" id="contactFormEmail" name="contact[email]" placeholder="john@example.com" class="form-control" required />
+                              <input type="email" id="input_7" name="q7_email7"  placeholder="john@example.com" class="form-control" required />
                             </p>
                             <p>
                               <label>Website<sup>*</sup></label><br/>
-                              <input type="text" id="contactFormWebsite" name="contact[website]" placeholder="www.example.com" class="form-control" required />
+                              <input type="text" data-type="input-textbox" id="input_11" name="q11_website"  placeholder="www.example.com" class="form-control" required />
                             </p>
                             <p>
                               <label>Phone Number<sup>*</sup></label><br/>
-                              <input type="telephone" id="contactFormTelephone" name="contact[phone]" placeholder="555-555-1234" class="form-control" required />
+                              <input type="telephone" data-type="input-textbox" id="input_10" name="q10_phoneNumber" placeholder="555-555-1234" class="form-control" required />
                             </p> 
 
                             <p>
                               <label>Address</label><br/>
-                              <input type="text" id="contactFormAddress" name="contact[address]" placeholder="" class="form-control" />
+                              <input type="text" data-type="input-textbox" id="input_12" name="q12_address" placeholder="" class="form-control" />
                             </p> 
                             <p>
                               <label>Address Line2</label><br/>
-                              <input type="text" id="contactFormAddress2" name="contact[address line2]" placeholder="" class="form-control" />
+                              <input type="text" data-type="input-textbox" id="input_13" name="q13_addressLine2" placeholder="" class="form-control" />
                             </p>
                             <div class="row">
                               <div class="col-md-6">
                                 <p>
                                   <label>City</label><br/>
-                                  <input type="text" id="contactFormCity" name="contact[city]" placeholder="" class="form-control" />
+                                  <input type="text"  data-type="input-textbox" id="input_14" name="q14_city" placeholder="" class="form-control" />
                                 </p>
                               </div>
                               <div class="col-md-6">
                                 <p>
                                   <label>State / Province</label><br/>
-                                  <input type="text" id="contactFormProvince" name="contact[province]" placeholder="" class="form-control" />
+                                  <input type="text"  data-type="input-textbox" id="input_15" name="q15_state"  placeholder="" class="form-control" />
                                 </p>
                               </div>
                             </div>
@@ -244,13 +251,13 @@
                               <div class="col-md-6">
                                 <p>
                                   <label>Zip/Postal Code</label><br/>
-                                  <input type="text" id="contactFormCity" name="contact[zip]" placeholder="" class="form-control" />
+                                  <input type="text" data-type="input-textbox" id="input_16" name="q16_zip"  placeholder="" class="form-control" />
                                 </p>
                               </div>
                               <div class="col-md-6">
                                 <p>
                                   <label>Country</label><br/>
-                                  <select name="contact[country]" class="form-control" id="contactFormCountry"> 
+                                  <select class="form-control"  id="input_17" name="q17_country"> 
 <option value="" selected="selected">Select Country</option> 
 <option value="United States">United States</option> 
 <option value="United Kingdom">United Kingdom</option> 
@@ -499,7 +506,7 @@
                             </div>
                             <p>
                               <label>Message<sup>*</sup></label><br/>
-                              <textarea rows="5" cols="75" id="contactFormMessage" name="contact[body]" placeholder="Your Message" class="form-control" required ></textarea>
+                              <textarea rows="5" cols="75"  id="input_9"name="q9_message" placeholder="Your Message" class="form-control" required ></textarea>
                             </p>
 
                               <p>
@@ -519,27 +526,42 @@
                           </div>
                         </div>
                       </div>
-                    {% endform %}
+              <input type="hidden" id="simple_spc" name="simple_spc" value="43003365091445" />
+  <script type="text/javascript">
+  document.getElementById("si" + "mple" + "_spc").value = "43003365091445-43003365091445";
+  
+   
+  
+  </script>
+
+  
+                    </form>
           </div>
           
+      
+            <div id="msg_nwc" style="height:1px;"></div>
+
+      
         </div><!--end tab content -->
          
             </div>
+       
 
       </div><!--end col 9-->
-      
 
     </div><!--end row -->
   </div><!--end container-->
 </section>
 
+ 
+
 <script type="text/javascript">
-  $(function(){
-    $('.data-tab').click(function (e) {
+  jQuery(function(){
+    jQuery('.data-tab').click(function (e) {
       //e.preventDefault();
-      $('.data-tab').removeAttr("checked");
-      $(this).attr("checked", "checked");
-      $(this).tab('show');
+      jQuery('.data-tab').removeAttr("checked");
+      jQuery(this).attr("checked", "checked");
+      jQuery(this).tab('show');
 
     });
 
@@ -547,4 +569,3 @@
   });
 
 </script>
-

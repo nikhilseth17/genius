@@ -204,12 +204,9 @@ _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
                             {% assign has_sub_categories = false %}
                             {% assign parent_link_active = false %}
                             {% assign child_list_handle = link.title | handle %}
+                            {% assign pod_link = false %}
 
-                            {% if link.title == 'Pod Blends' %}
-                              {% assign pod_link = true %}
-                            {% else %}
-                              {% assign pod_link = false %}
-                            {% endif %}
+                            
 
                             {% if link.handle  == 'what-is-essio' %}
                               {% assign hw_link = false %}

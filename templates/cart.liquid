@@ -267,14 +267,14 @@
                   <strong>Don't own a starter kit?</strong> <br>Before checking out, be sure you already purchased an Essio Starter Kit.
                 </div>
                   <div row>
-                    <div class="col-xs-6">
+                    <div class="col-xs-6 no-pad">
                       <div class="pull-left starter-kit-thumb">
 
                         <img src="{{ product.featured_image | product_img_url: 'original' }}">
                         <input type="hidden" name="return_to" value="/checkout" />
                       </div>
                     </div>
-                    <div class="col-xs-6 mobile-starter-btn">
+                    <div class="col-xs-6 mobile-starter-btn no-pad">
                       {% for variant in product.variants %}<span id="add-starter-kit">
                         <input type="hidden" name="id" value="{{ variant.id }}" />
                         <input type="hidden" name="return_to" value="back" />

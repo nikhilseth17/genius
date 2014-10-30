@@ -121,11 +121,11 @@
         </label>
     </div><!--#single_purchase-->
 
-    <div class="radio_option" id="recurring_purchase">
+    <div class="radio_option hidden-xs" id="recurring_purchase">
         <label for="autodeliver_on_radio"  >
             <input type="radio" name="autodeliver" class="autodeliver" value="autodeliver" id="autodeliver_on_radio">
             <span class="main_label_text" >Subscribe &amp; Save:</span>
-            <div id="save-percentage">{{ product.metafields.subscriptions.discount_percentage | floor }}% Off &amp; Free Shipping</duv>
+            <div id="save-percentage">{{ product.metafields.subscriptions.discount_percentage | floor }}% Off &amp; Free Shipping</div>
         </label>
         <div class="offer_newline">
             <label>
@@ -139,13 +139,39 @@
                 </span>
             </label>
 
-          <a class="subscription-tooltip" href="#" id="see-details" style=""><br>See details 
+          <a class="subscription-tooltip" href="#" id="see-details" style=""><br>See details
               <span><strong>Here's How It Works:</strong>
                   <br/> • {{ product.metafields.subscriptions.discount_percentage | floor }}% Savings and complimentary shipping <br>
                   <br>• Your favorite products automatically delivered on your schedule<br>
                   <br>• No obligation, modify or cancel anytime
               </span>
           </a><!--#see-details-->
+        </div><!--.offer_newline-->
+    </div><!--#recurring_purchase-->
+
+    <div class="radio_option visible-xs" id="recurring_purchase">
+        <label for="autodeliver_on_radio"  >
+            <input type="radio" name="autodeliver" class="autodeliver" value="autodeliver" id="autodeliver_on_radio">
+            <span class="main_label_text" >Subscribe &amp; Save:</span>
+            <div id="save-percentage">{{ product.metafields.subscriptions.discount_percentage | floor }}% Off &amp; Free Shipping</div><a class="subscription-tooltip" href="#" id="see-details" style=""><br>See details
+                <span><strong>Here's How It Works:</strong>
+                    <br/> • {{ product.metafields.subscriptions.discount_percentage | floor }}% Savings and complimentary shipping <br>
+                    <br>• Your favorite products automatically delivered on your schedule<br>
+                    <br>• No obligation, modify or cancel anytime
+                </span>
+            </a><!--#see-details-->
+        </label>
+        <div class="offer_newline">
+            <label>
+                <span id="deliver_every_text">Deliver every
+                    <select name="shipping_interval_frequency" id="shipping_interval_frequency" >
+                        <option value="30">30</option>
+                        <option value="60">60</option>
+                        <option value="90">90</option>
+                    </select>
+                    days
+                </span>
+            </label>
         </div><!--.offer_newline-->
     </div><!--#recurring_purchase-->
 

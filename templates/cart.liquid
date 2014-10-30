@@ -270,10 +270,7 @@
                   <div class="pull-left starter-kit-thumb">
 
                     <img src="{{ product.featured_image | product_img_url: 'original' }}">
-                    <input type="hidden" name="return_to" value="/checkout" />
-
-                    {% for variant in product.variants %}
-                    <span id="add-starter-kit">
+                    <input type="hidden" name="return_to" value="/checkout" />{% for variant in product.variants %}<span id="add-starter-kit">
                       <input type="hidden" name="id" value="{{ variant.id }}" />
                       <input type="hidden" name="return_to" value="back" />
                       <input type="submit" value="ADD TO CART" class="btn btn-default" id="starter-kit-submit" />

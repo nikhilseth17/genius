@@ -82,7 +82,7 @@ _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
                           width : 300, 
                           height  : 50,
                           numbers  : {
-                            color: '#fff',
+                            color: '#0c4779',
                           }
                           });
 
@@ -204,9 +204,13 @@ _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
                             {% assign has_sub_categories = false %}
                             {% assign parent_link_active = false %}
                             {% assign child_list_handle = link.title | handle %}
-                            {% assign pod_link = false %}
 
-                            
+
+                            {% if link.title == 'Pod Blends' %}
+                              {% assign pod_link = true %}
+                            {% else %}
+                              {% assign pod_link = false %}
+                            {% endif %}
 
                             {% if link.handle  == 'what-is-essio' %}
                               {% assign hw_link = false %}
@@ -224,7 +228,7 @@ _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
                             {% endif %} 
                             <li class="nav-item{% if forloop.first %} first{% elsif forloop.last %} last{% endif %}{% if link.active %}{% if has_sub_menu or has_sub_categories %} {% else %} active{% endif %}{% endif %}{% if has_sub_menu or has_sub_categories or pod_link %} dropdown{% endif %}">
                               
-                              <a href="{% if hw_link %}/pages/what-is-essio{% else %}{{ link.url }}{% endif %}" {% if has_sub_menu or has_sub_categories or pod_link %}class="dropdown-toggle link-{{ link.handle }}" data-toggle="dropdown"{% endif %}>{{ link.title }} {% if has_sub_menu or has_sub_categories or pod_link %}<b class="caret"></b>{% endif %}</a>
+                              <a href="{% if hw_link %}/pages/what-is-essio{% elsif pod_link %}#{% else %}{{ link.url }}{% endif %}" {% if has_sub_menu or has_sub_categories or pod_link %}class="dropdown-toggle link-{{ link.handle }}" data-toggle="dropdown"{% endif %}>{{ link.title }} {% if has_sub_menu or has_sub_categories or pod_link %}<b class="caret"></b>{% endif %}</a>
 
                               {% if pod_link %}
                                 <ul class="dropdown-menu">

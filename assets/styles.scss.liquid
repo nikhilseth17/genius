@@ -11551,17 +11551,20 @@ CSS Document  #sh_wrapper {
     display: none !important;
   }
 
-  #slide-thumbs li{
-    display: inline-block !important;
-    width: 90px !important;
-  }
-  #slide-thumbs{
-    height: 90px;
-    width: 520px !important;
-  }
-  .slide-thumbs-container{
-    overflow-x: scroll;
-  }
+#slide-thumbs li { display: none !important; }
+#slide-thumbs.first-three li:nth-child(1),
+#slide-thumbs.first-three li:nth-child(2),
+#slide-thumbs.first-three li:nth-child(3) {
+  display: inline-block !important;
+  width: 30% !important;
+}
+#slide-thumbs.second-three li:nth-child(4),
+#slide-thumbs.second-three li:nth-child(5),
+#slide-thumbs.second-three li:nth-child(6) {
+  display: inline-block !important;
+  width: 30% !important;
+}
+
   .carousel-inner{
     height: auto !important;
   }

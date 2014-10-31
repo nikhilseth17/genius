@@ -90,7 +90,7 @@
                     </td>
                     <td class="price">{{ item.line_price | money }}</td>
                     <td class="remove hidden-xs"><a href="/cart/change?line={{ forloop.index }}&quantity=0" class="cart">Remove</a></td>
-                    <div class="remove hidden-xs"><a href="/cart/change?line={{ forloop.index }}&quantity=0" class="cart">Remove</a></div>
+                    <div class="remove visible-xs"><a href="/cart/change?line={{ forloop.index }}&quantity=0" class="cart">Remove</a></div>
                   </tr>
                   {% endfor %}
                   <tr class="summary">

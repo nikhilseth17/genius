@@ -58,6 +58,19 @@
                         </a>
                       </div>
                     </td>
+
+                    <div class="product_image visible-xs">
+                       <a href="{{ url }}">
+
+                        {% if item.variant.title == '8 pack' %}
+                          <img src="http://cdn.shopify.com/s/files/1/0366/5265/files/{{ item.product.handle }}-8pack.jpg"  alt="{{ item.product.title }}" />
+                        {% else %}
+                          <img src="{{ item.product.featured_image | product_img_url: 'original' }}"  alt="{{ item.product.title }}" />
+                        {% endif %}
+
+
+                      </a>
+                    </div>
                     <td class="item hidden-xs">
                        <a href="{{ url }}">
                         <strong>{{ item.product.title }}</strong>

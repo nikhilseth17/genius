@@ -148,7 +148,9 @@
               {% if hasStarterKit != '1' %}
               <div class="pull-left missing-container">
                 {% for product in collections.frontpage.products %}
-
+                <div class="pull-left alert alert-warning visible-xs">
+                  <strong>Don't own a starter kit?</strong> <br>Before checking out, be sure you already purchased an Essio Starter Kit.
+                </div>
 
                   <div class="pull-left starter-kit-thumb">
 
@@ -165,7 +167,7 @@
 
                   </div>
                 {% endfor %}
-                <div class="pull-left alert alert-warning">
+                <div class="pull-left alert alert-warning hidden-xs">
                   <strong>Don't own a starter kit?</strong> <br>Before checking out, be sure you already purchased an Essio Starter Kit.
                 </div>
               </div><!--end missing starter kit container-->

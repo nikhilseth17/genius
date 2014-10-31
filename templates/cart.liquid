@@ -154,7 +154,7 @@
 
                   <div class="pull-left starter-kit-thumb">
 
-                    <img src="{{ product.featured_image | product_img_url: 'original' }}">
+                    <img src="{{ product.featured_image | product_img_url: 'original' }}" class="starter-img-cart">
                     <input type="hidden" name="return_to" value="/checkout" />
 
                     {% for variant in product.variants %}

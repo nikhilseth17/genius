@@ -25,31 +25,31 @@
           <div class="panel panel-default">
             <div class="panel-body">
 
-                                  <!-- <div class="product_image visible-xs">
-                                     <a href="{{ url }}">
+                      <div class="product_image visible-xs">
+                         <a href="{{ url }}">
 
-                                      {% if item.variant.title == '8 pack' %}
-                                        <img src="http://cdn.shopify.com/s/files/1/0366/5265/files/{{ item.product.handle }}-8pack.jpg"  alt="{{ item.product.title }}" />
-                                      {% else %}
-                                        <img src="{{ item.product.featured_image | product_img_url: 'original' }}"  alt="{{ item.product.title }}" />
-                                      {% endif %}
+                          {% if item.variant.title == '8 pack' %}
+                            <img src="http://cdn.shopify.com/s/files/1/0366/5265/files/{{ item.product.handle }}-8pack.jpg"  alt="{{ item.product.title }}" />
+                          {% else %}
+                            <img src="{{ item.product.featured_image | product_img_url: 'original' }}"  alt="{{ item.product.title }}" />
+                          {% endif %}
 
 
-                                    </a>
-                                  </div>
+                        </a>
+                      </div>
 
-                                  <a href="{{ url }}" class="visible-xs">
-                                   <strong>{{ item.product.title }}</strong>
-                                   {% if item.product.variants.size > 1 %}
-                                   <span class="variant_title">{{ item.variant.title }}</span>
-                                   {% endif %}
-                                 </a>
-                                 {% if item.properties contains 'shipping_interval_frequency' %}
-                                   <br><span class="variant_title">Auto renews each {{ item.properties.shipping_interval_frequency }} days</span>
-                                 {% endif %}
-                                 <div>
-                                   {{ item.product.description }}
-                                 </div> -->
+                      <a href="{{ url }}" class="visible-xs">
+                       <strong>{{ item.product.title }}</strong>
+                       {% if item.product.variants.size > 1 %}
+                       <span class="variant_title">{{ item.variant.title }}</span>
+                       {% endif %}
+                     </a>
+                     {% if item.properties contains 'shipping_interval_frequency' %}
+                       <br><span class="variant_title">Auto renews each {{ item.properties.shipping_interval_frequency }} days</span>
+                     {% endif %}
+                     <div>
+                       {{ item.product.description }}
+                     </div>
 
 
               <table>

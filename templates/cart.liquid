@@ -27,8 +27,8 @@
               <table>
                 <thead class="hidden-xs">
                   <tr>
-                    <th class="image hidden-xs">&nbsp;</th>
-                    <th class="item hidden-xs">Item</th>
+                    <th class="image">&nbsp;</th>
+                    <th class="item">Item</th>
                     <th class="qty">Quantity</th>
                     <th class="price">Price</th>
                     <th class="remove">&nbsp;</th>
@@ -44,7 +44,7 @@
                       {% assign hasStarterKit = '1' %}
                     {% endif %}
                   <tr>
-                    <td class="image">
+                    <td class="image hidden-xs">
                       <div class="product_image">
                          <a href="{{ url }}">
 
@@ -58,7 +58,7 @@
                         </a>
                       </div>
                     </td>
-                    <td class="item">
+                    <td class="item hidden-xs">
                        <a href="{{ url }}">
                         <strong>{{ item.product.title }}</strong>
                         {% if item.product.variants.size > 1 %}

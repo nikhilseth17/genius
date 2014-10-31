@@ -85,12 +85,25 @@
                         {{ item.product.description }}
                       </div>
                     </td>
+
+                    <a href="{{ url }}" class="visible-xs">
+                     <strong>{{ item.product.title }}</strong>
+                     {% if item.product.variants.size > 1 %}
+                     <span class="variant_title">{{ item.variant.title }}</span>
+                     {% endif %}
+                   </a>
+                   {% if item.properties contains 'shipping_interval_frequency' %}
+                     <br><span class="variant_title">Auto renews each {{ item.properties.shipping_interval_frequency }} days</span>
+                   {% endif %}
+                   <div>
+                     {{ item.product.description }}
+                   </div>
+
                     <td class="qty">
                       <input type="text" size="4" name="updates[]" id="updates_{{ item.id }}" value="{{ item.quantity }}" onfocus="this.select();" class="tc item-quantity" {% if item.product.metafields.inventory.ShappifyHidden == "true" %} readonly="readonly" {% endif %} />
                     </td>
                     <td class="price">{{ item.line_price | money }}</td>
-                    <td class="remove hidden-xs"><a href="/cart/change?line={{ forloop.index }}&quantity=0" class="cart">Remove</a></td>
-                    <div class="remove visible-xs"><a href="/cart/change?line={{ forloop.index }}&quantity=0" class="cart">Remove</a></div>
+                    <td class="remove"><a href="/cart/change?line={{ forloop.index }}&quantity=0" class="cart">Remove</a></td>
                   </tr>
                   {% endfor %}
                   <tr class="summary">

@@ -244,7 +244,7 @@ _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
                             {% endif %}
                             <li class="nav-item{% if forloop.first %} first{% elsif forloop.last %} last{% endif %}{% if link.active %}{% if has_sub_menu or has_sub_categories %} {% else %} active{% endif %}{% endif %}{% if has_sub_menu or has_sub_categories or pod_link %} dropdown{% endif %}">
 
-                              <a href="{% if hw_link %}/pages/what-is-essio{% else %}{{ link.url }}{% endif %}" {% if has_sub_menu or has_sub_categories or pod_link %}class="dropdown-toggle link-{{ link.handle }}" data-toggle="dropdown"{% endif %}>{{ link.title }} {% if has_sub_menu or has_sub_categories or pod_link %}<b class="caret hidden-xs"></b><span class="plus hidden-sm hidden-md hidden-lg pull-right">+</span><span class="minus hidden-sm hidden-md hidden-lg pull-right">&#150;</span>{% endif %}</a>
+                              <a href="{% if hw_link %}/pages/what-is-essio{% else %}{{ link.url }}{% endif %}" {% if has_sub_menu or has_sub_categories or pod_link %}class="dropdown-toggle link-{{ link.handle }}" data-toggle="dropdown"{% endif %}>{{ link.title }} {% if has_sub_menu or has_sub_categories or pod_link %}<b class="caret hidden-xs"></b><span class="plus hidden-sm hidden-md hidden-lg pull-right">&#43;</span><span class="minus hidden-sm hidden-md hidden-lg pull-right">&#150;</span>{% endif %}</a>
 
                               {% if pod_link %}
                                 <ul class="dropdown-menu">
@@ -281,7 +281,7 @@ _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
                             {% endfor %}
 
                             <li class="nav-item dropdown visible-xs">
-                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Support &amp; FAQ<b class="caret hidden-xs"></b><span class="plus hidden-sm hidden-md hidden-lg pull-right">+</span><span class="minus hidden-sm hidden-md hidden-lg pull-right">&#150;</span></a><!--added -->
+                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Support &amp; FAQ<b class="caret hidden-xs"></b><span class="plus hidden-sm hidden-md hidden-lg pull-right">&#43;</span><span class="minus hidden-sm hidden-md hidden-lg pull-right">&#150;</span></a><!--added -->
                                 <ul class="dropdown-menu">
                                   <li class="sub-nav-niblet"></li>
 
@@ -308,7 +308,7 @@ _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
                             </li>
 
                             <li class="nav-item dropdown visible-xs no-border-bottom">
-                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">About Us<b class="caret hidden-xs"></b><span class="plus hidden-sm hidden-md hidden-lg pull-right">+</span><span class="minus hidden-sm hidden-md hidden-lg pull-right">&#150;</span></a><!--added -->
+                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">About Us<b class="caret hidden-xs"></b><span class="plus hidden-sm hidden-md hidden-lg pull-right">&#43;</span><span class="minus hidden-sm hidden-md hidden-lg pull-right">&#150;</span></a><!--added -->
                                 <ul class="dropdown-menu">
                                   <li class="sub-nav-niblet"></li>
 

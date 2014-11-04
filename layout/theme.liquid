@@ -270,7 +270,7 @@ _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
                                   {% endfor %}
                                 {% elsif has_sub_categories %}
                                   {% for tag in link.object.all_tags %}
-                                  <li class="sub-nav-item{% if forloop.first %} first{% elsif forloop.last %} last{% endif %}{% if current_tags contains tag %} active{% endif %}">
+                                  <li class="sub-nav-item{% if forloop.first %} first{% elsif forloop.last %} last{% endif %}{% if current_tags contains tag %} active{% endif %} no-border-bottom">
                                     <a class="{% if forloop.first %}first{% elsif forloop.last %}last{% endif %}" href="{{ link.url }}/{{ tag | handle }}">{{ tag }}</a>
                                   </li>
                                   {% endfor %}
@@ -301,7 +301,7 @@ _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
                                       <a class="" href="http://essioshower.com/blogs/faq-s">FAQ</a>
                                     </li>
 
-                                    <li class="sub-nav-item">
+                                    <li class="sub-nav-item no-border-bottom">
                                       <a href="mailto:support@essioshower.com" target="_blank">Customer Support</a>
                                     </li>
                                 </ul>
@@ -328,7 +328,7 @@ _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
                                       <a class="" href="http://essioshower.com/pages/affiliate">Affiliates</a>
                                     </li>
 
-                                    <li class="sub-nav-item">
+                                    <li class="sub-nav-item no-border-bottom">
                                       <a class="" href="http://essioshower.com/apps/store-locator/">Store Locator</a>
                                     </li>
                                 </ul>

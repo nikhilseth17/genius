@@ -164,7 +164,10 @@
                                                   <div class="pull-left">
                                                       <input id="quantity" type="number" name="quantity" value="1" class="quantity form-control"><label>Quantity</label>
                                                   </div>
-                                                  <div class="pull-left">
+                                                  <div class="pull-left hidden-xs">
+                                                      <span class="price" id="price-preview">{{ product.price_min | money }}{% if product.price_min < product.compare_at_price_min %} <del>{{ product.compare_at_price_min | money }}</del>{% endif %}</span>
+                                                  </div>
+                                                  <div class="pull-right visible-xs">
                                                       <span class="price" id="price-preview">{{ product.price_min | money }}{% if product.price_min < product.compare_at_price_min %} <del>{{ product.compare_at_price_min | money }}</del>{% endif %}</span>
                                                   </div>
                                               </div>

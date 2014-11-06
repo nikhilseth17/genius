@@ -1,7 +1,7 @@
 
 <section class="home-carousel">
-  
-  
+
+
 
             <div id="home-hero" class="carousel slide" data-ride="carousel">
                 <!-- Indicators -->
@@ -17,7 +17,7 @@
                         <div class="hero-caption">
                             <div class="hero-text">
                                 {{ shop.metafields.slideshow.slide1-header }}
-                                
+
 
                             </div>
 
@@ -30,7 +30,7 @@
                                     var tag = document.createElement('script');
                                     tag.src = "http://www.youtube.com/player_api";
                                     var firstScriptTag = document.getElementsByTagName('script')[0];
-                                    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag); 
+                                    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
                                     var player;
                                     var lastAction = '';
@@ -40,7 +40,7 @@
                                                 width: '460',
                                                 playerVars: {
                                                   autohide: 1
-                                                  
+
                                                   /* this hides title
                                                   autohide: 1,
                                                   showinfo: 0
@@ -57,7 +57,7 @@
                                             switch (event.data){
                                                 case YT.PlayerState.PLAYING:
                                                      ga('send', 'event', 'video', 'Playing', player.getVideoUrl());
-                                        
+
                                                     break;
                                                 case YT.PlayerState.ENDED:
                                                      ga('send', 'event', 'video', 'Completed', player.getVideoUrl());
@@ -72,13 +72,13 @@
                                                 }
                                             }
                                 </script>
-                                    
-                                    
+
+
                                 </div>
 
                                 <div class="video-caption">
-                                    
-                                    
+
+
                                 </div>
                             </div>
                             <div class="clearfix"></div>
@@ -90,7 +90,9 @@
                                 <div class="call-to-action-container">
                                     <a href="/products/starter-kit" class="btn btn-primary">{{ shop.metafields.slideshow.slide1-button-text }}</a>
                                 </div>
-                                
+                                <p class="orange-color visible-xs shipping-message">
+                                  <strong>FREE SHIPPING</strong> on orders over $40
+                                </p>
                             </div>
                         </div>
 
@@ -102,12 +104,12 @@
 
                         <div class="hero-caption">
                             <div class="hero-text">
-                                
+
                                 <div>
                                     {{ shop.metafields.slideshow.slide2-header }}
-                                    
+
                                 </div>
-                                
+
                             </div>
 
 
@@ -116,9 +118,10 @@
 
                         <div class="buy-container">
                             {{ shop.metafields.slideshow.slide2-bottom-text }}
-                            
+
                             <a href="/products/starter-kit" class="btn btn-primary">{{ shop.metafields.slideshow.slide2-button-text }}</a>
                         </div>
+
                         <img src="{{ 'slide-2.png' | asset_url }}" alt="">
 
                     </div>
@@ -127,10 +130,10 @@
 
                         <div class="hero-caption">
                             <div class="hero-text">
-                                
+
                                 <span class="text-main">
                                     {{ shop.metafields.slideshow.slide3-header }}
-                                    
+
                                 </span>
                                 <span class="text-introducing">{{ shop.metafields.slideshow.slide3-footer-text }}</span>
 
@@ -148,7 +151,7 @@
 
 
             </div>
-            
+
 
         </section>
         <section class="content-wrapper">
@@ -160,7 +163,7 @@
                 <div class="row main-buttons">
                     <div class="col-md-4 col-circle">
                         <h3 class="btn-desc">{{ shop.metafields.home.box-1-heading }}</h3>
-                        <div class="circle-btn-container green">
+                        <a href="/pages/what-is-essio" class="mobile-circles"><div class="circle-btn-container green">
                             <div class="content-hoveroff">
                                 <div class="btn-image"><img src="{{ 'btn-bg-1.png' | asset_url }}"></div>
                                 <div class="btn-title">How It Works</div>
@@ -168,18 +171,18 @@
                             <div class="content-hover">
                                 <div class="bg-art"></div>
                                 <div class="circle-content">
-                                   
+
                                     <a href="/pages/what-is-essio" class="btn btn-primary">See Our Secret</a>
                                     <div class="btn-title">How It Works</div>
                                 </div>
                             </div>
 
-                        </div>
+                        </div></a>
 
                     </div><!--end col md 4-->
                     <div class="col-md-4 col-circle">
                         <h3 class="btn-desc">{{ shop.metafields.home.box-2-heading }}</h3>
-                        <div class="circle-btn-container purple">
+                        <a href="/products/starter-kit" class="mobile-circles"><div class="circle-btn-container purple">
                             <div class="content-hoveroff">
                                 <div class="btn-image"><img src="{{ 'btn-bg-2.png' | asset_url }}"></div>
                                 <div class="btn-title">Starter Kit</div>
@@ -194,12 +197,12 @@
                                 </div>
                             </div>
 
-                        </div>
+                        </div></a>
 
                     </div><!--end col md 4-->
                     <div class="col-md-4 col-circle">
                         <h3 class="btn-desc">{{ shop.metafields.home.box-3-heading }}</h3>
-                        <div class="circle-btn-container orange">
+                        <a href="/collections/pods" class="mobile-circles"><div class="circle-btn-container orange">
                             <div class="content-hoveroff">
                                 <div class="btn-image"><img src="{{ 'btn-bg-3.png' | asset_url }}"></div>
                                 <div class="btn-title">Refills</div>
@@ -214,7 +217,7 @@
                                 </div>
                             </div>
 
-                        </div>
+                        </div></a>
 
                     </div><!--end col md 4-->
                 </div><!--end row-->
@@ -232,13 +235,13 @@
                             <div class="featured-text">
                                 {{ shop.metafields.featured-partner.description }}
                             </div>
-                            
+
                         </div>
                     </div>
                     <div class="col-md-7 testimonial-wrapper">
                         <a href="/pages/testimonials">
                             {% for article in blogs.testimonials.articles limit:2 %}
-                            
+
                             <div class="testimonial-container">
                                 <div class="testimonial-thumb">
                                     <div class="thumb-overlay"></div>
@@ -258,25 +261,24 @@
                     </div><!--end testimonial wrapper-->
                 </div>
             </div><!--end container-->
-            
+
 
         </section>
 
 <section>
-                 
+
     <div class="container">
       <div class="row">
         <h2 class="section-title"><span>As featured in</span></h2>
 
       </div><!--end row-->
       <div class="row featuredin-container">
-          <div class="media-logo"><img src="{{ 'media_02.png' | asset_url }}"></div>
+          <div class="media-logo hidden-xs"><img src="{{ 'media_02.png' | asset_url }}"></div>
           <div class="media-logo"><img src="{{ 'media_04.png' | asset_url }}"></div>
           <div class="media-logo"><img src="{{ 'media_06.png' | asset_url }}"></div>
           <div class="media-logo"><img src="{{ 'media_08.png' | asset_url }}"></div>
-          <div class="media-logo new-beauty"><img src="{{ 'media_10.png' | asset_url }}"></div>
+          <div class="media-logo new-beauty hidden-xs"><img src="{{ 'media_10.png' | asset_url }}"></div>
 
       </div>
     </div>
 </section>
-

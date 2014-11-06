@@ -1,23 +1,23 @@
 <section class="page-content-body">
   <div class="container">
 		<div id="page" class="row">
-		  
+
 		 	<div class="col-md-12 details">
 			    <h1 class="p25 hw-title">{{ page.title }}</h1>
 			    <div class="product-description-tabs">
-		           
-		            	
+
+
 		            	<p class="lead-p">
-		                    	ESSIO transforms your shower into a luxurious spa-like experience at a fraction of the cost. It's easy to install, simple to use, sustainably made and 100% organic. Instant aromatherapy when you need it most. 
+		                    	ESSIO transforms your shower into a luxurious spa-like experience at a fraction of the cost. It's easy to install, simple to use, sustainably made and 100% organic. Instant aromatherapy when you need it most.
 		                	</p>
 		                	<p class="about-buy">
-		                		
+
 		                	</p>
-					
-		               
+
+
 
 		                  	<section class="panel steps-container">
-		                  		<div class="step step-1">
+		                  		<div class="step step-1 hidden-xs">
 			                  		<div class="panel-body">
 			                  			<h3>Attach to Arm.</h3>
 			                  			Clip the ESSIO attachment arm onto your shower pipe. Secure the attachment by pressing the locking clamp upwards so it snaps onto the attachment clip.
@@ -28,34 +28,70 @@
 			                  		</div>
 			                  	</div><!--end step 1-->
 
-			                  	<div class="step step-2">
+                          <div class="row visible-xs">
+                            <div class="col-xs-12">
+                              <h3 class="text-center">Attach to Arm</h3>
+                                <div class="text-center">
+                                  <a href="javascript:void(0)" class="watch-now-btn" data-toggle="modal" data-target="#videoModal"><i class="fa fa-play-circle-o"></i> Watch the Video</a>
+                                </div>
+                                <div class="mobile-how-container">
+                                  <img src="http://cdn.shopify.com/s/files/1/0366/5265/t/12/assets/hw_03.png?11394" class="mobile-how-img" />
+                                </div>
+                            </div>
+                          </div>
+
+			                  	<div class="step step-2 hidden-xs">
 			                  		<div class="panel-body panel-right">
 			                  			<h3>Insert Pod.</h3>
 			                  			Remove a pod from the tray and take off the cap. Snap the pod into place by turning it clockwise until it locks into the pod mount.
 			                  			<div>
 			                  				<a href="javascript:void(0)" class="watch-now-btn" data-toggle="modal" data-target="#videoModal"><i class="fa fa-play-circle-o"></i> Watch the Video</a>
 			                  			</div>
-			                  			
+
 			                  		</div>
 			                  	</div><!--end step 1-->
 
-			                  	<div class="step step-3">
+                          <div class="row visible-xs">
+                            <div class="col-xs-12">
+                              <h3 class="text-center green-color">Insert Pod</h3>
+                                <div class="text-center">
+                                  <a href="javascript:void(0)" class="watch-now-btn" data-toggle="modal" data-target="#videoModal"><i class="fa fa-play-circle-o"></i> Watch the Video</a>
+                                </div>
+                                <div class="mobile-how-container">
+                                  <img src="http://cdn.shopify.com/s/files/1/0366/5265/t/12/assets/hw_05.png?11394" class="mobile-how-img how-2" />
+                                </div>
+                            </div>
+                          </div>
+
+			                  	<div class="step step-3 hidden-xs">
 			                  		<div class="panel-body">
-			                  			<h3>Tilt & Enjoy!</h3>
+			                  			<h3>Tilt &amp; Enjoy!</h3>
 			                  			Turn on the shower water. Tilt the pod into the stream of water and ESSIO will begin to diffuse the rejuvenating essential oils into your shower. Enjoy!
 			                  			<div>
 			                  				<a href="javascript:void(0)" class="watch-now-btn" data-toggle="modal" data-target="#videoModal"><i class="fa fa-play-circle-o"></i> Watch the Video</a>
 			                  			</div>
-			                  			
+
 			                  		</div>
 			                  		<div class="shop-now-btn-holder">
 			                  			<a href="/products/starter-kit" class="btn btn-primary">Shop Now</a>
 			                  		</div>
 			                  	</div><!--end step 1-->
+
+                          <div class="row visible-xs">
+                            <div class="col-xs-12">
+                              <h3 class="text-center orange-color">Tilt &amp; Enjoy!</h3>
+                                <div class="text-center">
+                                  <a href="javascript:void(0)" class="watch-now-btn" data-toggle="modal" data-target="#videoModal"><i class="fa fa-play-circle-o"></i> Watch the Video</a>
+                                </div>
+                                <div class="mobile-how-container">
+                                  <img src="http://cdn.shopify.com/s/files/1/0366/5265/t/12/assets/hw_06.png?11394" class="mobile-how-img" />
+                                </div>
+                            </div>
+                          </div>
 		                  	</section>
 
-							
-		                
+
+
 
 		            </div><!--end prod description tags-->
 
@@ -64,7 +100,7 @@
 		        {{ page.content }}
 		    -->
 		 	</div>
-		  
+
 		</div>
 	</div>
 
@@ -72,24 +108,30 @@
 
     <div class="bg-bottom"></div>
 
-    <div class="pod-tray-container"></div>
+    <div class="pod-tray-container hidden-xs"></div>
+    <div class="shop-now-btn-container visible-xs">
+      <a href="/products/starter-kit" class="btn btn-primary shop-now-btn">Shop Now</a>
+    </div>
+    <div class="visible-xs mobile-pod-tray-conatiner"><!--added-->
+      <img src="http://cdn.shopify.com/s/files/1/0366/5265/t/12/assets/pod-trey-lime.png?11394" class="pod-tray-image mobile-pod-tray-img" />
+    </div>
 </section>
 
 
 
 <section class="content-wrapper">
-                 
+
     <div class="container">
      <div class="row">
         <h2 class="section-title"><span>As featured in</span></h2>
 
       </div><!--end row-->
       <div class="row featuredin-container">
-          <div class="media-logo"><img src="{{ 'media_02.png' | asset_url }}"></div>
+          <div class="media-logo hidden-xs"><img src="{{ 'media_02.png' | asset_url }}"></div>
           <div class="media-logo"><img src="{{ 'media_04.png' | asset_url }}"></div>
           <div class="media-logo"><img src="{{ 'media_06.png' | asset_url }}"></div>
           <div class="media-logo"><img src="{{ 'media_08.png' | asset_url }}"></div>
-          <div class="media-logo new-beauty"><img src="{{ 'media_10.png' | asset_url }}"></div>
+          <div class="media-logo new-beauty hidden-xs"><img src="{{ 'media_10.png' | asset_url }}"></div>
 
       </div>
     </div>

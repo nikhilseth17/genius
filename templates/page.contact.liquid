@@ -5,6 +5,7 @@
        $("#question").val(n1 + " + " + n2);
        jQuery("#tabconsumer form.jotform-form").submit(function (e) {
           console.log('first form');
+
                if (eval(jQuery("#question").val()) != jQuery("#answer").val()) {
                      jQuery("#answer").css('box-shadow', '0px 0px 7px red');
                      e.preventDefault(); 
@@ -16,7 +17,7 @@
   jQuery("#msg_nwc").css('height', '35px');
          }
          
-         
+
          });
 
 
@@ -25,6 +26,7 @@
        $("#question2").val(n2_1 + " + " + n2_2);
        jQuery("#tabbusiness form.jotform-form").submit(function (e) {
           console.log('second form');
+
                if (eval(jQuery("#question2").val()) != jQuery("#answer2").val()) {
                      jQuery("#answer2").css('box-shadow', '0px 0px 7px red');
                      e.preventDefault(); 
@@ -38,6 +40,7 @@
          }
          
          
+
          });
     });
  </script>
@@ -60,8 +63,8 @@
   <div class="container">
     <div class="row" id="page">
 
-      <div class="col-md-3">
-        <section class="panel">
+      <div class="col-md-3 no-display-mobile">
+        <section class="panel no-display-mobile">
           <div class="panel-body">
             <div class="contact-block">
               <h3>Phone:</h3>
@@ -102,16 +105,16 @@
         </section>
 
       </div>
-      
+
       <div class="col-md-9">
         <h1>Get in touch with us</h1>
-        <p>We would love to hear from you! Please fill out this form and we will get in touch with you shortly.</p>
+        <p class="no-display-mobile">We would love to hear from you! Please fill out this form and we will get in touch with you shortly.</p>
         <p></p>
 
 
         <div class="page-with-contact-form">
           <form>
-            
+
               <label>I am a...<sup>*</sup></label>
               <div>
                 <input name="business-type" id="form-type-customer" type="radio" class="data-tab" data-target="#tabconsumer" checked="checked"> Customer
@@ -130,7 +133,7 @@
                       <div class="row">
                         <div class="col-md-8">
                           <div id="contactFormWrapper">
-                           
+
 
                             <div class="row">
                               <div class="col-md-6">
@@ -152,8 +155,7 @@
                             </p>
                             <p>
                               <label>Phone Number</label><br/>
-                              <input type="telephone" data-type="input-textbox" id="input_10" name="q10_phoneNumber"  placeholder="555-555-1234" class="form-control" />
-                            </p> 
+
                             <p>
                               <label>Message<sup>*</sup></label><br/>
                               <textarea rows="5" cols="75" id="input_9"name="q9_message"  placeholder="Your Message" class="form-control" required ></textarea>
@@ -161,18 +163,18 @@
 
                               <p>
                                 <label>
-                                  How much is: 
+                                  How much is:
                                 </label><br>
                                 <input type="text"  class="form-control" disabled="disabled" id="question"/>
                                 <br/>
                                 <label>Answer<sup>*</sup> </label><br>
                                 <input type="text" id="answer" class="form-control" required/>
                               </p>
-                            
+
                             <p>
                               <input type="submit" id="contactFormSubmit" value="Send" class="btn btn-primary"  />
                             </p>
-                           
+
                           </div>
                         </div>
 
@@ -210,7 +212,7 @@
                                 </p>
                               </div>
                             </div>
-                            
+
                             <p>
                               <label>Email<sup>*</sup></label><br/>
                               <input type="email" id="input_7" name="q7_email7"  placeholder="john@example.com" class="form-control" required />
@@ -221,6 +223,7 @@
                             </p>
                             <p>
                               <label>Phone Number<sup>*</sup></label><br/>
+
                               <input type="telephone" data-type="input-textbox" id="input_10" name="q10_phoneNumber" placeholder="555-555-1234" class="form-control" required />
                             </p> 
 
@@ -228,6 +231,7 @@
                               <label>Address</label><br/>
                               <input type="text" data-type="input-textbox" id="input_12" name="q12_address" placeholder="" class="form-control" />
                             </p> 
+
                             <p>
                               <label>Address Line2</label><br/>
                               <input type="text" data-type="input-textbox" id="input_13" name="q13_addressLine2" placeholder="" class="form-control" />
@@ -257,6 +261,7 @@
                               <div class="col-md-6">
                                 <p>
                                   <label>Country</label><br/>
+
                                   <select class="form-control"  id="input_17" name="q17_country"> 
 <option value="" selected="selected">Select Country</option> 
 <option value="United States">United States</option> 
@@ -499,6 +504,7 @@
 <option value="Western Sahara">Western Sahara</option> 
 <option value="Yemen">Yemen</option> 
 <option value="Zambia">Zambia</option> 
+
 <option value="Zimbabwe">Zimbabwe</option>
 </select>
                                 </p>
@@ -511,18 +517,18 @@
 
                               <p>
                                 <label>
-                                  How much is<sup>*</sup> 
+                                  How much is<sup>*</sup>
                                 </label><br>
                                 <input type="text"  class="form-control" disabled="disabled" id="question2"/>
                                 <br/>
                                 <label>Answer<sup>*</sup></label><br>
                                 <input type="text" id="answer2" class="form-control"/>
                               </p>
-                            
+
                             <p>
                               <input type="submit" id="contactFormBussinessSubmit" value="Send" class="btn btn-primary"  />
                             </p>
-                           
+
                           </div>
                         </div>
                       </div>
@@ -537,17 +543,19 @@
   
                     </form>
           </div>
+
           
       
             <div id="msg_nwc" style="height:1px;"></div>
 
-      
+
         </div><!--end tab content -->
-         
+
             </div>
        
 
       </div><!--end col 9-->
+
 
     </div><!--end row -->
   </div><!--end container-->
@@ -565,7 +573,7 @@
 
     });
 
-   
+
   });
 
 </script>

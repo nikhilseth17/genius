@@ -2,15 +2,17 @@
 <section class="content-body pod-category">
   <div class="content-layer">
     <div class="container">
-        
+
     </div>
     <div class="container pod-list-container">
       <div class="row pod-list">
-        {% for product in collection.all_products %} 
+        <h1 class="page-heading visible-xs text-center pod-header"><span class="name">Turn your shower into a spa</span></h1> <!-- added -->
+
+        {% for product in collection.all_products %}
           <!-- Bold: Discount - D&H -->
           {% if product.metafields.inventory.ShappifyHidden == "true" %}
-          {% else %}             
-                          
+          {% else %}
+
             <div class="col-sm-4 pod-thumb">
               <div class="buy-now-container">
                 <a href="{{ product.url }}" class="btn btn-white">Buy Now</a>
@@ -36,7 +38,7 @@
 
 
 
-            
+
   <div class="bg-top" {% if product.metafields.pods.line-art-top %} style="background-image: url({{ product.metafields.pods.line-art-top }});"{% endif %}></div>
 
   <div class="bg-bottom" {% if product.metafields.pods.line-art-bottom %} style="background-image: url({{ product.metafields.pods.line-art-bottom }});"{% endif %}></div>
@@ -50,22 +52,21 @@
 {% endif %}
 
 <section class="content-wrapper">
-            
 
-           
+
+
     <div class="container">
       <div class="row">
         <h2 class="section-title"><span>As Featured in</span></h2>
 
       </div><!--end row-->
       <div class="row featuredin-container">
-          <div class="media-logo"><img src="{{ 'media_02.png' | asset_url }}"></div>
+          <div class="media-logo hidden-xs"><img src="{{ 'media_02.png' | asset_url }}"></div>
           <div class="media-logo"><img src="{{ 'media_04.png' | asset_url }}"></div>
           <div class="media-logo"><img src="{{ 'media_06.png' | asset_url }}"></div>
           <div class="media-logo"><img src="{{ 'media_08.png' | asset_url }}"></div>
-          <div class="media-logo"><img src="{{ 'media_10.png' | asset_url }}"></div>
+          <div class="media-logo hidden-xs"><img src="{{ 'media_10.png' | asset_url }}"></div>
 
       </div>
     </div>
   </section>
-

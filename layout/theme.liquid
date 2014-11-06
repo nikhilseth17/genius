@@ -25,18 +25,18 @@
 
 
 
-  
+
   {% endif %}
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
-  <link rel="canonical" href="{{ canonical_url }}" /> 
+
+  <link rel="canonical" href="{{ canonical_url }}" />
 
   {% include 'fb-open-graph-tags' %}
   <link href='http://fonts.googleapis.com/css?family=Raleway:400,700,800' rel='stylesheet' type='text/css'>
   {{ 'styles.scss.css' | asset_url | stylesheet_tag }}
 
-  
+
   {{ 'modernizr-2.6.2.min.js' | asset_url | script_tag }}
 
 
@@ -77,9 +77,9 @@ _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
 
         var myCountdownTest = new Countdown({
                           year  : {{ shop.metafields.offer-count-down.year }},
-                          month : {{ shop.metafields.offer-count-down.month }}, 
+                          month : {{ shop.metafields.offer-count-down.month }},
                           day   : {{ shop.metafields.offer-count-down.day }},
-                          width : 300, 
+                          width : 300,
                           height  : 50,
                           numbers  : {
                             color: '#ffffff',
@@ -104,7 +104,7 @@ _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
                               <div class="icon-phone"></div>
                               <span class="phone">1-800-298-4785</span>
                           </li>
-                          
+
                           <li class="dropdown">
                               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sign up for email</a>
                               <ul class="dropdown-menu register-form">
@@ -113,11 +113,11 @@ _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
                                       <p>Sign up to recieve special offers, advice, product alerts and more!</p>
                                         {% form 'customer' %}
                                           <input type="hidden" id="contact_tags" name="contact[tags]" value="prospect,newsletter"/>
-                                          
+
                                           <input type="text" id="contact_email" name="contact[email]" placeholder="Email"><button>GO</button>
                                         {% endform %}
-                                        
-                                        
+
+
                                         <div class="social-icons-container">
                                             <a href="http://www.twitter.com/essioshower" target="_blank"><i class="fa fa-twitter"></i></a>
                                             <a href="http://www.facebook.com/essioshower" target="_blank"><i class="fa fa-facebook"></i></a>
@@ -141,23 +141,23 @@ _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
                                 Hello, {{ customer.first_name }}
                               </li>
                               <li>
-                                  <a href="/account">My Account</a> 
+                                  <a href="/account">My Account</a>
                               </li>
                               <li>
                                   {{ 'Log out' | customer_logout_link }}
                               </li>
-                               
-                              
+
+
                             {% else %}
-                              <li>
+                              <li class="sign-in">
                                   <a href="/account/login/">Sign In</a>
                               </li>
-                              <li>
+                              <li class="register">
                                   <a href="/account/register">Register</a>
                               </li>
                             {% endif %}
                           {% endif %}
-                          
+
 
                           <li class="cart-summary">
                             <a href="/cart">
@@ -168,24 +168,41 @@ _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
                       </ul>
 
                   </div><!--end pull -right -->
+
+                  <div class="visible-xs text-center mobile-logo">
+                    <a href="http://essioshower.com">ESSIO</a>
+                  </div>
+
+
+                  <div class="pull-left visible-xs">
+                    <button type="button" class="navbar-toggle visible-xs" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                      <span class="sr-only">Toggle navigation</span>
+                      <i class="fa fa-bars"></i>
+
+                    </button>
+                    <a href="tel:800-298-4785"><i class="fa fa-phone mobile-nav-icons"></i></a>
+                    <a href="mailto:support@essioshower.com?subject=" target="_blank"><i class="fa fa-envelope-o mobile-nav-icons"></i></a>
+                  </div
+
               </div><!--end row-->
           </div><!--end container-->
 
       </div><!--end nav top-->
+</div><!--added closing div - one appeared to be missing making background-img to behave strangely -->
       <div class="nav-bottom">
           <div class="container">
               <div class="row">
-                  <nav class="navbar navbar-default" role="navigation">
+                  <div class="navbar navbar-default" role="navigation">
                     <div class="container-fluid">
                       <!-- Brand and toggle get grouped for better mobile display -->
                       <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <button type="button" class="navbar-toggle hidden-xs" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                           <span class="sr-only">Toggle navigation</span>
                           <i class="fa fa-bars"></i>
-                          
+
                         </button>
                         <div class="navbar-brand">
-                          
+
                           <a href="/" class="logo"><img src="{{ 'logo.png' | asset_url }}"></a>
                           <div class="promo-container">
                               <span>
@@ -193,7 +210,7 @@ _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
                               </span>
                           </div>
                         </div>
-                          
+
                       </div>
 
                       <!-- Collect the nav links, forms, and other content for toggling -->
@@ -225,10 +242,12 @@ _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
                               {% endfor %}
                             {% elsif link.type == 'collection_link' and link.object.all_tags.size > 0 %}
                               {% assign has_sub_categories = true %}
-                            {% endif %} 
+                            {% endif %}
                             <li class="nav-item{% if forloop.first %} first{% elsif forloop.last %} last{% endif %}{% if link.active %}{% if has_sub_menu or has_sub_categories %} {% else %} active{% endif %}{% endif %}{% if has_sub_menu or has_sub_categories or pod_link %} dropdown{% endif %}">
-                              
-                              <a href="{% if hw_link %}/pages/what-is-essio{% elsif pod_link %}#{% else %}{{ link.url }}{% endif %}" {% if has_sub_menu or has_sub_categories or pod_link %}class="dropdown-toggle link-{{ link.handle }}" data-toggle="dropdown"{% endif %}>{{ link.title }} {% if has_sub_menu or has_sub_categories or pod_link %}<b class="caret"></b>{% endif %}</a>
+
+
+                              <a href="{% if hw_link %}/pages/what-is-essio{% elsif pod_link %}#{% else %}{{ link.url }}{% endif %}" {% if has_sub_menu or has_sub_categories or pod_link %}class="dropdown-toggle link-{{ link.handle }}" data-toggle="dropdown"{% endif %}>{{ link.title }} {% if has_sub_menu or has_sub_categories or pod_link %}<b class="caret hidden-xs"></b><span class="plus hidden-sm hidden-md hidden-lg pull-right">&#43;</span><span class="minus hidden-sm hidden-md hidden-lg pull-right">&#150;</span>{% endif %}</a>
+
 
                               {% if pod_link %}
                                 <ul class="dropdown-menu">
@@ -263,36 +282,87 @@ _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
                               {% endif %}
                             </li>
                             {% endfor %}
-                         
-                          
-                         
-                          
+
+                            <li class="nav-item dropdown visible-xs">
+                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Support &amp; FAQ<b class="caret hidden-xs"></b><span class="plus hidden-sm hidden-md hidden-lg pull-right">&#43;</span><span class="minus hidden-sm hidden-md hidden-lg pull-right">&#150;</span></a><!--added -->
+                                <ul class="dropdown-menu">
+                                  <li class="sub-nav-niblet"></li>
+
+                                    <li class="sub-nav-item first">
+                                      <a class="first" href="http://essioshower.com/pages/customer-support">Contact Us</a>
+                                    </li>
+
+                                    <li class="sub-nav-item">
+                                      <a class="" href="http://essioshower.com/blogs/faq-s">Shipping &amp; Returns</a>
+                                    </li>
+
+                                    <li class="sub-nav-item">
+                                      <a class="" href="http://essioshower.com/account/login">Your Account</a>
+                                    </li>
+
+                                    <li class="sub-nav-item">
+                                      <a class="" href="http://essioshower.com/blogs/faq-s">FAQ</a>
+                                    </li>
+
+                                    <li class="sub-nav-item">
+                                      <a href="mailto:support@essioshower.com" target="_blank">Customer Support</a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li class="nav-item dropdown visible-xs no-bottom-border">
+                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">About Us<b class="caret hidden-xs"></b><span class="plus hidden-sm hidden-md hidden-lg pull-right">&#43;</span><span class="minus hidden-sm hidden-md hidden-lg pull-right">&#150;</span></a><!--added -->
+                                <ul class="dropdown-menu">
+                                  <li class="sub-nav-niblet"></li>
+
+                                    <li class="sub-nav-item first">
+                                      <a class="first" href="http://essioshower.com/pages/privacy-policy">Privacy Policy</a>
+                                    </li>
+
+                                    <li class="sub-nav-item">
+                                      <a class="" href="http://essioshower.com/pages/terms-of-use">Terms of Use</a>
+                                    </li>
+
+                                    <li class="sub-nav-item">
+                                      <a class="" href="http://essioshower.com/blogs/careers">Careers</a>
+                                    </li>
+
+                                    <li class="sub-nav-item">
+                                      <a class="" href="http://essioshower.com/pages/affiliate">Affiliates</a>
+                                    </li>
+
+                                    <li class="sub-nav-item">
+                                      <a class="" href="http://essioshower.com/apps/store-locator/">Store Locator</a>
+                                    </li>
+                                </ul>
+                            </li>
+
+
+
                           <li class="social-con" style="padding-left: 10px;"><a href="http://www.twitter.com/essioshower" target="_blank"><span class="social-icons social-tw"></a></li>
                           <li class="social-con"><a href="http://www.facebook.com/essioshower" target="_blank"><span class="social-icons social-fb"></a></li>
                           <li class="social-con"><a href="http://www.pinterest.com/essioshower" target="_blank"><span class="social-icons social-pn"></a></li>
 
                         </ul>
-                        
-                        
+
+
                       </div><!-- /.navbar-collapse -->
                     </div><!-- /.container-fluid -->
-                  </nav>
+                  </div>
 
               </div>
           </div>
       </div>
 
   </header>
-  
-  
 
 
 
-      
-   
+
+
           {% if template == "list-collections" %}
-          
-          
+
+
             {% for collection in collections %}
             {% unless collection.all_products_count == 0 or collection.handle == "frontpage" %}
             {% include 'collection-loop' %}
@@ -301,9 +371,9 @@ _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
           {% else %}
             {{ content_for_layout }}
           {% endif %}
-      
-  
-  
+
+
+
 
   <footer>
       <div class="footer-top">
@@ -314,50 +384,50 @@ _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
                       <div class="register-container">
                           {% form 'customer' %}
                             <input type="hidden" id="contact_tags" name="contact[tags]" value="prospect,newsletter"/>
-                            
+
                             <input type="text" id="contact_email" name="contact[email]" placeholder="Email"><button>GO</button>
                           {% endform %}
-                          
+
                           <p>Sign up to recieve special offers, advice, product alerts and more!</p>
                           <div class="social-icons-container">
                             <a href="http://www.twitter.com/essioshower" target="_blank"><i class="fa fa-twitter"></i></a>
                             <a href="http://www.facebook.com/essioshower" target="_blank"><i class="fa fa-facebook"></i></a>
                             <a href="http://www.pinterest.com/essioshower" target="_blank"><i class="fa fa-pinterest-square"></i></a>
                             <a href="mailto:support@essioshower.com" target="_blank"><i class="fa fa-envelope"></i></a>
-                             
+
                           </div>
                       </div>
                   </div>
-                  <div class="col-md-3 footer-col">
+                  <div class="col-md-3 footer-col hidden-xs">
                       <div class="footer-title">Support & FAQ</div>
                       <ul class="footer-links">
                             {% for link in linklists.footer.links %}
-                            
+
                             <li {% if link.active %} class="active"{% endif %}>
                               <a href="{{ link.url }}">{{ link.title }}</a>
                             </li>
                           {% endfor %}
-                          
+
                       </ul>
                   </div>
-                  <div class="col-md-3 footer-col">
+                  <div class="col-md-3 footer-col hidden-xs">
                       <div class="footer-title">More About Us</div>
                       <ul class="footer-links">
-                          
+
                           {% for link in linklists.footer-col-2.links %}
-                            
+
                             <li {% if link.active %} class="active"{% endif %}>
                               <a href="{{ link.url }}">{{ link.title }}</a>
                             </li>
                           {% endfor %}
-                          
+
                       </ul>
                   </div>
                   <div class="col-md-3 footer-col">
                       <div class="footer-title">Blog Feed</div>
                       <div class="post-wrapper" id="blog-posts">
-                        
-                          
+
+
                       </div><!--end post wrapper -->
 
                   </div><!--end footer col -->
@@ -366,21 +436,22 @@ _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
       </div><!--end footer top-->
       <div class="footer-bottom">
           <div class="container">
-              <div class="pull-left">
-                  Copyright &copy; 2014 Aromatec, Inc. All rights reserved.
-                  
-              </div><!--end pull left-->
               <div class="pull-right">
                   <ul class="footer-nav">
 
                       {% for link in linklists.footer-bottom.links %}
-                            
+
                         <li {% if link.active %} class="active"{% endif %}>
                           <a href="{{ link.url }}">{{ link.title }}</a>
                         </li>
                       {% endfor %}
                   </ul>
               </div><!--end pull right-->
+
+              <div class="pull-left copyright">
+                  Copyright &copy; 2014 Aromatec, Inc. All rights reserved.
+
+              </div><!--end pull left-->
 
           </div>
 
@@ -397,11 +468,11 @@ _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
       </div>
       <div class="modal-body">
 
-         
+
 
 
       </div>
-      
+
     </div>
   </div>
 </div>
@@ -410,23 +481,23 @@ _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
   <div class="modal-dialog">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span>&times;</span></button>
     <div class="modal-content">
-      
+
       <div class="promo-bg">
         <div class="text-overlay">
           {% form 'customer' %}
             <input type="hidden" id="contact_tags" name="contact[tags]" value="prospect,newsletter,promo"/>
-            
+
             <input type="text" id="contact_email2" name="contact[email]" placeholder="Enter your email for your discount" class="form-control">
             <input type="image" id="promo-submit-btn" src="{{ 'btn-offer.png' | asset_url }}">
           {% endform %}
-            
-            
-            
+
+
+
           </form>
         </div>
         <div class="no-thanks"><a href="" data-dismiss="modal" aria-hidden="true">No thanks, I'd rather pay full price</a></div>
       </div>
-      
+
     </div>
   </div>
 </div>
@@ -436,25 +507,25 @@ _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
   <div class="modal-dialog">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span>&times;</span></button>
     <div class="modal-content">
-      
+
       <div class="promo-bg">
         <div class="text-overlay">
-         
+
             <a href="/products/starter-kit"><img src="{{ 'btn-offer2.png' | asset_url }}"></a>
-         
-            
-            
-            
+
+
+
+
           </form>
         </div>
         <div class="promo-code">DXXKL52</div>
       </div>
-      
+
     </div>
   </div>
 </div>
-        
-     
+
+
   {{ '//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js' | script_tag }}
   <script>window.jQuery || document.write('<script src="{{ 'jquery-1.10.2.min.js' | asset_url }}"><\/script>')</script>
   {{ 'jquery.cookie.js' | asset_url | script_tag }}
@@ -466,7 +537,7 @@ _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
 
 
   {{ 'jquery-migrate-1.2.0.min.js' | asset_url | script_tag }}
-  
+
   {{ 'option_selection.js' | shopify_asset_url | script_tag }}
   {{ 'api.jquery.js' | shopify_asset_url | script_tag }}
 
@@ -516,17 +587,17 @@ _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
 
             {% if page.url != '/pages/giveaway' and page.url != '/pages/invite' %}
               $( document ).ready(function() {
-                
+
 
                 $("body").bind("mouseenter",function(){
                   /* optional */
-                    
+
                 }).bind("mouseleave",function(){
                     //if(getUrlParameter('testmode')) {
                        if(!$.cookie('promo_popup')) {
-                         
+
                           $.cookie('promo_popup', '1', { path: '/', expires: 120 });
-                          
+
                           $('#promoModal').modal('show');
 
                           $("#promo-submit-btn").click(function(e){
@@ -539,10 +610,10 @@ _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
                           });
                         }
 
-                        
+
                     //}
 
-                    
+
                 });
 
                 if($.cookie('promo_popup_step2')) {
@@ -555,17 +626,17 @@ _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
                 //  $("promoModal2").modal('show');
                 //}
 
-                
+
               });
             {% endif %}
 
 
             //
             $(document).ready(function(){
-              
+
               $('#product-images .item:first-child').zoom({magnify: '0.7'});
               $('#product-images .item:gt(0)').zoom({magnify: '0.5'});
-              
+
             });
 
             $(function(){
@@ -574,10 +645,10 @@ _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
               $('#blog-posts').rssfeed('http://blog.essioshower.com/feed/', {
                 limit: 2
               });
-              
 
 
-              
+
+
               // auto video
               //modal vid
               $('#videoModal').on('show.bs.modal', function (e) {
@@ -589,11 +660,11 @@ _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
               });
 
 
-              
+
 
               //home hero resize
               if($( "body" ).find( "#home-hero" )) {
-                
+
                 var navHeight = 134,
                     carouselContainer = "section.home-carousel",
                     windowHeight = $(window).height(),
@@ -606,12 +677,12 @@ _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
                 //set carousel height
                 $( carouselContainer ).css('height', carouselHeight);
                 $( carouselContainer + " .item" ).css('height', carouselHeight);
-               
+
                 //restyle slide 1
                 var newMargintop = slide1MarginTopDefault - heightDifference;
                 $( carouselContainer + " .slide-1 .hero-caption" ).css('margin-top', newMargintop);
 
-                
+
               }
 
               $(".home-carousel .carousel-control").click(function(){
@@ -637,21 +708,21 @@ _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
               });
 
 
-                
 
-              //home page hero 
+
+              //home page hero
               $('#home-hero').carousel({
                   interval: false
               } );
 
               /*{ interval: false }*/
-              
+
                 //set success mesage on newsletter signup
                 $.urlParam = function(name){
                     var results = [];
 
                     results = new RegExp('[\\?&amp;]' + name + '=([^&amp;#]*)').exec(window.location.href);
-                    
+
                     if(results)
                       return results[1] || 0;
                     else
@@ -678,7 +749,7 @@ _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
                     var podSlide = $(this).data('slide-to');
 
                     setTimeout(function() {
-                      
+
                       $podsLanding.carousel(podSlide);
                     }, 500 );
                 });
@@ -696,8 +767,8 @@ _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
 
                 $("#product-images .item").each(function(index){
                     var thumbUrl = $( this ).children('img').attr('src');
-                    
-                    
+
+
                     var thumbHtml = '<li class="product-thumb'
                     if(index == 0)
                       thumbHtml += ' active';
@@ -705,15 +776,15 @@ _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
                     thumbHtml += '" data-slide="' + index + '"><img src="' + thumbUrl + '"></li>';
                     $("#slide-thumbs").append(thumbHtml);
 
-                    
+
                 });
 
-                
-              
-                
+
+
+
 
                 //pod page image rollovers
-                $( "#product-images  .product-thumb" ).click( function() { 
+                $( "#product-images  .product-thumb" ).click( function() {
 
                     var slideNumber = $(this).data('slide');
                     var pinNumber = Number(slideNumber) + 1;
@@ -724,7 +795,7 @@ _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
                     $(".pin-button .pin-image" + pinNumber).addClass("active");
                     /*
                     var newPinnithref = '//www.pinterest.com/pin/create/button/?url=http://essio.myshopify.com' + $("#product-images").data("product-url") + '&media=' + $(this).children('img').attr('src') + '&description=' + $("#product-images").data("product-description");
-                    
+
                     $(".pin-button a").attr('href', newPinnithref);
                     */
                     $productImages.carousel(Number(slideNumber));
@@ -736,7 +807,7 @@ _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
                     $("#package button").removeClass('active');
                     $(this).addClass('active');
                     $("#product-select").val($(this).data('value')).trigger('change');
-                    
+
 
                 });
 
@@ -767,7 +838,7 @@ _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
                 $("div.tab-pane").removeClass('active');
                 $("div#reviews").addClass('active');
 
-                
+
                 //$("html, body").animate({ scrollTop: $('#product-tabs').offset().top }, 100);
                 //e.preventDefault();
                 //$('#product-tabs a#tab-reviews').tab('show');
@@ -781,7 +852,7 @@ _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
         </script>
 
         {% if template contains 'cart' %}
-        
+
 
           <script type="text/javascript">
              // alert('You have not added a starter kit');
@@ -835,7 +906,7 @@ _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
               jQuery('#price-preview').text(message);
             }
           };
-          
+
           jQuery(document).ready(function($){
             new Shopify.OptionSelectors("product-select", { product: {{ product | json }}, onVariantSelected: selectCallback });
 
@@ -843,7 +914,7 @@ _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
             {% if product.options.size == 1 and product.options.first != 'Title' %}
               $('.selector-wrapper:eq(0)').prepend('<label>{{ product.options.first }}</label>');
             {% endif %}
-          
+
             // Auto-select first available variant on page load.
             {% assign found_one_in_stock = false %}
             {% for variant in product.variants %}
@@ -870,7 +941,7 @@ _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
 {% if template contains 'addresses' %}
 <script type="text/javascript" charset="utf-8">
 // initialize observers on address selectors
-new Shopify.CountryProvinceSelector('address_country_new', 'address_province_new', {hideElement: 'address_province_container_new'});  
+new Shopify.CountryProvinceSelector('address_country_new', 'address_province_new', {hideElement: 'address_province_container_new'});
 {% for address in customer.addresses %}
 new Shopify.CountryProvinceSelector('address_country_{{address.id}}', 'address_province_{{address.id}}', {hideElement: 'address_province_container_{{address.id}}'});
 {% endfor %}
@@ -938,7 +1009,7 @@ window.onload = function(){
 
 <!-- testing bean stalk -->
 <!-- Google Code for Remarketing Tag -->
-<!-- ------------------------------------------------ 
+<!-- ------------------------------------------------
 Remarketing tags may not be associated with personally identifiable information or placed on pages related to sensitive categories. See more information and instructions on how to setup the tag on: http://google.com/ads/remarketingsetup
 ------------------------------------------------- -->
 <script type="text/javascript">

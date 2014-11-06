@@ -1,7 +1,7 @@
 <section class="page-content-body">
   <div class="container">
     <div id="cart">
-      
+
       <!-- Begin empty cart -->
       {% if cart.item_count == 0 %}
       <div class="row">
@@ -12,7 +12,7 @@
         </div>
       </div>
       <!-- End empty cart -->
-      
+
       <!-- Begin cart -->
       {% else %}
       <div class="header-container">
@@ -21,11 +21,12 @@
       <div class="row">
         <form action="/cart" method="post" id="cartform">
         <div class="col-md-9">
-          
+
           <div class="panel panel-default">
             <div class="panel-body">
+
               <table>
-                <thead>
+                <thead class="hidden-xs">
                   <tr>
                     <th class="image">&nbsp;</th>
                     <th class="item">Item</th>
@@ -37,28 +38,62 @@
                 <tbody>
                   {% for item in cart.items %}
                     {% assign url = item.url %}
-                    {% if item.product.metafields.subscriptions.original_handle %} 
+                    {% if item.product.metafields.subscriptions.original_handle %}
                       {% assign url =  '/products/'| append:item.product.metafields.subscriptions.original_handle %}
-                    {% endif %} 
+                    {% endif %}
                     {% if item.product.id == 235478761 %}
                       {% assign hasStarterKit = '1' %}
                     {% endif %}
+
                   <tr>
-                    <td class="image">
+                    <td class="image visible-xs">
                       <div class="product_image">
                          <a href="{{ url }}">
-                          
+
                           {% if item.variant.title == '8 pack' %}
                             <img src="http://cdn.shopify.com/s/files/1/0366/5265/files/{{ item.product.handle }}-8pack.jpg"  alt="{{ item.product.title }}" />
                           {% else %}
                             <img src="{{ item.product.featured_image | product_img_url: 'original' }}"  alt="{{ item.product.title }}" />
                           {% endif %}
-                          
-                         
+
+
                         </a>
                       </div>
                     </td>
-                    <td class="item">
+                  </tr>
+                  <tr>
+                    <td class="item visible-xs">
+                       <a href="{{ url }}">
+                        <strong>{{ item.product.title }}</strong>
+                        {% if item.product.variants.size > 1 %}
+                        <span class="variant_title">{{ item.variant.title }}</span>
+                        {% endif %}
+                      </a>
+                      {% if item.properties contains 'shipping_interval_frequency' %}
+                        <br><span class="variant_title">Auto renews each {{ item.properties.shipping_interval_frequency }} days</span>
+                      {% endif %}
+                      <div class="cart-description-mobile">
+                        {{ item.product.description }}
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="image hidden-xs">
+                      <div class="product_image">
+                         <a href="{{ url }}">
+
+                          {% if item.variant.title == '8 pack' %}
+                            <img src="http://cdn.shopify.com/s/files/1/0366/5265/files/{{ item.product.handle }}-8pack.jpg"  alt="{{ item.product.title }}" />
+                          {% else %}
+                            <img src="{{ item.product.featured_image | product_img_url: 'original' }}"  alt="{{ item.product.title }}" />
+                          {% endif %}
+
+
+                        </a>
+                      </div>
+                    </td>
+
+                    <td class="item hidden-xs">
                        <a href="{{ url }}">
                         <strong>{{ item.product.title }}</strong>
                         {% if item.product.variants.size > 1 %}
@@ -72,19 +107,29 @@
                         {{ item.product.description }}
                       </div>
                     </td>
+
                     <td class="qty">
                       <input type="text" size="4" name="updates[]" id="updates_{{ item.id }}" value="{{ item.quantity }}" onfocus="this.select();" class="tc item-quantity" {% if item.product.metafields.inventory.ShappifyHidden == "true" %} readonly="readonly" {% endif %} />
+                      <div class="price visible-xs cart-price-mobile pull-right">{{ item.line_price | money }}
+                        <div class="remove"><a href="/cart/change?line={{ forloop.index }}&quantity=0" class="cart">Remove</a></div>
+                      </div>
                     </td>
-                    <td class="price">{{ item.line_price | money }}</td>
-                    <td class="remove"><a href="/cart/change?line={{ forloop.index }}&quantity=0" class="cart">Remove</a></td>
+                    <td class="price hidden-xs">{{ item.line_price | money }}</td>
+
+
+                    <td class="remove hidden-xs"><a href="/cart/change?line={{ forloop.index }}&quantity=0" class="cart">Remove</a></td>
+
                   </tr>
                   {% endfor %}
-                  <tr class="summary">
+                  <tr class="summary hidden-xs">
                     <td class="image">&nbsp;</td>
                     <td>&nbsp;</td>
                     <td>&nbsp;</td>
                     <td class="price"><span class="total"><strong>{{ cart.total_price | money }}</strong></span></td>
                     <td>&nbsp;</td>
+                  </tr>
+                  <tr class="summary visible-xs">
+                    <td class="price"><p class="pull-left visible-xs"><strong>Total</strong></p><span class="total"><strong>{{ cart.total_price | money }}</strong></span></td>
                   </tr>
                 </tbody>
               </table>
@@ -94,7 +139,7 @@
                   <button id="checkout" class="btn btn-primary" name="checkout" value="Check out" />Check out</button>
                   <button id="update-cart" class="btn btn-default" name="update" value="Update" />Update</button>
                 </div>
-                {% if additional_checkout_buttons %}        
+                {% if additional_checkout_buttons %}
                    <div class="extra-checkout-buttons">
                    {{ content_for_additional_checkout_buttons }}
                    </div>
@@ -103,11 +148,13 @@
               {% if hasStarterKit != '1' %}
               <div class="pull-left missing-container">
                 {% for product in collections.frontpage.products %}
-                  
-                
+                <div class="pull-left alert alert-warning visible-xs">
+                  <strong>Don't own a starter kit?</strong> <br>Before checking out, be sure you already purchased an Essio Starter Kit.
+                </div>
+
                   <div class="pull-left starter-kit-thumb">
-                   
-                    <img src="{{ product.featured_image | product_img_url: 'original' }}">
+
+                    <img src="{{ product.featured_image | product_img_url: 'original' }}" class="starter-img-cart">
                     <input type="hidden" name="return_to" value="/checkout" />
 
                     {% for variant in product.variants %}
@@ -117,10 +164,10 @@
                       <input type="submit" value="ADD TO CART" class="btn btn-default" id="starter-kit-submit" />
                     </div>
                     {% endfor %}
-                    
+
                   </div>
                 {% endfor %}
-                <div class="pull-left alert alert-warning">
+                <div class="pull-left alert alert-warning hidden-xs">
                   <strong>Don't own a starter kit?</strong> <br>Before checking out, be sure you already purchased an Essio Starter Kit.
                 </div>
               </div><!--end missing starter kit container-->
@@ -133,32 +180,35 @@
             <div class="panel panel-default">
               <div class="panel-body">
                 <div class="inner-left inner-right">
-                
-                  
+
+
                   <div class="checkout-buttons clearfix">
                     <label for="note">Add special instructions for your order...</label>
                     <textarea id="note" name="note" rows="8" cols="70" class="form-control">{{ cart.note }}</textarea>
                   </div>
-                  
-                 
+
+
                 </div>
               </div>
             </div>
 
             <div class="continue-shopping text-right"> <a href="/"> > Continue Shopping</a></div>
 
-            
 
-          
+
+
         </div>
       </form>
       </div>
+
+
+
       {% endif %}
-      
-      
+
+
       <!-- End cart -->
-      
-    </div> 
+
+    </div>
   </div>
   <!--end container-->
 </section>
@@ -175,11 +225,11 @@
         return_to: 'back',
 
       }, // or JSON.stringify ({name: 'jonas'}),
-      success: function(data) { 
+      success: function(data) {
         window.location = '/cart';
       }
     });
-  
+
   });
 </script>
 

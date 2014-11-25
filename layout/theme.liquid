@@ -485,12 +485,12 @@ _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
 
         <div class="promo-bg">
           <img class="top-pattern" src="{{ 'exit_floral_top_copy.png' | asset_url }}" alt="" />
-          <img class="bottom-pattern" src="{{ 'exit_floral_Pattern_copy.png' | asset_url }}https://cdn.shopify.com/s/files/1/0366/5265/files/exit_floral_Pattern_copy.png?14541" alt="" />
-          <img class="exit-logo" src="https://cdn.shopify.com/s/files/1/0366/5265/files/exit_logo.png?14385">
+          <img class="bottom-pattern" src="{{ 'exit_floral_top_copy.png' | asset_url }}" alt="" />
+          <img class="exit-logo" src="{{ 'exit_logo.png' | asset_url }}">
           <div class="text-line-1">Enter Your Email To Get</div>
           <div class="text-line-ul"></div>
           <div class="text-line-2"><strong>$10</strong> OFF</div>
-          <img class="your-starter-kit" src="https://cdn.shopify.com/s/files/1/0366/5265/files/your_starter_kit_71c86c08-6030-4d77-bbb6-a451e9ce7a0f.jpg?14500" alt="" />
+          <img class="your-starter-kit" src="{{ 'your_starter_kit_71c86c08-6030-4d77-bbb6-a451e9ce7a0f.jpg' | asset_url }}" alt="" />
 
 
           <div class="text-overlay">
@@ -505,7 +505,7 @@ _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
               <input type="text" id="contact_email2" name="contact[email]" placeholder="ENTER YOUR EMAIL HERE" class="form-control">
               <div class="text-line-3">For Your Exclusive Offer</div>
 
-              <input type="image" id="promo-submit-btn" src="https://cdn.shopify.com/s/files/1/0366/5265/files/btn_1.jpg?14390">
+              <input type="image" id="promo-submit-btn" src="{{ 'btn_1.jpg' | asset_url }}">
             {% endform %}
 
 
@@ -524,13 +524,13 @@ _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
   <div class="modal-dialog">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span>&times;</span></button>
     <div class="modal-content">
-      <img class="top-pattern-2" src="https://cdn.shopify.com/s/files/1/0366/5265/files/exit_floral_top_copy.png?14520" alt="" />
-      <img class="logo-2" src="https://cdn.shopify.com/s/files/1/0366/5265/files/exit_logo.png?14385">
+      <img class="top-pattern-2" src="{{ 'exit_floral_top_copy.png' | asset_url }}" alt="" />
+      <img class="logo-2" src="{{ 'exit_logo.png' | asset_url }}">
       <div class="text-line-2-1">Your <strong>$10 Off</strong> Code Is Ready</div>
       <div class="text-line-2-2">Copy and paste code at checkout</div>
       <div class="text-line-2-3">WXTMV4</div>
-      <a href="http://essioshower.com/products/aromatherapy-shower-kit"><img class="go-ahead-2" src="https://cdn.shopify.com/s/files/1/0366/5265/files/go_ahead.jpg?14385" alt="" /></a>
-      <a href="http://essioshower.com/products/aromatherapy-shower-kit"><img class="starter_kit" src="https://cdn.shopify.com/s/files/1/0366/5265/files/exit_product_copy.png?14549"></a>
+      <a href="http://essioshower.com/products/aromatherapy-shower-kit"><img class="go-ahead-2" src="{{ 'go_ahead.jpg' | asset_url }}" alt="" /></a>
+      <a href="http://essioshower.com/products/aromatherapy-shower-kit"><img class="starter_kit" src="{{ 'exit_product_copy.png' | asset_url }}"></a>
           </form>
     </div>
   </div>
@@ -633,10 +633,8 @@ _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
                   $.cookie('promo_popup_step2', '', { path: '/', expires: 120 });
                 }
 
-                //load second popup
-              //  if(getUrlParameter(encodeURIComponent('contact[tags]')) == 'prospect%2Cnewsletter%2Cpromo') {
-                //  $("promoModal2").modal('show');
-                //}
+              
+
 
 
               });

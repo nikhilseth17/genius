@@ -42,8 +42,9 @@ function addToCartRecurring(element, variant_id) {
 
     rechargeVariantAdded = variant_id;
 
-    data['properties[charge_delay]'] = charge_delay
+    data['properties[shipping_interval_frequency]'] = charge_delay;
     data['properties[recurring_price]'] = 16.99;
+    data['properties[recurring_variant_id]'] = variant_id;
 
     jQuery.ajax({
         type: 'POST',

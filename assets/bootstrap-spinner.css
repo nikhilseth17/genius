@@ -1,1 +1,22 @@
-.spinner .add-on{padding:0}.spinner .add-on a.spin-up,.spinner .add-on a.spin-down{height:10px;overflow:hidden;display:block;text-align:center;position:relative;color:#000}.spinner .add-on a.spin-up .icon-sort-down,.spinner .add-on a.spin-down .icon-sort-down{position:relative;top:-9px}.spinner .add-on a.spin-up:hover,.spinner .add-on a.spin-down:hover{color:#555}.spinner input{ border-right:none; box-shadow:none; background:#eeeeee;width:2em;text-align:center;padding-top:1px;padding-bottom:0;}
+.spinner .add-on{padding:0}
+.spinner .add-on a.spin-up,.spinner .add-on a.spin-down{
+    height:14px;overflow:hidden;display:block;text-align:center;position:relative;color:#000;
+    top: 3px;
+}
+.spinner .add-on a.spin-up .icon-sort-down,.spinner .add-on a.spin-down .icon-sort-down{
+    position:relative;top:-9px
+}
+.spinner .spin-down {
+    top: -4px !important;
+}
+.spinner .spin-up {
+    background-image: url(../images/spin-up.png);
+    background-size: 8px 5px;
+    background-repeat: no-repeat;
+}
+.spinner .spin-down {
+    background-image: url(../images/spin-down.png);
+    background-size: 8px 5px;
+    background-repeat: no-repeat;
+}
+.spinner .add-on a.spin-up:hover,.spinner .add-on a.spin-down:hover{color:#555}.spinner input{ border-right:none; box-shadow:none; background:#eeeeee;width:2em;text-align:center;padding-top:1px;padding-bottom:0;}

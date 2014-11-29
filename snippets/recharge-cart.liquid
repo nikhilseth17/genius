@@ -22,7 +22,7 @@ jQuery.ajax({
     dataType: 'json',
     success: function(data) {
 
-        if (hasStarterKit(data)) {
+        if (!hasStarterKit(data)) {
 
             var removeProducts = {};
             for (var i=0; i < data.items.length; i++) {

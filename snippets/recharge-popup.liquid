@@ -170,7 +170,7 @@
   </div>
 
   <div class="continue col-xs-18 col-md-11">
-    <span style="cursor: pointer" class="no-thanks" onclick="removeFromCart();">No Thanks</span>
+    <span class="no-thanks" onclick="removeFromCart();">No Thanks</span>
     <input type="button" class="btn btn-primary" value="Continue" onclick="goToCart();"/>
   </div>
 
@@ -295,13 +295,14 @@
   padding: 4px 12px;
   text-shadow:1px 1px 2px #000;
 }
-#recharge-popup .continue.col-xs-18.col-md-12 > span {
+#recharge-popup .no-thanks {
   font-family: "ProximaNova-Regular";
   font-size: 13px;
   margin: 0 22px;
   position: relative;
   text-decoration: underline;
   top: 5px;
+  cursor: pointer;
 }
 #recharge-popup .close {
   position: absolute;

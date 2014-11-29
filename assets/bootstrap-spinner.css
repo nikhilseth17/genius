@@ -10,12 +10,12 @@
     top: -4px !important;
 }
 .spinner .spin-up {
-    background-image: url(../images/spin-up.png);
+    background-image: url("{{ 'spin-up.png' | asset_url }}");
     background-size: 8px 5px;
     background-repeat: no-repeat;
 }
 .spinner .spin-down {
-    background-image: url(../images/spin-down.png);
+    background-image: url("{{ 'spin-down.png' | asset_url }}");
     background-size: 8px 5px;
     background-repeat: no-repeat;
 }

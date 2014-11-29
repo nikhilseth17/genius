@@ -47,16 +47,16 @@ function addToCartRecurring(element, variant_id) {
     data['properties[recurring_price]'] = 16.99;
     data['properties[recurring_variant_id]'] = variant_id;
 
+    button.closest(".products-container").find(".product-button input").hide();
+    button.show();
+    button.val("Added");
+
     jQuery.ajax({
         type: 'POST',
         url: '/cart/add.js',
         data: data,
         dataType: 'json',
         success: function() {
-
-            button.closest(".products-container").find(".product-button input").hide();
-            button.show();
-            button.val("Added");
         },
         fail: function() {
             alert("An error ocurred");

@@ -2,6 +2,7 @@
 .spinner .add-on a.spin-up,.spinner .add-on a.spin-down{
     height:14px;overflow:hidden;display:block;text-align:center;position:relative;color:#000;
     top: 3px;
+    left: 3px;
 }
 .spinner .add-on a.spin-up .icon-sort-down,.spinner .add-on a.spin-down .icon-sort-down{
     position:relative;top:-9px

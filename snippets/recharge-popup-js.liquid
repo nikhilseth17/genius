@@ -1,17 +1,10 @@
 <script type="text/javascript">
 function showRechargePopup() {
     $("#recharge-popup").show();
+    addStarterKit();
 }
 
-function hideRechargePopup() {
-    $("#recharge-popup").hide();
-}
-
-function addToCartRecurring(element, variant_id) {
-
-    var button = jQuery(element);
-    var container = button.parent();
-    var charge_delay = container.find(".days").val();
+function addStarterKit() {
 
     var starterData = {
         "quantity": 1,
@@ -28,6 +21,17 @@ function addToCartRecurring(element, variant_id) {
         fail: function() {
         }
     });
+}
+
+function hideRechargePopup() {
+    goToCart();
+}
+
+function addToCartRecurring(element, variant_id) {
+
+    var button = jQuery(element);
+    var container = button.parent();
+    var charge_delay = container.find(".days").val();
 
     var data = {
         "quantity": 1,
@@ -35,6 +39,7 @@ function addToCartRecurring(element, variant_id) {
     }
 
     data['properties[charge_delay]'] = charge_delay
+    data['properties[recurring_price]'] = 16.99;
 
     jQuery.ajax({
         type: 'POST',

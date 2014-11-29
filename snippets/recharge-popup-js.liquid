@@ -27,6 +27,8 @@ function hideRechargePopup() {
     goToCart();
 }
 
+var rechargeVariantAdded = null;
+
 function addToCartRecurring(element, variant_id) {
 
     var button = jQuery(element);
@@ -37,6 +39,8 @@ function addToCartRecurring(element, variant_id) {
         "quantity": 1,
         "id": variant_id
     }
+
+    rechargeVariantAdded = variant_id;
 
     data['properties[charge_delay]'] = charge_delay
     data['properties[recurring_price]'] = 16.99;
@@ -62,10 +66,14 @@ function goToCart() {
     location.href = "/cart";
 }
 
-function removeFromCart(variant_id) {
+function removeFromCart() {
+
+    if (!rechargeVariantAdded) {
+        return;
+    }
 
     var data = {updates: {}};
-    data.updates[variant_id] = 0;
+    data.updates[rechargeVariantAdded] = 0;
 
     jQuery.ajax({
         type: 'POST',

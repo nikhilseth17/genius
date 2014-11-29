@@ -54,7 +54,7 @@ function addToCartRecurring(element, variant_id) {
         dataType: 'json',
         success: function() {
 
-            button.closest(".products-container").find(".addtocart input").hide();
+            button.closest(".products-container").find(".product-button input").hide();
             button.show();
             button.val("Added");
         },

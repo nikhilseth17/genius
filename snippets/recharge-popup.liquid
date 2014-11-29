@@ -1,5 +1,4 @@
 <div id="recharge-popup" class="portBox">
-
 <div id="subs-popup-wrapper">
    <div id="subs-popup">
    <div class="subtitle col-xs-18 col-md-12"><span class="excl-offer">Exclusive Offer:</span> <span class="free-refill">Get a FREE Refill Pack!</span></div>
@@ -8,10 +7,10 @@
    <div class="products-wrapper">
 
    <div class="subpop_products col-xs-18 col-md-12">
-    <div class="col-md-3 imagetab"><img src="images/1.jpg" title="" /></div>
+    <div class="col-md-3 imagetab"><img src="images/1.jpg" title=""></div>
     <div class="col-md-6 titletab">
         <h1 class="middletitle">Breathe 4-Pack Auto-Ship</h1>
-        <h3 class="middlesubtitle">Aromatherapy with Eucalyptus, Peppermint & Lemon</h3>
+        <h3 class="middlesubtitle">Aromatherapy with Eucalyptus, Peppermint &amp; Lemon</h3>
     </div>
     <div class="col-md-3 pricetab">
         <h1 class="price">$0.00</h1>
@@ -27,20 +26,21 @@
         days
 
         </div>
-        <div class="addtocart"><input type="submit" value="Add to cart" /></div>
+        <div class="addtocart"><input type="submit" value="Add to cart"></div>
     </div>
 
    </div>
+
 
     </div>
 
     <div class="products-wrapper">
 
    <div class="subpop_products col-xs-18 col-md-12">
-    <div class="col-md-3 imagetab"><img src="images/2.jpg" title="" /></div>
+    <div class="col-md-3 imagetab"><img src="images/2.jpg" title=""></div>
     <div class="col-md-6 titletab">
         <h1 class="middletitle">Passion 4-Pack Auto-Ship</h1>
-        <h3 class="middlesubtitle">Aromatherapy with Orange, Cinnamon & Patchouli</h3>
+        <h3 class="middlesubtitle">Aromatherapy with Orange, Cinnamon &amp; Patchouli</h3>
     </div>
     <div class="col-md-3 pricetab">
         <h1 class="price">$0.00</h1>
@@ -56,20 +56,22 @@
         days
 
         </div>
-        <div class="addtocart"><input type="submit" value="Add to cart" /></div>
+        <div class="addtocart"><input type="submit" value="Add to cart"></div>
     </div>
 
    </div>
 
+
     </div>
+
 
     <div class="products-wrapper">
 
    <div class="subpop_products col-xs-18 col-md-12">
-    <div class="col-md-3 imagetab"><img src="images/3.jpg" title="" /></div>
+    <div class="col-md-3 imagetab"><img src="images/3.jpg" title=""></div>
     <div class="col-md-6 titletab">
         <h1 class="middletitle">Night 4-Pack Auto-Ship</h1>
-        <h3 class="middlesubtitle">Aromatherapy with Lavender, Bergamot & Sage</h3>
+        <h3 class="middlesubtitle">Aromatherapy with Lavender, Bergamot &amp; Sage</h3>
     </div>
     <div class="col-md-3 pricetab">
         <h1 class="price">$0.00</h1>
@@ -85,20 +87,22 @@
         days
 
         </div>
-        <div class="addtocart"><input type="submit" value="Add to cart" /></div>
+        <div class="addtocart"><input type="submit" value="Add to cart"></div>
     </div>
 
    </div>
 
+
     </div>
+
 
     <div class="products-wrapper">
 
    <div class="subpop_products col-xs-18 col-md-12">
-    <div class="col-md-3 imagetab"><img src="images/1.jpg" title="" /></div>
+    <div class="col-md-3 imagetab"><img src="images/1.jpg" title=""></div>
     <div class="col-md-6 titletab">
         <h1 class="middletitle">Breathe 4-Pack Auto-Ship</h1>
-        <h3 class="middlesubtitle">Aromatherapy with Eucalyptus, Peppermint & Lemon</h3>
+        <h3 class="middlesubtitle">Aromatherapy with Eucalyptus, Peppermint &amp; Lemon</h3>
     </div>
     <div class="col-md-3 pricetab">
         <h1 class="price">$0.00</h1>
@@ -114,28 +118,35 @@
         days
 
         </div>
-        <div class="addtocart"><input type="submit" value="Add to cart" /></div>
+        <div class="addtocart"><input type="submit" value="Add to cart"></div>
     </div>
 
-   </div>
+    </div>
 
     </div>
 
    </div>
    <div class="continue col-xs-18 col-md-12"><span>No Thanks</span>
-    <input type="submit" value="Continue" />
+    <input type="submit" value="Continue">
   </div>
    </div>
 </div>
 
-{{ 'portBox.css' | asset_url | stylesheet_tag }}
-
 <style>
-@charset "utf-8";
-/* CSS Document */
-
-img{max-width:100%;}
-h1,h2,h3,h4,h5,h6{ margin:0; padding:0;}
+.portBox {
+    background: none repeat scroll 0 0 #ffffff;
+    border: 4px solid #d9d9d9;
+    border-radius: 10px;
+    box-sizing: border-box;
+    display: none;
+    height: 465px;
+    padding: 10px 20px 5px;
+    position: absolute;
+    text-align: left;
+    width: 50%;
+    z-index: 1001;
+    overflow-y: scroll;
+}
 
 #subs-popup-wrapper {
   margin: auto;
@@ -228,9 +239,7 @@ h1,h2,h3,h4,h5,h6{ margin:0; padding:0;}
   bottom: 0;
   margin: auto;
   padding: 0;
-  position: absolute;
   text-align: right;
-  width: 97%;
 }
 .continue input {
   background: none repeat scroll 0 0 #00a2de;

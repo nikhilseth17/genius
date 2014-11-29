@@ -1,6 +1,9 @@
+{{ 'portBox.js' | asset_url | script_tag }}
+
 <script type="text/javascript">
 function showRechargePopup() {
-    $("#recharge-popup").show();
+
+    $("#recharge-popup").display({});
     addStarterKit();
 }
 

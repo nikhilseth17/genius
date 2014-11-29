@@ -1,99 +1,290 @@
-<div id="recharge-popup" style="display: none">
-<div>
-    <span class="close" onclick="hideRechargePopup()">Close</span>
-    <h1>Test
-    </h1>
+<div id="recharge-popup" class="portBox">
 
-    <div class="form-row row popup-products">
-      <div class="col-md-12">
-        Breathe 15% Off Auto renew
-        <input type="button" class="btn btn-primary" onclick="addToCartRecurring(this, 1036461908)" value="Add to cart">
-        <select class="days">
-          <option>30</option>
-          <option>60</option>
-          <option>90</option>
-        </select>
-      </div>
-      <br>
+<div id="subs-popup-wrapper">
+   <div id="subs-popup">
+   <div class="subtitle col-xs-18 col-md-12"><span class="excl-offer">Exclusive Offer:</span> <span class="free-refill">Get a FREE Refill Pack!</span></div>
+   <div class="sub_subtitle col-xs-18 col-md-12">Today only, get a free refill of your choosing; you will be billed $16.99 /mo. when your auto-ship begins in 30, 60 or 90 days</div>
 
-      <div class="col-md-12">
-        Product 2
-        <input type="button" class="btn btn-primary" onclick="addToCartRecurring(this, 932944069)" value="Add to cart">
-        <select class="days">
-          <option>30</option>
-          <option>60</option>
-          <option>90</option>
-        </select>
-      </div>
-      <br>
+   <div class="products-wrapper">
 
-      <div class="col-md-12">
-        Product 3
-        <input type="button" class="btn btn-primary" onclick="addToCartRecurring(this, 933158081)" value="Add to cart">
-        <select class="days">
-          <option>30</option>
-          <option>60</option>
-          <option>90</option>
-        </select>
-      </div>
-      <br>
-
-      <div class="col-md-12">
-        Product 4
-        <input type="button" class="btn btn-primary" onclick="addToCartRecurring(this, 933148465)" value="Add to cart">
-        <select class="days">
-          <option>30</option>
-          <option>60</option>
-          <option>90</option>
-        </select>
-      </div>
-      <br>
-
-      <div class="col-md-12">
-        Product 5
-        <input type="button" class="btn btn-primary" onclick="addToCartRecurring(this, 933153397)" value="Add to cart">
-        <select class="days">
-          <option>30</option>
-          <option>60</option>
-          <option>90</option>
-        </select>
-      </div>
-      <br>
-
-      <div class="col-md-12">
-        Product 6
-        <input type="button" class="btn btn-primary" onclick="addToCartRecurring(this, 932943453)" value="Add to cart">
-        <select class="days">
-          <option>30</option>
-          <option>60</option>
-          <option>90</option>
-        </select>
-      </div>
-      <br>
+   <div class="subpop_products col-xs-18 col-md-12">
+    <div class="col-md-3 imagetab"><img src="images/1.jpg" title="" /></div>
+    <div class="col-md-6 titletab">
+        <h1 class="middletitle">Breathe 4-Pack Auto-Ship</h1>
+        <h3 class="middlesubtitle">Aromatherapy with Eucalyptus, Peppermint & Lemon</h3>
     </div>
-    <br><br>
+    <div class="col-md-3 pricetab">
+        <h1 class="price">$0.00</h1>
+        <div class="days">
+        Delivery every
+        <div class="input-append spinner" data-trigger="spinner" id="customize-spinner">
+          <input type="text" value="0" data-max="200" data-min="0" data-step="2">
+          <div class="add-on">
+            <a href="javascript:;" class="spin-up" data-spin="up"><i class="icon-sort-up"></i></a>
+            <a href="javascript:;" class="spin-down" data-spin="down"><i class="icon-sort-down"></i></a>
+          </div>
+        </div>
+        days
 
-    <div class="form-row row buy-btn">
-      <div class="col-md-12" id="buy-btn-container">
-        <input type="button" class="btn btn-primary" onclick="location.href = '/cart'" value="Go to cart">
-        <input type="button" class="btn btn-primary" onclick="removeFromCart()" value="No thanks">
-      </div>
+        </div>
+        <div class="addtocart"><input type="submit" value="Add to cart" /></div>
     </div>
 
+   </div>
+
+    </div>
+
+    <div class="products-wrapper">
+
+   <div class="subpop_products col-xs-18 col-md-12">
+    <div class="col-md-3 imagetab"><img src="images/2.jpg" title="" /></div>
+    <div class="col-md-6 titletab">
+        <h1 class="middletitle">Passion 4-Pack Auto-Ship</h1>
+        <h3 class="middlesubtitle">Aromatherapy with Orange, Cinnamon & Patchouli</h3>
+    </div>
+    <div class="col-md-3 pricetab">
+        <h1 class="price">$0.00</h1>
+        <div class="days">
+        Delivery every
+        <div class="input-append spinner" data-trigger="spinner" id="customize-spinner">
+          <input type="text" value="0" data-max="200" data-min="0" data-step="2">
+          <div class="add-on">
+            <a href="javascript:;" class="spin-up" data-spin="up"><i class="icon-sort-up"></i></a>
+            <a href="javascript:;" class="spin-down" data-spin="down"><i class="icon-sort-down"></i></a>
+          </div>
+        </div>
+        days
+
+        </div>
+        <div class="addtocart"><input type="submit" value="Add to cart" /></div>
+    </div>
+
+   </div>
+
+    </div>
+
+    <div class="products-wrapper">
+
+   <div class="subpop_products col-xs-18 col-md-12">
+    <div class="col-md-3 imagetab"><img src="images/3.jpg" title="" /></div>
+    <div class="col-md-6 titletab">
+        <h1 class="middletitle">Night 4-Pack Auto-Ship</h1>
+        <h3 class="middlesubtitle">Aromatherapy with Lavender, Bergamot & Sage</h3>
+    </div>
+    <div class="col-md-3 pricetab">
+        <h1 class="price">$0.00</h1>
+        <div class="days">
+        Delivery every
+        <div class="input-append spinner" data-trigger="spinner" id="customize-spinner">
+          <input type="text" value="0" data-max="200" data-min="0" data-step="2">
+          <div class="add-on">
+            <a href="javascript:;" class="spin-up" data-spin="up"><i class="icon-sort-up"></i></a>
+            <a href="javascript:;" class="spin-down" data-spin="down"><i class="icon-sort-down"></i></a>
+          </div>
+        </div>
+        days
+
+        </div>
+        <div class="addtocart"><input type="submit" value="Add to cart" /></div>
+    </div>
+
+   </div>
+
+    </div>
+
+    <div class="products-wrapper">
+
+   <div class="subpop_products col-xs-18 col-md-12">
+    <div class="col-md-3 imagetab"><img src="images/1.jpg" title="" /></div>
+    <div class="col-md-6 titletab">
+        <h1 class="middletitle">Breathe 4-Pack Auto-Ship</h1>
+        <h3 class="middlesubtitle">Aromatherapy with Eucalyptus, Peppermint & Lemon</h3>
+    </div>
+    <div class="col-md-3 pricetab">
+        <h1 class="price">$0.00</h1>
+        <div class="days">
+        Delivery every
+        <div class="input-append spinner" data-trigger="spinner" id="customize-spinner">
+          <input type="text" value="0" data-max="200" data-min="0" data-step="2">
+          <div class="add-on">
+            <a href="javascript:;" class="spin-up" data-spin="up"><i class="icon-sort-up"></i></a>
+            <a href="javascript:;" class="spin-down" data-spin="down"><i class="icon-sort-down"></i></a>
+          </div>
+        </div>
+        days
+
+        </div>
+        <div class="addtocart"><input type="submit" value="Add to cart" /></div>
+    </div>
+
+   </div>
+
+    </div>
+
+   </div>
+   <div class="continue col-xs-18 col-md-12"><span>No Thanks</span>
+    <input type="submit" value="Continue" />
+  </div>
+   </div>
 </div>
-</div>
+
+{{ 'portBox.css' | asset_url | stylesheet_tag }}
 
 <style>
-#recharge-popup {
-  position: fixed;
-  top: 30%;
-  left: 30%;
-  width: 500px;
-  height: 400px;
-  z-index: 1000;
-  background: white;
-  display: none;
-  border: 1px solid;
-  padding: 20px;
+@charset "utf-8";
+/* CSS Document */
+
+img{max-width:100%;}
+h1,h2,h3,h4,h5,h6{ margin:0; padding:0;}
+
+#subs-popup-wrapper {
+  margin: auto;
+  width: 100%;
+}
+#subs-popup {
+  padding-bottom:50px;
+  clear: both;
+  float: left;
+  width: 100%;
+ font-family: 'proxima_nova_rgregular';
+  margin: -10px 0 0;
+  word-wrap: break-word;
+
+}
+.middletitle {
+  font-size: 18px;
+   font-family: 'proxima_novasemibold';
+ padding: 18px 0 3px;
+}
+#subs-popup-wrapper {
+  margin: 10px auto auto;
+  width: 100%;
+}
+.middlesubtitle {
+  color: #5e5e5e;
+  font-size: 11px;
+  font-family: 'proxima_nova_rgregular';
+}
+.price {
+  font-family: "proxima_nova_rgregular";
+  font-size: 24px;
+  margin-right: 15px;
+  padding: 10px 0 3px;
+  text-align: right;
+}
+.days {
+  font-family: myriad pro;
+  font-size: 10px;
+  padding: 0;
+  text-align: right;
+}
+
+.excl-offer {
+  color: #ff8e2d;
+  font-size: 30px;
+  font-family: 'proxima_novaextrabold';
+}
+.free-refill {
+  color: #ff8e2d;
+  font-size: 30px;
+ font-family: 'proxima_novasemibold';
+}
+.sub_subtitle {
+  color: #525252;
+  font-size: 11px;
+  font-weight: normal;
+  margin-bottom: 15px;
+  margin-top: -5px;
+  font-family: 'proxima_nova_rgregular';
+}
+.subpop_products {
+  border: 1px solid #d9d9d9;
+  float: left;
+  margin: 5px 0;
+  padding: 5px 0;
+  width: 100%;
+}
+
+.addtocart {
+  margin-right: 5px;
+  text-align: right;
+}
+.addtocart input {
+  background: none repeat scroll 0 0 #00a2de;
+  border: medium none;
+  border-radius: 2px;
+  color: #fff;
+  font-size: 14px;
+  margin-top: 8px;
+  padding: 3px 5px;
+  text-align: center;
+}
+.subtitle {
+  line-height: 28px;
+  margin: 0;
+}
+.continue {
+  background: none repeat scroll 0 0 #fff;
+  bottom: 0;
+  margin: auto;
+  padding: 0;
+  position: absolute;
+  text-align: right;
+  width: 97%;
+}
+.continue input {
+  background: none repeat scroll 0 0 #00a2de;
+  border: medium none;
+  border-radius: 2px;
+  color: #fff;
+  font-family: "HelveticaNeueLight";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: normal;
+  margin-top: 10px;
+  padding: 4px 12px;
+  text-shadow:1px 1px 2px #000;
+}
+.continue.col-xs-18.col-md-12 > span {
+  font-family: "proxima_nova_rgregular";
+  font-size: 13px;
+  margin: 0 5px;
+  position: relative;
+    text-decoration: underline;
+    top: -5px;
+}
+
+
+@media only screen and (max-width: 992px){
+
+.portBox {
+width: 90%;
+}
+.products-wrapper {
+  height: auto;
+}
+.pricetab, .titletab {
+  float: left;
+  width: 50%;
+}
+.middletitle {
+  line-height: 24px;
+}
+.continue {
+  margin: auto;
+  width: 96%;
+}
+
+}
+
+@media only screen and (max-width: 640px){
+.pricetab, .titletab {
+  float: left;
+  width: 100%;
+}
+.price,.addtocart, .days {
+  text-align: left;
+}
+
 }
 </style>

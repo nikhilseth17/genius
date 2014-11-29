@@ -1,5 +1,3 @@
-{{ 'portBox.js' | asset_url | script_tag }}
-
 <script type="text/javascript">
 function showRechargePopup() {
 
@@ -56,7 +54,7 @@ function addToCartRecurring(element, variant_id) {
         dataType: 'json',
         success: function() {
 
-            button.closest(".popup-products").find("input").hide();
+            button.closest(".products-container").find(".addtocart input").hide();
             button.show();
             button.val("Added");
         },
@@ -109,8 +107,6 @@ jQuery(document).ready(function(){
             event.preventDefault()
             showRechargePopup();
         })
-        console.log("{{product.id}}");
-        console.log("{{product.variants[0].id}}");
     }
 })
 </script>

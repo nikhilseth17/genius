@@ -1,0 +1,56 @@
+<script type="text/javascript">
+function hasChargeDelay(item) {
+    return !!item.properties && !!item.properties.charge_delay;
+}
+
+function hasStarterKit(data) {
+    for (var i=0; i < data.items.length; i++) {
+        if (data.items[i].variant_id == 235478761) {
+            return true;
+        }
+    }
+    return false;
+}
+
+function goToCart() {
+    location.href = "/cart";
+}
+
+jQuery.ajax({
+    type: 'GET',
+    url: '/cart.js',
+    dataType: 'json',
+    success: function(data) {
+
+        if (hasStarterKit(data)) {
+
+            var removeProducts = {};
+            for (var i=0; i < data.items.length; i++) {
+                var item = data.items[i];
+                if (hasChargeDelay(item)) {
+                    removeProducts[item.variant_id] = 0;
+                };
+            }
+
+            if (!jQuery.isEmptyObject(hasStarterKit)) {
+
+                var data = {updates: removeProducts};
+
+                jQuery.ajax({
+                    type: 'POST',
+                    url: '/cart/update.js',
+                    data: data,
+                    dataType: 'json',
+                    success: function() {
+                        goToCart();
+                    },
+                    fail: function() {
+                    }
+                });
+            }
+        }
+    },
+    fail: function() {
+    }
+});
+</script>

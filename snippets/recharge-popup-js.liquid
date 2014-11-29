@@ -1,6 +1,10 @@
 <script type="text/javascript">
 function showRechargePopup() {
-    jQuery.fancybox(jQuery("#popup").html());
+    $("#recharge-popup").show();
+}
+
+function hideRechargePopup() {
+    $("#recharge-popup").hide();
 }
 
 function addToCartRecurring(element, variant_id) {
@@ -9,9 +13,23 @@ function addToCartRecurring(element, variant_id) {
     var container = button.parent();
     var charge_delay = container.find(".days").val();
 
-    console.log(charge_delay);
+    var starterData = {
+        "quantity": 1,
+        "id": 533381933
+    }
 
-    data = {
+    jQuery.ajax({
+        type: 'POST',
+        url: '/cart/add.js',
+        data: starterData,
+        dataType: 'json',
+        success: function() {
+        },
+        fail: function() {
+        }
+    });
+
+    var data = {
         "quantity": 1,
         "id": variant_id
     }

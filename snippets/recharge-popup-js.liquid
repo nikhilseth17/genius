@@ -71,7 +71,7 @@ function goToCart() {
 function removeFromCart() {
 
     if (!rechargeVariantAdded) {
-        return;
+        goToCart();
     }
 
     var data = {updates: {}};

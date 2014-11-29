@@ -34,7 +34,7 @@ function addToCartRecurring(element, variant_id) {
 
     var button = jQuery(element);
     var container = button.parent();
-    var shipping_interval_frequency = container.find(".days-input").val();
+    var shipping_interval_frequency = container.parent().find(".days-input").val();
 
     var data = {
         "quantity": 1,

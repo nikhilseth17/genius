@@ -1,4 +1,4 @@
-<div id="recharge-popup" class="portBox">
+<div id="recharge-popup">
 <div id="subs-popup-wrapper">
    <div id="subs-popup">
    <div class="subtitle col-xs-18 col-md-12"><span class="excl-offer">Exclusive Offer:</span> <span class="free-refill">Get a FREE Refill Pack!</span></div>
@@ -133,7 +133,8 @@
 </div>
 
 <style>
-.portBox {
+
+#recharge-popup {
     background: none repeat scroll 0 0 #ffffff;
     border: 4px solid #d9d9d9;
     border-radius: 10px;
@@ -159,15 +160,14 @@
   clear: both;
   float: left;
   width: 100%;
- font-family: 'proxima_nova_rgregular';
+  font-family: 'proxima_nova_rgregular';
   margin: -10px 0 0;
   word-wrap: break-word;
-
 }
 .middletitle {
   font-size: 18px;
-   font-family: 'proxima_novasemibold';
- padding: 18px 0 3px;
+  font-family: 'proxima_novasemibold';
+  padding: 18px 0 3px;
 }
 #subs-popup-wrapper {
   margin: 10px auto auto;
@@ -261,41 +261,8 @@
   font-size: 13px;
   margin: 0 5px;
   position: relative;
-    text-decoration: underline;
-    top: -5px;
+  text-decoration: underline;
+  top: -5px;
 }
 
-
-@media only screen and (max-width: 992px){
-
-.portBox {
-width: 90%;
-}
-.products-wrapper {
-  height: auto;
-}
-.pricetab, .titletab {
-  float: left;
-  width: 50%;
-}
-.middletitle {
-  line-height: 24px;
-}
-.continue {
-  margin: auto;
-  width: 96%;
-}
-
-}
-
-@media only screen and (max-width: 640px){
-.pricetab, .titletab {
-  float: left;
-  width: 100%;
-}
-.price,.addtocart, .days {
-  text-align: left;
-}
-
-}
 </style>

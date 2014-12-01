@@ -18,7 +18,7 @@ function isRefillProduct(item) {
 function checkForRefillProducts() {
 
     for (var i=0; i < refillProducts.length; i++) {
-        $("#" + refillProducts[i]).attr("readonly", true);
+        $("#updates_" + refillProducts[i]).attr("readonly", true);
     }
 }
 

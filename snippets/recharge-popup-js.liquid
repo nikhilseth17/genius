@@ -97,6 +97,7 @@ function isMobile() {
     return check;
 }
 
+{% if shop.metafields.refill-modal.enable-modal == "yes" %}
 jQuery(document).ready(function(){
 
     if (!isMobile()) {
@@ -115,4 +116,5 @@ jQuery(document).ready(function(){
         });
     }
 })
+{% endif %}
 </script>

@@ -111,6 +111,12 @@ jQuery(document).ready(function(){
             event.preventDefault()
             showRechargePopup();
         })
+
+        $(document).keyup(function(e){
+            if(e.keyCode === 27) {
+                $("#recharge-popup").hide();
+            }
+        });
     }
 })
 </script>

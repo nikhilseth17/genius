@@ -1,4 +1,5 @@
 <div id="recharge-popup">
+<div class="content">
 <div class="subs-popup-wrapper">
 
    <a href="#" class="close" onclick="goToCart()"><img src="{{'closepopup.png' | asset_url }}" title="close" class="close_image"></a>
@@ -176,14 +177,13 @@
 
   </div>
 </div>
+</div>
 
 <style>
 #recharge-popup img{max-width:100%;}
 #recharge-popup h1,h2,h3,h4,h5,h6{ margin:0; padding:0;}
 
 #recharge-popup {
-    background: none repeat scroll 0 0 #ffffff;
-
     border: 3px solid rgba(0,0,0,0);
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
@@ -203,6 +203,9 @@
     position: fixed;
     top: 5%;
     left: 25%;
+}
+#recharge-popup .content {
+    background: none repeat scroll 0 0 #ffffff;
 }
 #recharge-popup .subs-popup-wrapper {
 

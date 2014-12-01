@@ -23,19 +23,11 @@
         <div class="days">
         Deliver every
 
-        <select name="shipping_interval_frequency" id="shipping_interval_frequency">
+        <select class="product-days-select">
             <option value="30">30</option>
             <option value="60">60</option>
             <option value="90">90</option>
         </select>
-
-        <div class="input-append spinner" data-trigger="spinner" id="customize-spinner">
-          <input type="text" value="30" data-max="90" data-min="30" data-step="30" class="days-input">
-          <div class="add-on">
-            <a href="javascript:;" class="spin-up" data-spin="up"><i class="icon-sort-up"></i></a>
-            <a href="javascript:;" class="spin-down" data-spin="down"><i class="icon-sort-down"></i></a>
-          </div>
-        </div>
         days
 
         </div>
@@ -55,13 +47,11 @@
         <h1 class="price">$0.00</h1>
         <div class="days">
         Deliver every
-        <div class="input-append spinner" data-trigger="spinner" id="customize-spinner">
-          <input type="text" value="30" data-max="90" data-min="30" data-step="30" class="days-input">
-          <div class="add-on">
-            <a href="javascript:;" class="spin-up" data-spin="up"><i class="icon-sort-up"></i></a>
-            <a href="javascript:;" class="spin-down" data-spin="down"><i class="icon-sort-down"></i></a>
-          </div>
-        </div>
+        <select class="product-days-select">
+            <option value="30">30</option>
+            <option value="60">60</option>
+            <option value="90">90</option>
+        </select>
         days
 
         </div>
@@ -81,13 +71,11 @@
         <h1 class="price">$0.00</h1>
         <div class="days">
         Deliver every
-        <div class="input-append spinner" data-trigger="spinner" id="customize-spinner">
-          <input type="text" value="30" data-max="90" data-min="30" data-step="30" class="days-input">
-          <div class="add-on">
-            <a href="javascript:;" class="spin-up" data-spin="up"><i class="icon-sort-up"></i></a>
-            <a href="javascript:;" class="spin-down" data-spin="down"><i class="icon-sort-down"></i></a>
-          </div>
-        </div>
+        <select class="product-days-select">
+            <option value="30">30</option>
+            <option value="60">60</option>
+            <option value="90">90</option>
+        </select>
         days
 
         </div>
@@ -107,13 +95,11 @@
         <h1 class="price">$0.00</h1>
         <div class="days">
         Deliver every
-        <div class="input-append spinner" data-trigger="spinner" id="customize-spinner">
-          <input type="text" value="30" data-max="90" data-min="30" data-step="30" class="days-input">
-          <div class="add-on">
-            <a href="javascript:;" class="spin-up" data-spin="up"><i class="icon-sort-up"></i></a>
-            <a href="javascript:;" class="spin-down" data-spin="down"><i class="icon-sort-down"></i></a>
-          </div>
-        </div>
+        <select class="product-days-select">
+            <option value="30">30</option>
+            <option value="60">60</option>
+            <option value="90">90</option>
+        </select>
         days
 
         </div>
@@ -133,13 +119,11 @@
         <h1 class="price">$0.00</h1>
         <div class="days">
         Deliver every
-        <div class="input-append spinner" data-trigger="spinner" id="customize-spinner">
-          <input type="text" value="30" data-max="90" data-min="30" data-step="30" class="days-input">
-          <div class="add-on">
-            <a href="javascript:;" class="spin-up" data-spin="up"><i class="icon-sort-up"></i></a>
-            <a href="javascript:;" class="spin-down" data-spin="down"><i class="icon-sort-down"></i></a>
-          </div>
-        </div>
+        <select class="product-days-select">
+            <option value="30">30</option>
+            <option value="60">60</option>
+            <option value="90">90</option>
+        </select>
         days
 
         </div>
@@ -159,13 +143,11 @@
         <h1 class="price">$0.00</h1>
         <div class="days">
         Deliver every
-        <div class="input-append spinner" data-trigger="spinner" id="customize-spinner">
-          <input type="text" value="30" data-max="90" data-min="30" data-step="30" class="days-input">
-          <div class="add-on">
-            <a href="javascript:;" class="spin-up" data-spin="up"><i class="icon-sort-up"></i></a>
-            <a href="javascript:;" class="spin-down" data-spin="down"><i class="icon-sort-down"></i></a>
-          </div>
-        </div>
+        <select class="product-days-select">
+            <option value="30">30</option>
+            <option value="60">60</option>
+            <option value="90">90</option>
+        </select>
         days
 
         </div>
@@ -245,11 +227,11 @@
   margin-bottom: 7px;
 }
 #recharge-popup .days {
-  font-family: myriad pro;
-  font-size: 10px;
+  font-family: 'ProximaNova-Regular';
+  font-size: 11px;
   padding: 0;
   text-align: right;
-  margin-bottom: 0px;
+  margin-bottom: 10px;
 }
 
 #recharge-popup .excl-offer {
@@ -330,7 +312,9 @@
   top: 5px;
   right: 10px;
 }
-
+#recharge-popup .product-days-select {
+  height: 20px;
+}
 #recharge-popup .products-container {
   height: 425px;
   overflow-y: scroll;
@@ -371,5 +355,4 @@
   border-radius: 0px 4px 4px 0px;
   padding: 0;
 }
-
 </style>

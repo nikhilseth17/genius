@@ -3,9 +3,9 @@ function hasChargeDelay(item) {
     return !!item.properties && !!item.properties.charge_delay;
 }
 
-function isRefillProduct(item) {
+var refillProducts = [1036461908, 1036463356, 1036467980, 1036466560, 1036469584, 1036470824];
 
-    var refillProducts = [1036461908, 1036463356, 1036467980, 1036466560, 1036469584, 1036470824];
+function isRefillProduct(item) {
 
     for (var i=0; i < refillProducts.length; i++) {
         if (refillProducts[i] == item.variant_id) {
@@ -13,6 +13,13 @@ function isRefillProduct(item) {
         }
     }
     return false;
+}
+
+function checkForRefillProducts() {
+
+    for (var i=0; i < refillProducts.length; i++) {
+        $("#" + refillProducts[i]).attr("readonly", true);
+    }
 }
 
 function hasStarterKit(data) {
@@ -65,4 +72,9 @@ jQuery.ajax({
     fail: function() {
     }
 });
+
+$(document).ready(function() {
+    checkForRefillProducts();
+})
+
 </script>

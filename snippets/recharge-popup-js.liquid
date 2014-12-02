@@ -1,3 +1,5 @@
+{{ 'jquery.slimscroll.js' | asset_url | script_tag }}
+
 <script type="text/javascript">
 function showRechargePopup() {
 
@@ -109,10 +111,14 @@ jQuery(document).ready(function(){
             showRechargePopup();
         })
 
-        $(document).keyup(function(e){
+        jQuery(document).keyup(function(e){
             if(e.keyCode === 27) {
-                $("#recharge-popup").hide();
+                jQuery("#recharge-popup").hide();
             }
+        });
+
+        jQuery('.products-container').slimscroll({
+            height: 'auto'
         });
     }
 })

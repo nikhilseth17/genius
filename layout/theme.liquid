@@ -75,7 +75,7 @@ _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
   {% if shop.metafields.offer-count-down.enable-banner %}
     <div class="limited-time-baner hidden-xs hidden-sm" {% if shop.metafields.offer-count-down.background-color %} style="background-color: {{ shop.metafields.offer-count-down.background-color }}" {% endif %}>
       <div class="banner-container container" style="background-image: url({{ shop.metafields.offer-count-down.background }});">
-        {% if shop.metafields.enable-clock %}
+        {% if shop.metafields.offer-count-down.enable-clock %}
         <script type="application/javascript">
 
         var myCountdownTest = new Countdown({

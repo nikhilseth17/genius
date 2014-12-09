@@ -626,8 +626,12 @@ _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
                               $('#promoModal').modal('hide');
                                 //$('#promoModal2').modal('show');
                                 //DXXKL52
-                            } else 
+                            } else {
+                              e.preventDefault();
                               $("#contact_email2").css('border-color', 'red');
+                              return false;
+
+                            }
                             
                           });
                         }

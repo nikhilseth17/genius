@@ -492,9 +492,9 @@ _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
           <img class="top-pattern" src="{{ 'exit_floral_top_copy.png' | asset_url }}" alt="" />
           <img class="bottom-pattern" src="{{ 'exit_floral_Pattern_copy.png' | asset_url }}" alt="" />
           <img class="exit-logo" src="{{ 'exit_logo.png' | asset_url }}">
-          <div class="text-line-1">Enter Your Email To Get</div>
+          <div class="text-line-1">{{ shop.metafields.exit-modal.s1-header-text }}</div>
           <div class="text-line-ul"></div>
-          <div class="text-line-2"><strong>$10</strong> OFF</div>
+          <div class="text-line-2">{{ shop.metafields.exit-modal.s1-offer-text }}</div>
           <img class="your-starter-kit" src="{{ 'your_starter_kit_71c86c08-6030-4d77-bbb6-a451e9ce7a0f.jpg' | asset_url }}" alt="" />
 
 
@@ -510,14 +510,14 @@ _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
               <input type="text" id="contact_email2" name="contact[email]" placeholder="ENTER YOUR EMAIL HERE" class="form-control">
               <div class="text-line-3">For Your Exclusive Offer</div>
 
-              <input type="image" id="promo-submit-btn" src="{{ 'btn_1.jpg' | asset_url }}">
+              <button type="submit" class="btn btn-primary btn-lg" id="promo-submit-btn">{{ shop.metafields.exit-modal.s1-button-text }}</button>
             {% endform %}
 
 
 
             </form>
           </div>
-          <div class="close-link modal-close-link" data-dismiss="modal" aria-hidden="true">No thanks, I'd rather pay full price for this awesome aromatherapy diffuser</div>
+          <div class="close-link modal-close-link" data-dismiss="modal" aria-hidden="true">{{ shop.metafields.exit-modal.s1-decline-text }}</div>
         </div>
 
       </div>
@@ -531,9 +531,9 @@ _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
     <div class="modal-content">
       <img class="top-pattern-2" src="{{ 'exit_floral_top_copy.png' | asset_url }}" alt="" />
       <img class="logo-2" src="{{ 'exit_logo.png' | asset_url }}">
-      <div class="text-line-2-1">Your <strong>$10 Off</strong> Code Is Ready</div>
+      <div class="text-line-2-1">{{ shop.metafields.exit-modal.s2-announce-text }}</div>
       <div class="text-line-2-2">Copy and paste code at checkout</div>
-      <div class="text-line-2-3">WXTMV4</div>
+      <div class="text-line-2-3">{{ shop.metafields.exit-modal.s2-coupon-code }}</div>
       <a href="http://essioshower.com/products/aromatherapy-shower-kit"><img class="go-ahead-2" src="{{ 'go_ahead.jpg' | asset_url }}" alt="" /></a>
       <a href="http://essioshower.com/products/aromatherapy-shower-kit"><img class="starter_kit" src="{{ 'exit_product_copy.png' | asset_url }}"></a>
           </form>
@@ -602,7 +602,7 @@ _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
                 }
             }
 
-            {% if page.url != '/pages/giveaway' and page.url != '/pages/invite' %}
+            {% if page.url != '/pages/giveaway' and page.url != '/pages/invite' and shop.metafields.exit-modal.enable-modal == 'yes' %}
               $( document ).ready(function() {
 
 
@@ -618,12 +618,21 @@ _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
                           $('#promoModal').modal('show');
 
                           $("#promo-submit-btn").click(function(e){
-                            $.cookie('promo_popup_step2', '1', { path: '/', expires: 120 });
-                           // e.preventDefault();
-                            //$("#promoModal form").submit(function(e){ /*e.preventDefault(); */});
-                            $('#promoModal').modal('hide');
-                            //$('#promoModal2').modal('show');
-                            //DXXKL52
+
+                            if($("#contact_email2").val()) {
+                              $.cookie('promo_popup_step2', '1', { path: '/', expires: 120 });
+                               // e.preventDefault();
+                                //$("#promoModal form").submit(function(e){ /*e.preventDefault(); */});
+                              $('#promoModal').modal('hide');
+                                //$('#promoModal2').modal('show');
+                                //DXXKL52
+                            } else {
+                              e.preventDefault();
+                              $("#contact_email2").css('border-color', 'red');
+                              return false;
+
+                            }
+                            
                           });
                         }
 

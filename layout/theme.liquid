@@ -69,12 +69,32 @@ _kms('//i.kissmetrics.com/i.js');
 _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
 </script>
 
+<style type="text/css">
+
+
+@media (min-width: 1200px) {
+  .banner-container {
+    background-image: url({{ shop.metafields.offer-count-down.background }});
+  }
+  
+}
+
+@media (min-width: 992px) {
+  .banner-container {
+    background-image: url({{ shop.metafields.offer-count-down.background-lg }});
+  }
+  
+}
+
+
+</style>
+
 </head>
 
 <body class="essio banner-enabled {% if shop.metafields.offer-count-down.enable-banner %}banner-enabled{% endif %}">
   {% if shop.metafields.offer-count-down.enable-banner %}
     <div class="limited-time-baner hidden-xs hidden-sm" {% if shop.metafields.offer-count-down.background-color %} style="background-color: {{ shop.metafields.offer-count-down.background-color }}" {% endif %}>
-      <div class="banner-container container" style="background-image: url({{ shop.metafields.offer-count-down.background }});">
+      <div class="banner-container container" >
         {% if shop.metafields.offer-count-down.enable-clock %}
         <script type="application/javascript">
 

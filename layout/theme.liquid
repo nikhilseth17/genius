@@ -90,7 +90,7 @@ _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
 
 </head>
 
-<body class="essio banner-enabled {% if shop.metafields.offer-count-down.enable-banner %}banner-enabled{% endif %}">
+<body class="essio {% if shop.metafields.offer-count-down.enable-banner %}banner-enabled{% endif %}">
   {% if shop.metafields.offer-count-down.enable-banner %}
     <div class="limited-time-baner hidden-xs hidden-sm" {% if shop.metafields.offer-count-down.background-color %} style="background-color: {{ shop.metafields.offer-count-down.background-color }}" {% endif %}>
       <div class="banner-container container" >
@@ -115,28 +115,6 @@ _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
       </div>
     </div>
   {% endif %}
-  <div class="limited-time-baner hidden-xs hidden-sm" {% if shop.metafields.offer-count-down.background-color %} style="background-color: {{ shop.metafields.offer-count-down.background-color }}" {% endif %}>
-      <div class="banner-container container">
-        {% if shop.metafields.offer-count-down.enable-clock %}
-        <script type="application/javascript">
-
-        var myCountdownTest = new Countdown({
-                          year  : {{ shop.metafields.offer-count-down.year }},
-                          month : {{ shop.metafields.offer-count-down.month }},
-                          day   : {{ shop.metafields.offer-count-down.day }},
-                          width : 300,
-                          height  : 50,
-                          numbers  : {
-                            color: '{{ shop.metafields.offer-count-down.clock-color }}',
-                          }
-                          });
-
-
-
-        </script>
-        {% endif %}
-      </div>
-    </div>
 
 
 

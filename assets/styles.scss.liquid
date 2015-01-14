@@ -7831,6 +7831,7 @@ header {
         top: 0;
         width: 100%;
         z-index: 9999;
+        
 
         .pull-left {
           display: none;
@@ -8094,6 +8095,18 @@ header {
             }
         }
     }
+}
+
+.banner-enabled {
+  header {
+    .nav-top {
+      margin-top: 77px;
+    }
+
+    .nav-bottom {
+      margin-top: 110px;
+    }
+  }
 }
 
 .dropdown-menu>.active>a, .dropdown-menu>.active>a:hover, .dropdown-menu>.active>a:focus {
@@ -9401,7 +9414,9 @@ a:active {
   //display: none;
   border-bottom: 1px solid #000;
   height: 77px;
-  position: relative;
+  position: fixed;
+  width: 100%;
+  top: 0;
   z-index: 999;
   background-size: 100% 77px;
 

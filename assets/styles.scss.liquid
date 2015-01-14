@@ -7827,6 +7827,11 @@ header {
         background-repeat: repeat-x;
         height: 33px;
         font-size: 14px;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 9999;
+        
 
         .pull-left {
           display: none;
@@ -7927,6 +7932,7 @@ header {
         height: 105px;
         background-image: url({{ 'home-v3_03.png' | asset_url }});
         background-repeat: repeat-x;
+        margin-top: 33px;
 
         .row {
             height: 105px;
@@ -8090,6 +8096,8 @@ header {
         }
     }
 }
+
+
 
 .dropdown-menu>.active>a, .dropdown-menu>.active>a:hover, .dropdown-menu>.active>a:focus {
   background-color: transparent;
@@ -9396,7 +9404,9 @@ a:active {
   //display: none;
   border-bottom: 1px solid #000;
   height: 77px;
-  position: relative;
+  position: fixed;
+  width: 100%;
+  top: 0;
   z-index: 999;
   background-size: 100% 77px;
 
@@ -9405,13 +9415,12 @@ a:active {
 
   .container {
     background-position: center;
-    background-image: url({{ 'banner.jpg' | asset_url }});
     background-repeat: no-repeat;
     background-size: auto 77px;
 
     padding-top: 20px;
     //width: 1170px!important;
-    height: 77px;
+    height: 76px;
   }
 
   #Container_jbeeb_6, #TextBox_jbeeb_9, #Container_jbeeb_10, #TextBox_jbeeb_13, #TextBox_jbeeb_17, #TextBox_jbeeb_21, #TextBox_jbeeb_25, #TextBox_jbeeb_29 {
@@ -11061,6 +11070,31 @@ CSS Document  #sh_wrapper {
 
   }
 
+  .banner-enabled {
+
+   
+      
+    header {
+      .nav-bottom {
+        margin-top: 110px;
+      }
+
+      .nav-top {
+        margin-top: 77px;
+      }
+    }
+  }
+
+  .limited-time-baner {
+    .container {
+    }
+
+    #Stage_jbeeb_3 {
+      margin-left: -116px !important;
+      margin-top: 1px !important;
+    }
+  }
+
   section.home-carousel {
 
 
@@ -11145,6 +11179,9 @@ CSS Document  #sh_wrapper {
   .testimonial-row {
     width: 980px!important;
   }
+
+
+
 
 }
 

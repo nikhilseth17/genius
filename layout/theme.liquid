@@ -654,12 +654,10 @@ _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
               expireTimeUnix = new Date(expireTimeUnix).getTime();
               expireTimeUnix = expireTimeUnix / 1000;
 
-              console.log('expire: ' + expireTimeUnix + ' | ' + currentTime);
 
               if(currentTime > expireTimeUnix) {
                 $("body").removeClass('banner-enabled');
                 $(".limited-time-baner").css('display', 'none');
-                console.log('hide banner');
 
               }
 

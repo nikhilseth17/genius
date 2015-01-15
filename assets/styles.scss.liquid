@@ -7697,9 +7697,9 @@ h3 {
 
 .lead, h2.lead {
     font-family: $font-normal;
-    font-size: 16px;
-    color: $purple;
-    font-style: italic;
+    font-size: 13px;
+    color: /* $purple */ bfbfbf;
+    font-style: normal;
     font-weight: normal;
 }
 
@@ -8965,7 +8965,7 @@ section.content-body {
         }
 
         .buy-btn {
-            margin-top: 15px;
+            margin-top: 0px;
             button {
                 font-size: 25px;
             }
@@ -9459,6 +9459,28 @@ a:active {
     content: " "!important;
   }
 }
+
+.banner-enabled {
+      
+  header {
+    .nav-bottom {
+      margin-top: 110px;
+    }
+
+    .nav-top {
+      margin-top: 77px;
+    }
+  }
+}
+
+.limited-time-baner {
+ 
+
+  #Stage_jbeeb_3 {
+    display: none!important;
+  }
+}
+
 
 .featured-wrap {
   text-align: center;
@@ -10966,6 +10988,8 @@ CSS Document  #sh_wrapper {
 
   }
 
+  
+
   .container {
     width: 100%;
   }
@@ -11070,26 +11094,14 @@ CSS Document  #sh_wrapper {
 
   }
 
-  .banner-enabled {
-
-   
-      
-    header {
-      .nav-bottom {
-        margin-top: 110px;
-      }
-
-      .nav-top {
-        margin-top: 77px;
-      }
-    }
-  }
+ 
 
   .limited-time-baner {
     .container {
     }
 
     #Stage_jbeeb_3 {
+      display: block!important;
       margin-left: -116px !important;
       margin-top: 1px !important;
     }
@@ -11130,6 +11142,7 @@ CSS Document  #sh_wrapper {
     overflow: hidden;
     width: 150px;
     line-height: 50px;
+    margin-top:-50px;
 
     span {
       display: inline-block;
@@ -11887,6 +11900,7 @@ section.content-body .yotpo .yoWrite{
   }
   section#recurring_choice .radio_option{
     padding: 5px;
+    margin-bottom:-25px
   }
   .offer_newline #deliver_every_text{
     margin-left: 20px;
@@ -12131,7 +12145,17 @@ height: 50px !important;
 
 #promoModal .modal-dialog, #promoModal2 .modal-dialog{
   height: 690px;
-    width: 1172px;
+  width: 1172px;
+
+  .featured-logo-modal {
+    text-align: center;
+    margin-top: 20px;
+    
+    img {
+      width: 150px;
+      height: auto;
+    }
+  }
 
 
   input.placeholder {

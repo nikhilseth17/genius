@@ -645,6 +645,25 @@ _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
                 }
             }
 
+
+            function hidePromoClock() {
+              var currentTime = Math.floor(Date.now() / 1000);
+              var expireTime = "26-02-2012";
+              expireTime = expireTime.split("-");
+              var expireTimeUnix = expireTime[1] + "/" + expireTime[0] + "/" + expireTime[2];
+              expireTimeUnix = new Date(expireTimeUnix).getTime();
+              expireTimeUnix = expireTimeUnix / 1000;
+
+              console.log(expireTimeUnix);
+
+              if(currentTime > expireTimeUnix) {
+                $("body").removeClass('banner-enabled');
+                $(".limited-time-baner").css('display', 'none');
+
+              }
+
+            }
+
             {% if page.url != '/pages/giveaway' and page.url != '/pages/invite' and shop.metafields.exit-modal.enable-modal == 'yes' %}
               $( document ).ready(function() {
 
@@ -707,6 +726,9 @@ _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
             });
 
             $(function(){
+              {% if shop.metafields.offer-count-down.enable-banner %}
+                hidePromoClock();
+              {% endif %}
 
               //load blog rss
               $('#blog-posts').rssfeed('http://blog.essioshower.com/feed/', {

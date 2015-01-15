@@ -936,7 +936,7 @@ _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
 
         });
            var selectCallback = function(variant, selector) {
-            if (variant && variant.available && variant.inventory_quantity > 0) {
+            if (variant && variant.available) {
               jQuery('#add-to-cart').removeAttr('disabled').removeClass('disabled'); // remove unavailable class from add-to-cart button, and re-enable button
               if(variant.price < variant.compare_at_price){
                 jQuery('#price-preview').html(Shopify.formatMoney(variant.price, "{{ shop.money_format }}") + "<del>" + Shopify.formatMoney(variant.compare_at_price, "{{ shop.money_format }}") + "</del>");
@@ -944,12 +944,10 @@ _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
                 jQuery('#price-preview').html(Shopify.formatMoney(variant.price, "{{ shop.money_format }}"));
               }
             } else {
-              jQuery('#add-to-cart').removeAttr('disabled').removeClass('disabled');  ; // remove unavailable class from add-to-cart button, and re-enable button
-              if(variant.price < variant.compare_at_price){
-                jQuery('#price-preview').html(Shopify.formatMoney(variant.price, "{{ shop.money_format }}") + "<del>" + Shopify.formatMoney(variant.compare_at_price, "{{ shop.money_format }}") + "</del>");
-              } else {
-                jQuery('#price-preview').html(Shopify.formatMoney(variant.price, "{{ shop.money_format }}"));
-              }
+              jQuery('#add-to-cart').addClass('disabled').attr('disabled', 'disabled'); // set add-to-cart button to unavailable class and disable button
+              var message = variant ? "Sold Out" : "Unavailable";
+              jQuery('#price-preview').text(message);
+            }
           };
 
           jQuery(document).ready(function($){

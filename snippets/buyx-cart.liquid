@@ -1,0 +1,42 @@
+{% if cart.item_count == 0 %}
+{% else %}
+  <script>
+    var buyx_cart = {{cart | json}}
+    for (var i = 0, len = buyx_cart.items.length; i < len; i++) {
+        delete buyx_cart.items[i].image; delete buyx_cart.items[i].title; delete buyx_cart.items[i].url;
+    }
+    var buyx_shop_domain = "{{shop.permanent_domain}}"
+    $.ajax({
+        cache: false,
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        type: "POST",
+        url: 'https://buyxgetone.herokuapp.com/api/v1/cart-check-offers',
+        data: JSON.stringify({
+            shop_slug: buyx_shop_domain.replace(".myshopify.com", ""),
+            cart: buyx_cart
+        }),
+        success: function (res) {
+            if (res.cart_updates.length == 0) {
+                if (res.msgs.length != 0) {
+                    $("#buyx-msg").html(res.msgs.join("<br>"))
+                }
+
+            } else {
+                //update cart and refresh
+                var updates_data = res.cart_updates.join("&")
+                $.ajax({
+                    cache: false,
+                    type: "POST",
+                  	dataType: "json",
+                    url: '/cart/update.js',
+                    data: updates_data,
+                    success: function (res) {
+                      window.location = document.URL
+                      }
+                })
+            }
+        }
+    })
+  </script>
+{% endif %}

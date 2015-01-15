@@ -1,0 +1,88 @@
+{% if collection.handle == 'pods' %}
+  <section class="pods-landing-carousel">
+
+            <div id="pods-landing" class="carousel slide" data-ride="carousel">
+                <!-- Indicators -->
+                <div class="heading-container">
+                    <div class="container">
+                        <h1 class="page-heading">Our Pod Blends</h1>
+                        <div class="lead">Choose from 6 unforgetable fragrances.</div>
+                    </div>
+                </div>
+                <div class="pod-select-wrapper">
+                    <div class="container">
+                        <a class="left carousel-control" href="#pods-landing" data-slide="prev"></a>
+                        <ol class="carousel-indicators">
+
+                          {% for product in collection.all_products %}
+                            
+                          
+                            <li  data-slide-to="{{ forloop.index0 }}" class="{% if forloop.index0 == 0 %}active {% endif %}col-md-2 pod-thumb">
+                                <a href="{{ product.url }}">
+                                  <img src="{{ product.featured_image | product_img_url: 'original' }}">
+                                  <div class="product-description-container">
+                                      <div class="product-title">{{ product.title }}</div>
+                                      <div class="product-description">
+                                          {{ product.description }}
+                                      </div>
+                                  </div>
+                                </a>
+                            </li>
+                            {% endfor %}
+                            
+                        </ol>
+
+                        <a class="right carousel-control" href="#pods-landing" data-slide="next"></a>
+                    </div>
+                </div>
+
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner">
+
+                    {% for product in collection.all_products %}
+                      <div class="item {% if forloop.index0 == 0 %}active{% endif %}">
+                          <div class="bg-top" {% if product.metafields.pods.line-art-top %} style="background-image: url({{ product.metafields.pods.line-art-top }});"{% endif %}></div>
+
+                          <div class="bg-bottom" {% if product.metafields.pods.line-art-bottom %} style="background-image: url({{ product.metafields.pods.line-art-bottom }});"{% endif %}></div>
+
+                          <div class="pod-tray-container" {% if product.metafields.pods.trey-image %} style="background-image: url({{ product.metafields.pods.trey-image }});"{% endif %}></div>
+
+                      </div>
+                    {% endfor %}
+                    
+
+                    
+
+                </div>
+
+
+                </div>
+            <!-- Controls -->
+            
+
+        </section>
+
+
+
+{% endif %}
+
+<section class="content-wrapper">
+            
+
+           
+    <div class="container">
+      <div class="row">
+        <h2 class="section-title"><span></span> Featured in <span></span></h2>
+
+      </div><!--end row-->
+      <div class="row featuredin-container">
+          <div class="media-logo"><img src="{{ 'media_02.png' | asset_url }}"></div>
+          <div class="media-logo"><img src="{{ 'media_04.png' | asset_url }}"></div>
+          <div class="media-logo"><img src="{{ 'media_06.png' | asset_url }}"></div>
+          <div class="media-logo"><img src="{{ 'media_08.png' | asset_url }}"></div>
+          <div class="media-logo"><img src="{{ 'media_10.png' | asset_url }}"></div>
+
+      </div>
+    </div>
+  </section>
+

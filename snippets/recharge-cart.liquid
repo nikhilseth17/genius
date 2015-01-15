@@ -1,0 +1,80 @@
+<script type="text/javascript">
+function hasChargeDelay(item) {
+    return !!item.properties && !!item.properties.charge_delay;
+}
+
+var refillProducts = [1036461908, 1036463356, 1036467980, 1036466560, 1036469584, 1036470824];
+
+function isRefillProduct(item) {
+
+    for (var i=0; i < refillProducts.length; i++) {
+        if (refillProducts[i] == item.variant_id) {
+            return true;
+        }
+    }
+    return false;
+}
+
+function checkForRefillProducts() {
+
+    for (var i=0; i < refillProducts.length; i++) {
+        $("#updates_" + refillProducts[i]).attr("readonly", true);
+    }
+}
+
+function hasStarterKit(data) {
+    for (var i=0; i < data.items.length; i++) {
+        if (data.items[i].product_id == 235478761) {
+            return true;
+        }
+    }
+    return false;
+}
+
+function goToCart() {
+    location.href = "/cart";
+}
+
+jQuery.ajax({
+    type: 'GET',
+    url: '/cart.js',
+    dataType: 'json',
+    success: function(data) {
+
+        if (!hasStarterKit(data)) {
+
+            var removeProducts = {};
+            for (var i=0; i < data.items.length; i++) {
+                var item = data.items[i];
+                if (isRefillProduct(item)) {
+                    removeProducts[item.variant_id] = 0;
+                };
+            }
+
+            if (!jQuery.isEmptyObject(removeProducts)) {
+
+                var data = {updates: removeProducts};
+
+                jQuery.ajax({
+                    type: 'POST',
+                    url: '/cart/update.js',
+                    data: data,
+                    dataType: 'json',
+                    success: function() {
+                        goToCart();
+                    },
+                    fail: function() {
+                    }
+                });
+            }
+        }
+    },
+    fail: function() {
+    }
+});
+
+$(document).ready(function() {
+    checkForRefillProducts();
+})
+
+</script>

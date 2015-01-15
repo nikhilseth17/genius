@@ -1,0 +1,48 @@
+<section class="page-content-body template-testimonial">
+  <div class="container">
+		<div id="page" class="row">
+			<div class="col-md-12">
+				<h1 class="p25">{{ page.title }}</h1>
+			</div>
+			<div class="col-sm-9 testimonial-wrapper">
+				<div class="testimonial-wrapper">
+
+                        
+	                {% for article in blogs.testimonials.articles %}
+                        
+                        <div class="testimonial-container">
+                            <div class="testimonial-thumb">
+                                <div class="thumb-overlay"></div>
+                                {{ article.excerpt }}
+                            </div>
+                            <div class="testimonial-text">
+                                {{ article.content }}
+                                <div class="testimonial-name">{{ article.title }}</div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div><!--end testimonial container-->
+                        {% endfor %}
+	               
+
+
+	            </div><!--end testimonial wrapper-->
+			</div>
+			<div class="col-sm-3">
+				<div class="video-container">
+            		<a class="video-thumb" href="javascript:void()" data-toggle="modal" data-target="#videoModal">
+            			<img src="http://img.youtube.com/vi/3h3pRSysyk0/0.jpg">
+            			<i class="fa fa-play-circle-o"></i>
+            			<div class="video-action">Check out this video</div>
+            		</a>
+            		<span class="arrow">▼</span>
+            	</div>
+			</div>
+		  
+		  <div class="col-md-12 site-review-row">
+		    
+		    {{ page.content }}
+		  </div>
+		  
+		</div>
+	</div>
+</section>

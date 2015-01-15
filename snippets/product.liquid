@@ -1,0 +1,489 @@
+<!-- Bold: Discount D&H -->
+{% if product.metafields.inventory.ShappifyHidden == "true" %}
+ Product is not available
+{% else %}
+
+{% for collectionname in product.collections %}
+  {% if collectionname.handle == 'pods' %}
+  {% assign podpage = '1' %}
+  <section class="pod-nav">
+              <div class="container">
+                  <div id="pods-nav" class="carousel slide" data-ride="carousel">
+
+
+                      <a class="left carousel-control" href="#pods-nav" data-slide="prev"></a>
+                      <a class="right carousel-control" href="#pods-nav" data-slide="next"></a>
+
+
+                      <!-- Wrapper for slides -->
+                      <div class="carousel-inner">
+                        <div class="item active">
+                          {% for product in collections.pods.all_products %}
+                            <!-- Bold: Discount - D&H -->
+                            {% if product.metafields.inventory.ShappifyHidden == "true" %}
+                            {% else %}
+                                <div class="col-md-2 pod-thumb">
+                                    <a href="{{ product.url }}">
+                                      <img src="{{ product.featured_image | product_img_url: 'original' }}">
+                                      <div class="product-description-container">
+                                          <div class="product-title">{{ product.title }}</div>
+
+                                      </div>
+                                    <a/>
+                                </div>
+                            {% endif %} <!-- Bold: Discount D&H -->
+                          {% endfor %}
+                        </div>
+                      </div>
+                  </div>
+                  <a href="" class="collapse-box close-nav" id="pod-nav-toggle"><span class="toggle-text">See more pods</span><i class="fa fa-caret-up"></i></a>
+              </div>
+              <!-- container -->
+
+              <div class="nav-bottom-shadow"></div>
+          </section>
+
+  {% endif %}
+{%endfor %}
+
+
+        <section class="content-body">
+            <div class="content-layer">
+                <div class="container">
+                   <h1 class="page-heading visible-xs text-center">{% if podpage %}{% endif %}<span class="name">{{ product.title }}</span></h1>
+
+                </div>
+
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="pin-button" >
+
+<!-- Please call pinit.js only once per page -->
+<script type="text/javascript" async src="//assets.pinterest.com/js/pinit.js"></script>
+                              {% for image in product.images %}
+                                {% if forloop.index0 == 0 %}
+
+                                {% else %}
+                                <span class="pin-container pin-image{{ forloop.index0 }} {% if forloop.index0 == 1 %}active{% endif %}">
+                                  <a href="//www.pinterest.com/pin/create/button/?url=http://essioshower.com{{ product.url | url_escape }}&description={{ product.description | url_escape }}&media={{ image.src | product_img_url: 'original' | url_escape }}" data-pin-do="buttonPin" data-pin-config="none"><img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_gray_20.png" /></a>
+                                </span>
+                                {% endif %}
+                              {% endfor %}
+                            </div>
+                            <div id="product-images" data-product-url="{{ product.url }}" data-product-description="{{ product.description }}" class="carousel slide product-images fade" data-ride="carousel">
+
+
+                                <!-- Wrapper for slides -->
+                                <div class="carousel-inner">
+
+                                    {% for image in product.images %}
+                                      {% if forloop.index0 == 0 %}
+
+                                      {% else %}
+
+                                        <div class="item {% if forloop.index0 == 1 %}active{% endif %}">
+
+                                          <img src="{{ image.src | product_img_url: '2048x2048' }}" class="img-responsive" alt="{{ image.alt }}">
+                                        </div>
+                                      {% endif %}
+
+                                    {% endfor %}
+
+                                </div>
+
+                                <div class="slide-thumbs-container">
+                                    <ul id="slide-thumbs" class="text-left">
+
+
+                                    </ul>
+                                </div>
+
+
+                            </div><!--end product image carousel-->
+                        </div>
+
+                        <div class="col-md-4">
+
+                            <div class="product-order-container">
+                                <h1 class="product-title">{{ product.title }}
+                                </h1>
+                                  <div class="star-container">
+                                  <div class="yotpo bottomLine"
+                                    data-appkey="TFfj4XcOiyFvZ1bQBKwUfC7e76S7hq9TY1lEhEe1"
+                                    data-domain="{{ shop.permanent_domain | escape }}"
+                                    data-product-id="{{ product.id }}"
+                                    data-product-models="{{ product.id }}"
+                                    data-name="{{ product.title | escape }}"
+                                    data-url="{{ page.url }}"
+                                    data-image-url="{{ product.featured_image | product_img_url: "large" |replace: '?', '%3F' | replace: '&','%26'}}"
+                                    data-description="{{ product.description | escape }}"
+                                    data-bread-crumbs="{% for tag in product.tags %}{{ tag | escape }};{% endfor %}">
+                                    </div>
+                                    <span>
+                                      <a href="#product-tabs" id="write-first-review" >Be the first to write a review.</a>
+                                    </span>
+                                  </div>
+
+                                  <h2 class="lead">{{ product.description }}</h2>
+                                <form id="add-item-form" action="/cart/add" method="post" class="variants clearfix">
+                                  {% if podpage %}
+                                    <div class="row form-row">
+                                        <div class="col-md-12">
+                                            <div id="package" class="btn-group">
+
+                                                {% for variant in product.variants %}
+                                                  <button type="button" class="btn btn-default {% if forloop.index0 == 0 %}active{% endif %}" data-value="{{ variant.id }}" data-price="{{ variant.price | money }}">
+                                                    {{ variant.title }}
+                                                  </button>
+
+                                                {% endfor %}
+                                              <select id="product-select" name="id" style="display:none">
+                                                {% for variant in product.variants %}
+                                                <option value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</option>
+                                                {% endfor %}
+                                              </select>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% include 'subscription-product' %}
+                                  {% else %}
+                                    <select id="product-select" name="id" style="display:none">
+                                                {% for variant in product.variants %}
+                                                <option value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</option>
+                                                {% endfor %}
+                                              </select>
+                                  {% endif %}
+
+                                  <div class="form-row row">
+                                      <div class="col-md-12">
+                                          <div class="row">
+                                              <div class="col-md-12">
+                                                  <div class="pull-left">
+                                                      <input id="quantity" type="number" name="quantity" value="1" class="quantity form-control"><label>Quantity</label>
+                                                  </div>
+                                                  <span class="price" id="price-preview">
+                                                    <div class="pull-left hidden-xs">{{ product.price_min | money }}{% if product.price_min < product.compare_at_price_min %} <del>{{ product.compare_at_price_min | money }}</del>{% endif %}</div>
+                                                    <div class="pull-right visible-xs">{{ product.price_min | money }}{% if product.price_min < product.compare_at_price_min %} <del>{{ product.compare_at_price_min | money }}</del>{% endif %}</div>
+                                                  </span>
+                                              </div>
+
+                                          </div>
+                                      </div>
+                                  </div>
+                                  {% if podpage %}
+                                  <!--
+                                  <div class="form-row row delivery">
+                                      <div class="col-md-12">
+                                          <label><input type="radio" checked="checked" name="delivery-type" value="1"> Deliver One Time Only</label>
+                                      </div>
+                                  </div>
+
+                                  <div class="form-row row delivery-drop-ship">
+                                      <div class="col-md-12">
+                                          <label><input type="radio" name="delivery-type" value="2"> <span class="dropship-label"><b>20% off and FREE shipping</b><br>
+                                              with our auto-ship program.</span>
+                                          </label>
+                                      </div>
+                                  </div>
+
+                                  <div class="form-row row delivery-drop-ship-options">
+                                      <div class="col-md-12">
+                                          <div>Order today & delivery every</div>
+                                          <select class="form-control" id="delivery-option-select">
+                                            <option>1 </option>
+                                            <option>2 </option>
+                                              <option>3 (recomended)</option>
+
+                                          </select>
+                                          <span>month(s) <a href="javascript:void(0)" data-toggle="modal" data-target="#autoshipModal">See Details</a></span>
+                                      </div>
+                                  </div>
+                                -->
+                                  {% endif %}
+
+                                 <div class="form-row row buy-btn">
+                                      <div class="col-md-12" id="buy-btn-container">
+                                          {% unless product.available %}
+                                          <p>Sold Out</p>
+                                          {% else %}
+                                        <!-- Check whether product is available for Pre Order -->
+                                        {% if  product.variants.first.inventory_quantity < 1 %}
+                                        <p> Availability: <strong style="color: red">Out of Stock</strong>, Delivery in 3-4 weeks</p>
+                                          <button class="btn btn-primary" id="add-to-cart" data-subscribe="{{ product.metafields.chargify.hosted_signup_url }}" name="add">Pre Order</button>
+                                           {% else %}
+                                        <p> Availability: <strong style="color: green">In Stock</strong></p>
+                                          <button class="btn btn-primary" id="add-to-cart" data-subscribe="{{ product.metafields.chargify.hosted_signup_url }}" name="add">Add to Cart</button>
+                                            {% endif %}
+                                           <div id="cart-animation" style="display:none">1</div>
+                                          {% endunless %}
+
+
+                                      </div>
+                                  </div>
+                                </form>
+
+<!-- Please call pinit.js only once per page -->
+
+
+                            </div>
+                            <div align="right" class="prod-social">
+                              <span class='st_facebook_hcount' displayText='Facebook'></span>
+                              <span class='st_twitter_hcount' displayText='Tweet'></span>
+                              <span class='st_pinterest_hcount' displayText='Pinterest'></span>
+                            </div>
+                        </div>
+                    </div><!--end row-->
+                    <div class="row product-description-tabs">
+                        <div class="col-md-12">
+                            <!-- Nav tabs -->
+                            <ul class="nav nav-tabs" id="product-tabs">
+                              <li><a href="#details" data-toggle="tab">Details</a></li>
+                              <li class="active"><a href="#reviews" id="tab-reviews" data-toggle="tab">Reviews</a></li>
+                              <li><a href="#videos" data-toggle="tab">Videos</a></li>
+                              <li><a href="#shipping" data-toggle="tab">Shipping Info</a></li>
+                            </ul>
+
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                              <div class="tab-pane" id="details">
+                                <div class="row">
+                                    {% if podpage %}
+                                    <div class="col-md-4">
+
+                                        <h3 class="description-title">Details</h3>
+                                        <p>
+                                            {{ product.metafields.pods.details }}
+                                        </p>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h3 class="description-title">Ingredients</h3>
+                                        <p>
+                                            {{ product.metafields.pods.ingredients }}
+                                        </p>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h3 class="description-title">Our Oils</h3>
+                                        <p>
+                                            {{ product.metafields.pods.our-oils }}
+                                        </p>
+                                    </div>
+                                    {% else %}
+                                      <div class="col-md-4">
+
+                                        <h3 class="description-title">Details</h3>
+                                        <p>
+                                            {{ product.metafields.starterkit.details }}
+                                        </p>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h3 class="description-title">Ingredients</h3>
+                                        <p>
+                                            {{ product.metafields.starterkit.ingredients }}
+                                        </p>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h3 class="description-title">Our Oils</h3>
+                                        <p>
+                                            {{ product.metafields.starterkit.our-oils }}
+                                        </p>
+                                    </div>
+
+                                    {% endif %}
+                                    <div class="pull-right text-right">
+                                      <div class="product-footer-image">
+                                        <img src="{{ 'product-bottom-logos.png' | asset_url }}">
+                                      </div>
+                                    </div>
+                                </div>
+                              </div>
+                              <div class="tab-pane active" id="reviews">
+                                <div class="yotpo reviews"
+                                  data-appkey="TFfj4XcOiyFvZ1bQBKwUfC7e76S7hq9TY1lEhEe1"
+                                  data-domain="{{ shop.permanent_domain | escape }}"
+                                  data-product-id="{{ product.id }}"
+                                  data-product-models="{{ product.id }}"
+                                  data-name="{{ product.title | escape }}"
+                                  data-url="{{ page.url }}"
+                                  data-image-url="{{ product.featured_image | product_img_url: "large" |replace: '?', '%3F' | replace: '&','%26'}}"
+                                  data-description="{{ product.description | escape }}"
+                                  data-bread-crumbs="{% for tag in product.tags %}{{ tag | escape }};{% endfor %}">
+                                  </div>
+                              </div>
+                              <div class="tab-pane" id="videos">
+                                <div class="row">
+                                  <div class="col-md-4">
+                                    <iframe width="100%" height="250" src="//www.youtube.com/embed/3UzJ2iajZWo" frameborder="0" allowfullscreen></iframe>
+                                  </div>
+                                </div>
+
+                              </div>
+                              <div class="tab-pane" id="shipping">
+                                <div class="row">
+                                  <div class="col-md-4">
+                                    {{ shop.metafields.shipping.col-1 }}
+
+                                  </div>
+                                  <div class="col-md-4">
+                                    {{ shop.metafields.shipping.col-2 }}
+
+
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+
+                    </div><!--end row-->
+
+                </div>
+            </div>
+
+            <div class="bg-top" {% if product.metafields.pods.line-art-top %} style="background-image: url({{ product.metafields.pods.line-art-top }});"{% endif %}></div>
+
+            <div class="bg-bottom" {% if product.metafields.pods.line-art-bottom %} style="background-image: url({{ product.metafields.pods.line-art-bottom }});"{% endif %}></div>
+
+            <div class="pod-tray-container" {% if product.metafields.pods.trey-image %} style="background-image: url({{ product.metafields.pods.trey-image }});"{% endif %}></div>
+
+        </section>
+
+        <section class="content-wrapper">
+
+
+
+    <div class="container">
+      <div class="row">
+        <h2 class="section-title"><span>As featured in</span></h2>
+
+      </div><!--end row-->
+      <div class="row featuredin-container">
+          <div class="media-logo hidden-xs"><img src="{{ 'media_02.png' | asset_url }}"></div>
+          <div class="media-logo"><img src="{{ 'media_04.png' | asset_url }}"></div>
+          <div class="media-logo"><img src="{{ 'media_06.png' | asset_url }}"></div>
+          <div class="media-logo"><img src="{{ 'media_08.png' | asset_url }}"></div>
+          <div class="media-logo new-beauty hidden-xs"><img src="{{ 'media_10.png' | asset_url }}"></div>
+
+      </div>
+    </div>
+  </section>
+
+
+
+<div class="modal fade" id="autoshipModal" tabindex="0" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Auto-ship Details</h4>
+      </div>
+      <div class="modal-body">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam tristique, urna ac faucibus cursus, purus enim convallis purus, vel suscipit urna risus ac purus. Pellentesque placerat arcu libero. Pellentesque ipsum nisl, varius volutpat tortor eget, vehicula aliquam diam. Nulla dignissim ornare nulla eu tempus. Cras commodo mi id pulvinar porttitor. Sed eu massa nec justo commodo eleifend et quis nisi. Curabitur elementum tellus quis pharetra vestibulum. Nam dapibus venenatis leo, vel auctor diam congue nec. Nunc nec dapibus lorem, eget adipiscing mi. Nunc et felis ut eros dictum rhoncus vitae ut ante. Nulla ultrices consequat velit, ac accumsan mauris lacinia vitae. Donec vel sapien ante. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ac justo sit amet orci tristique volutpat. Donec at neque sit amet erat lobortis tempus. Pellentesque porta ut enim id egestas.
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div style="display:none" id="preloading">
+{% for image in product.images offset: 1 %}
+{{ image | product_img_url: 'original' | img_tag }}
+{% endfor %}
+</div>
+
+<script type="text/javascript">
+$(function(){
+  var autoShipJsn = {
+                      clear: {
+                        1: 'https://shopify-essio.chargify.com/h/3387483/subscriptions/new',
+                        2: 'https://shopify-essio.chargify.com/h/3387484/subscriptions/new',
+                        3: 'https://shopify-essio.chargify.com/h/3391085/subscriptions/new'
+                      },
+                      breathe: {
+                        1: 'https://shopify-essio.chargify.com/h/3391086/subscriptions/new',
+                        2: 'https://shopify-essio.chargify.com/h/3391087/subscriptions/new',
+                        3: 'https://shopify-essio.chargify.com/h/3391088/subscriptions/new'
+                      },
+                      night: {
+                        1: 'https://shopify-essio.chargify.com/h/3391091/subscriptions/new',
+                        2: 'https://shopify-essio.chargify.com/h/3391092/subscriptions/new',
+                        3: 'https://shopify-essio.chargify.com/h/3391093/subscriptions/new'
+                      },
+                      passion: {
+                        1: 'https://shopify-essio.chargify.com/h/3391095/subscriptions/new',
+                        2: 'https://shopify-essio.chargify.com/h/3391096/subscriptions/new',
+                        3: 'https://shopify-essio.chargify.com/h/3391097/subscriptions/new'
+                      },
+                      unwind: {
+                        1: 'https://shopify-essio.chargify.com/h/3391099/subscriptions/new',
+                        2: 'https://shopify-essio.chargify.com/h/3391100/subscriptions/new',
+                        3: 'https://shopify-essio.chargify.com/h/3391102/subscriptions/new'
+                      },
+                      wisdom: {
+                        1: 'https://shopify-essio.chargify.com/h/3391103/subscriptions/new',
+                        2: 'https://shopify-essio.chargify.com/h/3391104/subscriptions/new',
+                        3: 'https://shopify-essio.chargify.com/h/3391106/subscriptions/new'
+                      }
+
+
+                    },
+      thisProductHandle = '{{ product.handle }}',
+      deliveryOptions = '';
+
+  //set autoship options
+  {% if podpage %}
+    $.each(autoShipJsn[thisProductHandle], function( key, value ) {
+      deliveryOptions += '<option value="' + value + '" >' + key + '</option>'
+    });
+    $("#delivery-option-select").html(deliveryOptions);
+
+    //set delivery options on change
+    $("#delivery-option-select").change(function(){
+      $("#add-to-cart").data('subscribe', $(this).val());
+    });
+
+    //click action for chargify products
+    $("#add-to-cart").click(function(e){
+      if($('input:radio[name=delivery-type]:checked').val() == '2') {
+        e.preventDefault();
+
+        //var chargifyUrl = $(this).data('subscribe');
+
+        window.open($("#delivery-option-select").val());
+
+      }
+
+    });
+
+  {% endif %}
+
+});
+
+
+
+</script>
+
+{% if product.id == 235478761 %}
+  {% include "recharge-popup" %}
+  {% include "recharge-popup-js" %}
+{% endif %}
+
+<!-- Bold: Discount D&H --> {% endif %}

@@ -1,0 +1,26 @@
+ <div id="customer_sidebar" class="col-md-3">
+      <section class="panel">
+        <div class="panel-body">
+          <div class="customer-details">
+            <div class="customer-image-thumb pull-left img-circle"><img src="{{ 'nophoto.png' | asset_url }}"></div>
+            <div class="customer-name pull-left">
+              {{ customer.name }}<br>
+               <span class="badge">{{ 'Logout' | customer_logout_link }}</span>
+            </div>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+          <div class="divider"></div>
+          <div class="panel-body">
+
+            <ul class="nav nav-pills nav-stacked">
+              <li {% if page_title == 'Account' %}class="active"{% endif %}><a href="/account">Dashboard</a></li>
+              <li {% if page_title == 'My Orders' %}class="active"{% endif %}><a href="/pages/my-orders">My Orders</a></li>
+              <li>{{ 'Logout' | customer_logout_link }}</li>
+            </ul>
+          </div>
+          
+          
+        
+      </section>
+    </div>

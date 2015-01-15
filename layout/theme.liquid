@@ -648,7 +648,7 @@ _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
 
             function hidePromoClock() {
               var currentTime = Math.floor(Date.now() / 1000);
-              var expireTime = "26-02-2012";
+              var expireTime = "{{ shop.metafields.offer-count-down.day }}-{{ shop.metafields.offer-count-down.month }}-{{ shop.metafields.offer-count-down.year }}";
               expireTime = expireTime.split("-");
               var expireTimeUnix = expireTime[1] + "/" + expireTime[0] + "/" + expireTime[2];
               expireTimeUnix = new Date(expireTimeUnix).getTime();

@@ -71,6 +71,13 @@ _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
 
 <style type="text/css">
 
+@media (min-width: 768px) {
+  .banner-container {
+    background-image: url({{ shop.metafields.offer-count-down.background-lg }});
+  }
+  
+}
+
 @media (min-width: 992px) {
   .banner-container {
     background-image: url({{ shop.metafields.offer-count-down.background-lg }});
@@ -115,7 +122,28 @@ _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
       </div>
     </div>
   {% endif %}
+<div class="limited-time-baner hidden-xs" {% if shop.metafields.offer-count-down.background-color %} style="background-color: {{ shop.metafields.offer-count-down.background-color }}" {% endif %}>
+  <div class="banner-container container" >
+    {% if shop.metafields.offer-count-down.enable-clock %}
+    <script type="application/javascript">
 
+    var myCountdownTest = new Countdown({
+                      year  : {{ shop.metafields.offer-count-down.year }},
+                      month : {{ shop.metafields.offer-count-down.month }},
+                      day   : {{ shop.metafields.offer-count-down.day }},
+                      width : 300,
+                      height  : 50,
+                      numbers  : {
+                        color: '{{ shop.metafields.offer-count-down.clock-color }}',
+                      }
+                      });
+
+
+
+    </script>
+    {% endif %}
+  </div>
+</div>
 
 
   <header>

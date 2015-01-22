@@ -71,6 +71,36 @@ _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
 
 <style type="text/css">
 
+.banner-container {
+  background-image: url({{ shop.metafields.offer-count-down.background-xs }});
+  background-size: auto 45px!important;
+}
+
+
+@media (min-width: 340px) {
+  .banner-container {
+    background-image: url({{ shop.metafields.offer-count-down.background-xs }});
+    background-size: auto 50px!important;
+  }
+  
+}
+
+@media (min-width: 480px) {
+  .banner-container {
+    background-image: url({{ shop.metafields.offer-count-down.background-sm }});
+    background-size: auto 60px!important;
+  }
+  
+}
+
+@media (min-width: 768px) {
+  .banner-container {
+    background-image: url({{ shop.metafields.offer-count-down.background-md }});
+    background-size: auto 77px!important;
+  }
+  
+}
+
 @media (min-width: 992px) {
   .banner-container {
     background-image: url({{ shop.metafields.offer-count-down.background-lg }});
@@ -92,28 +122,28 @@ _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
 
 <body class="essio {% if shop.metafields.offer-count-down.enable-banner %}banner-enabled{% endif %}">
   {% if shop.metafields.offer-count-down.enable-banner %}
-    <div class="limited-time-baner hidden-xs hidden-sm" {% if shop.metafields.offer-count-down.background-color %} style="background-color: {{ shop.metafields.offer-count-down.background-color }}" {% endif %}>
-      <div class="banner-container container" >
-        {% if shop.metafields.offer-count-down.enable-clock %}
-        <script type="application/javascript">
+    <div class="limited-time-baner " {% if shop.metafields.offer-count-down.background-color %} style="background-color: {{ shop.metafields.offer-count-down.background-color }}" {% endif %}>
+    <div class="banner-container container" >
+      {% if shop.metafields.offer-count-down.enable-clock %}
+      <script type="application/javascript">
 
-        var myCountdownTest = new Countdown({
-                          year  : {{ shop.metafields.offer-count-down.year }},
-                          month : {{ shop.metafields.offer-count-down.month }},
-                          day   : {{ shop.metafields.offer-count-down.day }},
-                          width : 300,
-                          height  : 50,
-                          numbers  : {
-                            color: '{{ shop.metafields.offer-count-down.clock-color }}',
-                          }
-                          });
+      var myCountdownTest = new Countdown({
+                        year  : {{ shop.metafields.offer-count-down.year }},
+                        month : {{ shop.metafields.offer-count-down.month }},
+                        day   : {{ shop.metafields.offer-count-down.day }},
+                        width : 300,
+                        height  : 50,
+                        numbers  : {
+                          color: '{{ shop.metafields.offer-count-down.clock-color }}',
+                        }
+                        });
 
 
 
-        </script>
-        {% endif %}
-      </div>
+      </script>
+      {% endif %}
     </div>
+  </div>
   {% endif %}
 
 
@@ -537,6 +567,12 @@ _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
             </form>
           </div>
           <div class="close-link modal-close-link" data-dismiss="modal" aria-hidden="true">{{ shop.metafields.exit-modal.s1-decline-text }}</div>
+
+          {% if shop.metafields.exit-modal.s1-bottom-logo %}
+          <div class="featured-logo-modal">
+            <img src="{{ shop.metafields.exit-modal.s1-bottom-logo }}">
+          </div>
+          {% endif %}
         </div>
 
       </div>
@@ -621,6 +657,24 @@ _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
                 }
             }
 
+
+            function hidePromoClock() {
+              var currentTime = Math.floor(Date.now() / 1000);
+              var expireTime = "{{ shop.metafields.offer-count-down.day }}-{{ shop.metafields.offer-count-down.month }}-{{ shop.metafields.offer-count-down.year }}";
+              expireTime = expireTime.split("-");
+              var expireTimeUnix = expireTime[1] + "/" + expireTime[0] + "/" + expireTime[2];
+              expireTimeUnix = new Date(expireTimeUnix).getTime();
+              expireTimeUnix = expireTimeUnix / 1000;
+
+
+              if(currentTime > expireTimeUnix) {
+                $("body").removeClass('banner-enabled');
+                $(".limited-time-baner").css('display', 'none');
+
+              }
+
+            }
+
             {% if page.url != '/pages/giveaway' and page.url != '/pages/invite' and shop.metafields.exit-modal.enable-modal == 'yes' %}
               $( document ).ready(function() {
 
@@ -683,6 +737,9 @@ _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
             });
 
             $(function(){
+              {% if shop.metafields.offer-count-down.enable-banner %}
+                hidePromoClock();
+              {% endif %}
 
               //load blog rss
               $('#blog-posts').rssfeed('http://blog.essioshower.com/feed/', {
@@ -938,11 +995,16 @@ _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
            var selectCallback = function(variant, selector) {
             if (variant && variant.available) {
               jQuery('#add-to-cart').removeAttr('disabled').removeClass('disabled'); // remove unavailable class from add-to-cart button, and re-enable button
+               if(variant && variant.inventory_quantity < 1) {  jQuery('#add-to-cart').html('Pre Order'); jQuery('#stockinfo').html('Out of Stock');jQuery('#stockinfo').css("color","red"); jQuery('#deliveryinfo').html(', Delivery in 3-4 Weeks'); }  
+                                              else if (variant && variant.inventory_quantity > 0) { jQuery('#add-to-cart').html('Add to Cart') }
+                else {jQuery('#add-to-cart').html('Unavailable') }
               if(variant.price < variant.compare_at_price){
                 jQuery('#price-preview').html(Shopify.formatMoney(variant.price, "{{ shop.money_format }}") + "<del>" + Shopify.formatMoney(variant.compare_at_price, "{{ shop.money_format }}") + "</del>");
               } else {
                 jQuery('#price-preview').html(Shopify.formatMoney(variant.price, "{{ shop.money_format }}"));
               }
+                
+                                                                  
             } else {
               jQuery('#add-to-cart').addClass('disabled').attr('disabled', 'disabled'); // set add-to-cart button to unavailable class and disable button
               var message = variant ? "Sold Out" : "Unavailable";

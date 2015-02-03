@@ -600,6 +600,7 @@ _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
 
   {{ '//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js' | script_tag }}
   <script>window.jQuery || document.write('<script src="{{ 'jquery-1.10.2.min.js' | asset_url }}"><\/script>')</script>
+  <script src="//fast.wistia.net/assets/external/E-v1.js"></script>
   {{ 'jquery.cookie.js' | asset_url | script_tag }}
   {{ 'bootstrap.js' | asset_url | script_tag }}
   {{ 'plugins.js' | asset_url | script_tag }}
@@ -752,7 +753,7 @@ _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
               // auto video
               //modal vid
               $('#videoModal').on('show.bs.modal', function (e) {
-                $("#videoModal .modal-body").html('<iframe width="100%" height="300" src="//www.youtube.com/embed/3UzJ2iajZWo?rel=0&autoplay=1" frameborder="0" allowfullscreen></iframe>');
+                $("#videoModal .modal-body").html('<iframe src="//fast.wistia.net/embed/iframe/53nmwkcmb3?videoFoam=true" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" name="wistia_embed" allowfullscreen mozallowfullscreen webkitallowfullscreen oallowfullscreen msallowfullscreen width="100%" height="300"></iframe>');
               });
 
               $('#videoModal').on('hidden.bs.modal', function (e) {

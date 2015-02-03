@@ -73,7 +73,7 @@
                         <br><span class="variant_title">Auto renews each {{ item.properties.shipping_interval_frequency }} days</span>
                       {% endif %}
                       <div class="cart-description-mobile">
-                        {{ item.product.description }}
+                        {{ item.product.description | truncate: 170  }}
                       </div>
                     </td>
                   </tr>
@@ -104,7 +104,7 @@
                         <br><span class="variant_title">Auto renews each {{ item.properties.shipping_interval_frequency }} days</span>
                       {% endif %}
                       <div>
-                        {{ item.product.description }}
+                        {{ item.product.description | truncate: 170 }}
                       </div>
                     </td>
 

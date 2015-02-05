@@ -154,10 +154,10 @@ _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
               <div class="row">
                   <div class="pull-left">
                       <ul class="top-nav-container">
-                          <li>
+                       <!--    <li>
                               <div class="icon-phone"></div>
                               <span class="phone">1-800-298-4785</span>
-                          </li>
+                          </li> -->
 
                           <li class="dropdown">
                               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sign up for email</a>
@@ -234,7 +234,7 @@ _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
                       <i class="fa fa-bars"></i>
 
                     </button>
-                    <a href="tel:800-298-4785"><i class="fa fa-phone mobile-nav-icons"></i></a>
+                  <!--  <a href="tel:800-298-4785"><i class="fa fa-phone mobile-nav-icons"></i></a> -->
                     <a href="mailto:support@essioshower.com?subject=" target="_blank"><i class="fa fa-envelope-o mobile-nav-icons"></i></a>
                   </div
 
@@ -994,20 +994,23 @@ _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
 
         });
            var selectCallback = function(variant, selector) {
-            if (variant && variant.available && variant.inventory_quantity > 0) {
+            if (variant && variant.available) {
               jQuery('#add-to-cart').removeAttr('disabled').removeClass('disabled'); // remove unavailable class from add-to-cart button, and re-enable button
+               if(variant && variant.inventory_quantity < 1) {  jQuery('#add-to-cart').html('Pre Order'); jQuery('#stockinfo').html('Out of Stock');jQuery('#stockinfo').css("color","red"); jQuery('#deliveryinfo').html(', Delivery in 3-4 Weeks'); }  
+                                              else if (variant && variant.inventory_quantity > 0) { jQuery('#add-to-cart').html('Add to Cart') }
+                else {jQuery('#add-to-cart').html('Unavailable') }
               if(variant.price < variant.compare_at_price){
                 jQuery('#price-preview').html(Shopify.formatMoney(variant.price, "{{ shop.money_format }}") + "<del>" + Shopify.formatMoney(variant.compare_at_price, "{{ shop.money_format }}") + "</del>");
               } else {
                 jQuery('#price-preview').html(Shopify.formatMoney(variant.price, "{{ shop.money_format }}"));
               }
+                
+                                                                  
             } else {
-              jQuery('#add-to-cart').removeAttr('disabled').removeClass('disabled');  ; // remove unavailable class from add-to-cart button, and re-enable button
-              if(variant.price < variant.compare_at_price){
-                jQuery('#price-preview').html(Shopify.formatMoney(variant.price, "{{ shop.money_format }}") + "<del>" + Shopify.formatMoney(variant.compare_at_price, "{{ shop.money_format }}") + "</del>");
-              } else {
-                jQuery('#price-preview').html(Shopify.formatMoney(variant.price, "{{ shop.money_format }}"));
-              }
+              jQuery('#add-to-cart').addClass('disabled').attr('disabled', 'disabled'); // set add-to-cart button to unavailable class and disable button
+              var message = variant ? "Sold Out" : "Unavailable";
+              jQuery('#price-preview').text(message);
+            }
           };
 
           jQuery(document).ready(function($){

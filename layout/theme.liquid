@@ -867,7 +867,12 @@ _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
                 });
 
                 $("#product-images .item").each(function(index){
-                    var thumbUrl = $( this ).children('img').attr('src');
+                    var thumbUrl;
+
+                    if($( this ).data('type') == 'video')
+                      thumbUrl = $( this ).data('thumb-src');
+                    else
+                      thumbUrl = $( this ).children('img').attr('src');
 
 
                     var thumbHtml = '<li class="product-thumb'

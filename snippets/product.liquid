@@ -83,7 +83,7 @@
                                 <!-- Wrapper for slides -->
                                 <div class="carousel-inner">
                                     {% if showerkit %}
-                                      <div class="item active" data-type="video" data-thumb-src="{{ 'exit_product_copy.png' | asset_url }}">
+                                      <div class="item active" data-type="video" data-thumb-src="{{ 'starter-kit-thumb.jpg' | asset_url }}">
                                         <iframe src="//fast.wistia.net/embed/iframe/w48gb3gj95?videoFoam=true" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" name="wistia_embed" allowfullscreen mozallowfullscreen webkitallowfullscreen oallowfullscreen msallowfullscreen width="460" height="259"></iframe>
                                       </div>
                                     {% endif %}
@@ -92,7 +92,7 @@
 
                                       {% else %}
 
-                                        <div class="item {% if forloop.index0 == 1 && showerkit != '1' %}active{% endif %}">
+                                        <div class="item item-zoom {% if forloop.index0 == 1 && showerkit != '1' %}active{% endif %}">
 
                                           <img src="{{ image.src | product_img_url: '2048x2048' }}" class="img-responsive" alt="{{ image.alt }}">
                                         </div>

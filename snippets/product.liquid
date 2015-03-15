@@ -92,7 +92,7 @@
 
                                       {% else %}
 
-                                        <div class="item item-zoom {% if forloop.index0 == 1 && showerkit != '1' %}active{% endif %}">
+                                        <div class="item item-zoom {% if forloop.index0 == 1 and showerkit != '1' %}active{% endif %}">
 
                                           <img src="{{ image.src | product_img_url: '2048x2048' }}" class="img-responsive" alt="{{ image.alt }}">
                                         </div>

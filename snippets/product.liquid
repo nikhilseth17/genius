@@ -71,9 +71,13 @@
                                 {% if forloop.index0 == 0 %}
 
                                 {% else %}
-                                <span class="pin-container pin-image{{ forloop.index0 }} {% if forloop.index0 == 1 %}active{% endif %}">
-                                  <a href="//www.pinterest.com/pin/create/button/?url=http://essioshower.com{{ product.url | url_escape }}&description={{ product.description | url_escape }}&media={{ image.src | product_img_url: 'original' | url_escape }}" data-pin-do="buttonPin" data-pin-config="none"><img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_gray_20.png" /></a>
-                                </span>
+                                  {% if forloop.index0 == 1 and showerkit %}
+
+                                  {% else %}
+                                    <span class="pin-container pin-image{{ forloop.index0 }} {% if forloop.index0 == 1 %}active{% endif %}">
+                                      <a href="//www.pinterest.com/pin/create/button/?url=http://essioshower.com{{ product.url | url_escape }}&description={{ product.description | url_escape }}&media={{ image.src | product_img_url: 'original' | url_escape }}" data-pin-do="buttonPin" data-pin-config="none"><img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_gray_20.png" /></a>
+                                    </span>
+                                  {% endif %}
                                 {% endif %}
                               {% endfor %}
                             </div>
@@ -84,7 +88,7 @@
                                 <div class="carousel-inner">
                                     {% if showerkit %}
                                       <div class="item active" data-type="video" data-thumb-src="{{ 'starter-kit-thumb.jpg' | asset_url }}">
-                                        <iframe src="//fast.wistia.net/embed/iframe/w48gb3gj95?videoFoam=true" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" name="wistia_embed" allowfullscreen mozallowfullscreen webkitallowfullscreen oallowfullscreen msallowfullscreen width="460" height="259"></iframe>
+                                        <iframe src="//fast.wistia.net/embed/iframe/w48gb3gj95?videoFoam=true" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" name="wistia_embed" allowfullscreen mozallowfullscreen webkitallowfullscreen oallowfullscreen msallowfullscreen width="750" height="350"></iframe>
                                       </div>
                                     {% endif %}
                                     {% for image in product.images %}

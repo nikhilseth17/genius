@@ -81,7 +81,7 @@
                                 {% endif %}
                               {% endfor %}
                             </div>
-                            <div id="product-images" data-product-url="{{ product.url }}" data-product-description="{{ product.description }}" class="carousel slide product-images fade" data-ride="carousel">
+                            <div id="product-images" data-product-url="{{ product.url }}" data-product-description="{{ product.description }}" class="carousel slide product-images fade {% if showerkit %}prod-showerkit{% endif %}" data-ride="carousel">
 
 
                                 <!-- Wrapper for slides -->

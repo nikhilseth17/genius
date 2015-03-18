@@ -405,9 +405,13 @@
 <script charset="ISO-8859-1" src="//fast.wistia.com/assets/external/E-v1.js"></script>
 
 <script type="text/javascript">
-wistiaEmbed = Wistia.embed("5nzl2073th", {
-  videoFoam: true
-});
+  {% if showerkit %}
+  wistiaEmbed = Wistia.embed("5nzl2073th", {
+    videoFoam: true
+  });
+{% else %}
+  wistiaEmbed = false;
+{% endif %}
 
 $(function(){
   var autoShipJsn = {

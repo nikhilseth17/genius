@@ -787,7 +787,6 @@ _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
               }
 
               $(".home-carousel .carousel-control").click(function(){
-                console.log('test');
                 $("#home-hero").carousel($(this).data('slide'));
               });
 
@@ -798,7 +797,6 @@ _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
 
               //prevent auto scrolling on carousels
               $("a.carousel-control").click(function(event){
-                console.log('test');
                 event.preventDefault();
 
               });
@@ -867,7 +865,12 @@ _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
                 });
 
                 $("#product-images .item").each(function(index){
-                    var thumbUrl = $( this ).children('img').attr('src');
+                    var thumbUrl;
+
+                    if($( this ).data('type') == 'video')
+                      thumbUrl = $( this ).data('thumb-src');
+                    else
+                      thumbUrl = $( this ).children('img').attr('src');
 
 
                     var thumbHtml = '<li class="product-thumb'
@@ -894,11 +897,12 @@ _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
 
                     $(".pin-button .pin-container.active").removeClass("active");
                     $(".pin-button .pin-image" + pinNumber).addClass("active");
-                    /*
-                    var newPinnithref = '//www.pinterest.com/pin/create/button/?url=http://essio.myshopify.com' + $("#product-images").data("product-url") + '&media=' + $(this).children('img').attr('src') + '&description=' + $("#product-images").data("product-description");
-
-                    $(".pin-button a").attr('href', newPinnithref);
-                    */
+                    
+                    //check if has video
+                    if(wistiaEmbed) {
+                      if(pinNumber > 1)
+                        wistiaEmbed.pause();
+                    }
                     $productImages.carousel(Number(slideNumber));
                 });
 

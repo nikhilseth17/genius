@@ -117,7 +117,7 @@ _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
 
 
 </style>
-{% if product.handle == 'aromatherapy-shower-kit'}
+{% if product.handle == 'aromatherapy-shower-kit' %}
  <!-- Facebook Conversion Code for Starter Kit - Adds to Cart -->
 <script>(function() {
   var _fbq = window._fbq || (window._fbq = []);
@@ -135,6 +135,22 @@ window._fbq.push(['track', '6019482697246', {'value':'0.01','currency':'USD'}]);
 </script>
 <noscript><img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?ev=6019482697246&amp;cd[value]=0.01&amp;cd[currency]=USD&amp;noscript=1" /></noscript>
 {% endif %}
+  <script>(function() {
+    var _fbq = window._fbq || (window._fbq = []);
+    if (!_fbq.loaded) {
+      var fbds = document.createElement('script');
+      fbds.async = true;
+      fbds.src = '//connect.facebook.net/en_US/fbds.js';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(fbds, s);
+      _fbq.loaded = true;
+    }
+    _fbq.push(['addPixelId', '1402631380055177']);
+  })();
+  window._fbq = window._fbq || [];
+  window._fbq.push(['track', 'PixelInitialized', {}]);
+  </script>
+  <noscript><img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?id=1402631380055177&amp;ev=PixelInitialized" /></noscript>
 </head>
 
 <body class="essio {% if shop.metafields.offer-count-down.enable-banner %}banner-enabled{% endif %}">

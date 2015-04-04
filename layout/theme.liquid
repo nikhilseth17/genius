@@ -4,7 +4,7 @@
 <!--[if IE 8]><html class="no-js ie8 oldie" lang="en"><![endif]-->
 <!--[if gt IE 8]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
-  <script src="//cdn.optimizely.com/js/1861720202.js"></script>
+
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="shortcut icon" href="{{ 'favicon.ico' | asset_url }}" type="image/x-icon">
   <link rel="icon" href="{{ 'favicon.ico' | asset_url }}" type="image/x-icon">
@@ -117,7 +117,24 @@ _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
 
 
 </style>
-
+{% if product.handle == 'aromatherapy-shower-kit'}
+ <!-- Facebook Conversion Code for Starter Kit - Adds to Cart -->
+<script>(function() {
+  var _fbq = window._fbq || (window._fbq = []);
+  if (!_fbq.loaded) {
+    var fbds = document.createElement('script');
+    fbds.async = true;
+    fbds.src = '//connect.facebook.net/en_US/fbds.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(fbds, s);
+    _fbq.loaded = true;
+  }
+})();
+window._fbq = window._fbq || [];
+window._fbq.push(['track', '6019482697246', {'value':'0.01','currency':'USD'}]);
+</script>
+<noscript><img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?ev=6019482697246&amp;cd[value]=0.01&amp;cd[currency]=USD&amp;noscript=1" /></noscript>
+{% endif %}
 </head>
 
 <body class="essio {% if shop.metafields.offer-count-down.enable-banner %}banner-enabled{% endif %}">
@@ -787,6 +804,7 @@ _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
               }
 
               $(".home-carousel .carousel-control").click(function(){
+                console.log('test');
                 $("#home-hero").carousel($(this).data('slide'));
               });
 
@@ -797,6 +815,7 @@ _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
 
               //prevent auto scrolling on carousels
               $("a.carousel-control").click(function(event){
+                console.log('test');
                 event.preventDefault();
 
               });
@@ -865,12 +884,7 @@ _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
                 });
 
                 $("#product-images .item").each(function(index){
-                    var thumbUrl;
-
-                    if($( this ).data('type') == 'video')
-                      thumbUrl = $( this ).data('thumb-src');
-                    else
-                      thumbUrl = $( this ).children('img').attr('src');
+                    var thumbUrl = $( this ).children('img').attr('src');
 
 
                     var thumbHtml = '<li class="product-thumb'
@@ -897,12 +911,11 @@ _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
 
                     $(".pin-button .pin-container.active").removeClass("active");
                     $(".pin-button .pin-image" + pinNumber).addClass("active");
-                    
-                    //check if has video
-                    if(wistiaEmbed) {
-                      if(pinNumber > 1)
-                        wistiaEmbed.pause();
-                    }
+                    /*
+                    var newPinnithref = '//www.pinterest.com/pin/create/button/?url=http://essio.myshopify.com' + $("#product-images").data("product-url") + '&media=' + $(this).children('img').attr('src') + '&description=' + $("#product-images").data("product-description");
+
+                    $(".pin-button a").attr('href', newPinnithref);
+                    */
                     $productImages.carousel(Number(slideNumber));
                 });
 
@@ -1064,7 +1077,7 @@ new Shopify.CountryProvinceSelector('address_country_{{address.id}}', 'address_p
 var yotpo_app_key = "TFfj4XcOiyFvZ1bQBKwUfC7e76S7hq9TY1lEhEe1";
 (function(){function e(){var e=document.createElement("script");e.type="text/javascript",e.async=!0,e.src="//staticwww.yotpo.com/js/yQuery.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)}window.attachEvent?window.attachEvent("onload",e):window.addEventListener("load",e,!1)})();
 </script>
-<!-- begin olark code -->
+{% comment %} Remove these comment lines to get Olark activated again<!-- begin olark code -->
 <script data-cfasync="false" type='text/javascript'>/*<![CDATA[*/window.olark||(function(c){var f=window,d=document,l=f.location.protocol=="https:"?"https:":"http:",z=c.name,r="load";var nt=function(){
 f[z]=function(){
 (a.s=a.s||[]).push(arguments)};var a=f[z]._={
@@ -1083,7 +1096,7 @@ b[k]=o+'d.write("'+p().replace(/"/g,String.fromCharCode(92)+'"')+'");d.close();'
 loader: "static.olark.com/jsclient/loader0.js",name:"olark",methods:["configure","extend","declare","identify"]});
 /* custom configuration goes here (www.olark.com/documentation) */
 olark.identify('2052-534-10-6267');/*]]>*/</script><noscript><a href="https://www.olark.com/site/2052-534-10-6267/contact" title="Contact us" target="_blank">Questions? Feedback?</a> powered by <a href="http://www.olark.com?welcome" title="Olark live chat software">Olark live chat software</a></noscript>
-<!-- end olark code -->
+<!-- end olark code -->{% endcomment %}
 
 
 <script type="text/javascript">
@@ -1131,11 +1144,19 @@ var google_remarketing_only = true;
 </script>
 <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
 </script>
-<noscript>
-  <div style="display:none; ">
-  <img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/1002846639/?value=0&amp;guid=ON&amp;script=0"/>
-  </div>
-</noscript>
-<script src="//assets.pcrl.co/js/jstracker.min.js"></script>
+  <noscript>
+    <div style="display:none; ">
+    <img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/1002846639/?value=0&amp;guid=ON&amp;script=0"/>
+    </div>
+  </noscript>
+  <!--Start of Zopim Live Chat Script-->
+<script type="text/javascript">
+window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
+d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
+_.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute("charset","utf-8");
+$.src="//v2.zopim.com/?2tdbZ0x9Dn4Ycinft7FeiAfXxTwbx0pI";z.t=+new Date;$.
+type="text/javascript";e.parentNode.insertBefore($,e)})(document,"script");
+</script>
+<!--End of Zopim Live Chat Script-->
 </body>
 </html>

@@ -900,7 +900,12 @@ window._fbq.push(['track', '6019482697246', {'value':'0.01','currency':'USD'}]);
                 });
 
                 $("#product-images .item").each(function(index){
-                    var thumbUrl = $( this ).children('img').attr('src');
+                    var thumbUrl;
+
+                    if($( this ).data('type') == 'video')
+                      thumbUrl = $( this ).data('thumb-src');
+                    else
+                      thumbUrl = $( this ).children('img').attr('src');
 
 
                     var thumbHtml = '<li class="product-thumb'
@@ -917,6 +922,7 @@ window._fbq.push(['track', '6019482697246', {'value':'0.01','currency':'USD'}]);
 
 
 
+
                 //pod page image rollovers
                 $( "#product-images  .product-thumb" ).click( function() {
 
@@ -927,11 +933,12 @@ window._fbq.push(['track', '6019482697246', {'value':'0.01','currency':'USD'}]);
 
                     $(".pin-button .pin-container.active").removeClass("active");
                     $(".pin-button .pin-image" + pinNumber).addClass("active");
-                    /*
-                    var newPinnithref = '//www.pinterest.com/pin/create/button/?url=http://essio.myshopify.com' + $("#product-images").data("product-url") + '&media=' + $(this).children('img').attr('src') + '&description=' + $("#product-images").data("product-description");
-
-                    $(".pin-button a").attr('href', newPinnithref);
-                    */
+                    
+                    //check if has video
+                    if(wistiaEmbed) {
+                      if(pinNumber > 1)
+                        wistiaEmbed.pause();
+                    }
                     $productImages.carousel(Number(slideNumber));
                 });
 

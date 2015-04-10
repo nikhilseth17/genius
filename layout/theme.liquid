@@ -151,6 +151,10 @@ window._fbq.push(['track', '6019482697246', {'value':'0.01','currency':'USD'}]);
   window._fbq.push(['track', 'PixelInitialized', {}]);
   </script>
   <noscript><img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?id=1402631380055177&amp;ev=PixelInitialized" /></noscript>
+
+  {% if product.metafields.inventory.ShappifyHidden == "true" %}
+    <meta name="robots" content="noindex">
+  {% endif %}
 </head>
 
 <body class="essio {% if shop.metafields.offer-count-down.enable-banner %}banner-enabled{% endif %}">

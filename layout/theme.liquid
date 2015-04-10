@@ -1040,8 +1040,8 @@ window._fbq.push(['track', '6019482697246', {'value':'0.01','currency':'USD'}]);
            var selectCallback = function(variant, selector) {
             if (variant && variant.available) {
               jQuery('#add-to-cart').removeAttr('disabled').removeClass('disabled'); // remove unavailable class from add-to-cart button, and re-enable button
-               if(variant && variant.inventory_quantity < 41) {  jQuery('#add-to-cart').addClass('disabled').attr('disabled', 'disabled').html('Unavailable'); jQuery('#stockinfo').html('Out of Stock');jQuery('#stockinfo').css("color","red"); jQuery('#deliveryinfo').html(', None left for now, please check back later'); }  
-                                              else if (variant && variant.inventory_quantity > 40) { jQuery('#add-to-cart').html('Add to Cart') }
+               if(variant && variant.inventory_quantity < 1) {  jQuery('#add-to-cart').addClass('disabled').attr('disabled', 'disabled').html('Unavailable'); jQuery('#stockinfo').html('Out of Stock');jQuery('#stockinfo').css("color","red"); jQuery('#deliveryinfo').html(', None left for now, please check back later'); }  
+                                              else if (variant && variant.inventory_quantity > 0) { jQuery('#add-to-cart').html('Add to Cart') }
                 else {jQuery('#add-to-cart').html('Unavailable') }
               if(variant.price < variant.compare_at_price){
                 jQuery('#price-preview').html(Shopify.formatMoney(variant.price, "{{ shop.money_format }}") + "<del>" + Shopify.formatMoney(variant.compare_at_price, "{{ shop.money_format }}") + "</del>");
@@ -1101,7 +1101,7 @@ new Shopify.CountryProvinceSelector('address_country_{{address.id}}', 'address_p
 
 <script type="text/javascript" async src="//assets.pinterest.com/js/pinit.js"></script>
 
-  <script type="text/javascript">
+<script type="text/javascript">
 var yotpo_app_key = "TFfj4XcOiyFvZ1bQBKwUfC7e76S7hq9TY1lEhEe1";
 (function(){function e(){var e=document.createElement("script");e.type="text/javascript",e.async=!0,e.src="//staticwww.yotpo.com/js/yQuery.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)}window.attachEvent?window.attachEvent("onload",e):window.addEventListener("load",e,!1)})();
 </script>

@@ -1041,8 +1041,7 @@ window._fbq.push(['track', '6019482697246', {'value':'0.01','currency':'USD'}]);
             if (variant && variant.available) {
               jQuery('#add-to-cart').removeAttr('disabled').removeClass('disabled'); // remove unavailable class from add-to-cart button, and re-enable button
               {% assign inventory = product.metafields.inventory %}
-              {% assign key = variant.id %}
-              //var varientData
+                  {% assign key = variant.id %}
               if(variant && variant.inventory_quantity <= {{inventory[key]}}) {  jQuery('#add-to-cart').addClass('disabled').attr('disabled', 'disabled').html('Unavailable'); jQuery('#stockinfo').html('Out of Stock');jQuery('#stockinfo').css("color","red"); jQuery('#deliveryinfo').html(', None left for now, please check back later'); }  
                                             
                                               else if (variant && variant.inventory_quantity >  {{inventory[key]}}) { jQuery('#add-to-cart').html('Add to Cart') }
@@ -1198,7 +1197,6 @@ type="text/javascript";e.parentNode.insertBefore($,e)})(document,"script");
 </script>
 <!--End of Zopim Live Chat Script-->
 <script src="//assets.pcrl.co/js/jstracker.min.js"></script>
-{{ shop.metafields.inventory-threshold.1208030528 }}
-{{ variant.id }}
+
 </body>
 </html>

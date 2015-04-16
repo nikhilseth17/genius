@@ -1042,9 +1042,9 @@ window._fbq.push(['track', '6019482697246', {'value':'0.01','currency':'USD'}]);
               jQuery('#add-to-cart').removeAttr('disabled').removeClass('disabled'); // remove unavailable class from add-to-cart button, and re-enable button
               {% assign inventory = product.metafields.inventory %}
                   {% assign key = variant.id %}
-              if(variant && variant.inventory_quantity <= {{inventory[key]}}) {  jQuery('#add-to-cart').addClass('disabled').attr('disabled', 'disabled').html('Unavailable'); jQuery('#stockinfo').html('Out of Stock');jQuery('#stockinfo').css("color","red"); jQuery('#deliveryinfo').html(', None left for now, please check back later'); }  
+              if(variant && variant.inventory_quantity <= {{inventory-threshold.[key]}}) {  jQuery('#add-to-cart').addClass('disabled').attr('disabled', 'disabled').html('Unavailable'); jQuery('#stockinfo').html('Out of Stock');jQuery('#stockinfo').css("color","red"); jQuery('#deliveryinfo').html(', None left for now, please check back later'); }  
                                             
-                                              else if (variant && variant.inventory_quantity >  {{inventory[key]}}) { jQuery('#add-to-cart').html('Add to Cart') }
+                                              else if (variant && variant.inventory_quantity >  {{inventory-threshold.[key]}}) { jQuery('#add-to-cart').html('Add to Cart') }
                 else {jQuery('#add-to-cart').html('Unavailable') }
               if(variant.price < variant.compare_at_price){
                 jQuery('#price-preview').html(Shopify.formatMoney(variant.price, "{{ shop.money_format }}") + "<del>" + Shopify.formatMoney(variant.compare_at_price, "{{ shop.money_format }}") + "</del>");

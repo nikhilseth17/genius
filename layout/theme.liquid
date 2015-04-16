@@ -1038,10 +1038,11 @@ window._fbq.push(['track', '6019482697246', {'value':'0.01','currency':'USD'}]);
 
         });
           var selectCallback = function(variant, selector) {
+            {% assign inventory = product.metafields.inventory %}
+                  {% assign key = variant.id %}
             if (variant && variant.available) {
               jQuery('#add-to-cart').removeAttr('disabled').removeClass('disabled'); // remove unavailable class from add-to-cart button, and re-enable button
-              {% assign inventory = product.metafields.inventory %}
-                  {% assign key = variant.id %}
+              
               if(variant && variant.inventory_quantity <= {{inventory-threshold.[key]}}) {  jQuery('#add-to-cart').addClass('disabled').attr('disabled', 'disabled').html('Unavailable'); jQuery('#stockinfo').html('Out of Stock');jQuery('#stockinfo').css("color","red"); jQuery('#deliveryinfo').html(', None left for now, please check back later'); }  
                                             
                                               else if (variant && variant.inventory_quantity >  {{inventory-threshold.[key]}}) { jQuery('#add-to-cart').html('Add to Cart') }

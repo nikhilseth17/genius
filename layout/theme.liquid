@@ -1037,12 +1037,13 @@ window._fbq.push(['track', '6019482697246', {'value':'0.01','currency':'USD'}]);
 
 
         });
-           var selectCallback = function(variant, selector) {
+          var selectCallback = function(variant, selector) {
             if (variant && variant.available) {
               jQuery('#add-to-cart').removeAttr('disabled').removeClass('disabled'); // remove unavailable class from add-to-cart button, and re-enable button
-               if(variant && variant.inventory_quantity < 1) {  jQuery('#add-to-cart').addClass('disabled').attr('disabled', 'disabled').html('Unavailable'); jQuery('#stockinfo').html('Out of Stock');jQuery('#stockinfo').css("color","red"); jQuery('#deliveryinfo').html(', None left for now, please check back later'); }  
-                                              else if (variant && variant.inventory_quantity > 0) { jQuery('#add-to-cart').html('Add to Cart') }
-                else {jQuery('#add-to-cart').html('Unavailable') }
+             
+              if(  variant.inventory_quantity < {{product.metafields.inventory-threshold.level}} ) {  jQuery('#add-to-cart').addClass('disabled').attr('disabled', 'disabled').html('Unavailable'); jQuery('#stockinfo').html('Out of Stock');jQuery('#stockinfo').css("color","red"); jQuery('#deliveryinfo').html(', None left for now, please check back later'); }  
+            
+                else {jQuery('#add-to-cart').html('Add to Cart'); }
               if(variant.price < variant.compare_at_price){
                 jQuery('#price-preview').html(Shopify.formatMoney(variant.price, "{{ shop.money_format }}") + "<del>" + Shopify.formatMoney(variant.compare_at_price, "{{ shop.money_format }}") + "</del>");
               } else {
@@ -1179,14 +1180,20 @@ var google_remarketing_only = true;
   </noscript>
   <!--Start of Zopim Live Chat Script-->
 <script type="text/javascript">
-window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
+var ua = navigator.userAgent.toLowerCase(),
+platform = navigator.platform.toLowerCase();
+platformName = ua.match(/ip(?:ad|od|hone)/) ? 'ios' : (ua.match(/(?:webos|android)/) || platform.match(/mac|win|linux/) || ['other'])[0],
+isMobile = /ios|android|webos/.test(platformName);
+if (!isMobile) {
+   //place your live chat code here without the <script> tags
+   window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
 d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
 _.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute("charset","utf-8");
 $.src="//v2.zopim.com/?2tdbZ0x9Dn4Ycinft7FeiAfXxTwbx0pI";z.t=+new Date;$.
 type="text/javascript";e.parentNode.insertBefore($,e)})(document,"script");
+}
 </script>
 <!--End of Zopim Live Chat Script-->
-
 <script src="//assets.pcrl.co/js/jstracker.min.js"></script>
 
 </body>

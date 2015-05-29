@@ -55,86 +55,68 @@
     </script>
 
     <!-- KISSmetrics tracking snippet -->
-<script type="text/javascript">var _kmq = _kmq || [];
-var _kmk = _kmk || 'e8e3170a8cbfa1cc52c89fbe8871bb43b6d47d8f';
-function _kms(u){
-  setTimeout(function(){
-    var d = document, f = d.getElementsByTagName('script')[0],
-    s = d.createElement('script');
-    s.type = 'text/javascript'; s.async = true; s.src = u;
-    f.parentNode.insertBefore(s, f);
-  }, 1);
-}
-_kms('//i.kissmetrics.com/i.js');
-_kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
-</script>
+  <script type="text/javascript">var _kmq = _kmq || [];
+  var _kmk = _kmk || 'e8e3170a8cbfa1cc52c89fbe8871bb43b6d47d8f';
+  function _kms(u){
+    setTimeout(function(){
+      var d = document, f = d.getElementsByTagName('script')[0],
+      s = d.createElement('script');
+      s.type = 'text/javascript'; s.async = true; s.src = u;
+      f.parentNode.insertBefore(s, f);
+    }, 1);
+  }
+  _kms('//i.kissmetrics.com/i.js');
+  _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
+  </script>
 
-<style type="text/css">
+  <style type="text/css">
 
-.banner-container {
-  background-image: url({{ shop.metafields.offer-count-down.background-xs }});
-  background-size: auto 45px!important;
-}
-
-
-@media (min-width: 340px) {
   .banner-container {
     background-image: url({{ shop.metafields.offer-count-down.background-xs }});
-    background-size: auto 50px!important;
+    background-size: auto 45px!important;
   }
-  
-}
-
-@media (min-width: 480px) {
-  .banner-container {
-    background-image: url({{ shop.metafields.offer-count-down.background-sm }});
-    background-size: auto 60px!important;
-  }
-  
-}
-
-@media (min-width: 768px) {
-  .banner-container {
-    background-image: url({{ shop.metafields.offer-count-down.background-md }});
-    background-size: auto 77px!important;
-  }
-  
-}
-
-@media (min-width: 992px) {
-  .banner-container {
-    background-image: url({{ shop.metafields.offer-count-down.background-lg }});
-  }
-  
-}
-
-@media (min-width: 1200px) {
-  .banner-container {
-    background-image: url({{ shop.metafields.offer-count-down.background }});
-  }
-  
-}
 
 
-</style>
-{% if product.handle == 'aromatherapy-shower-kit' %}
- <!-- Facebook Conversion Code for Starter Kit - Adds to Cart -->
-<script>(function() {
-  var _fbq = window._fbq || (window._fbq = []);
-  if (!_fbq.loaded) {
-    var fbds = document.createElement('script');
-    fbds.async = true;
-    fbds.src = '//connect.facebook.net/en_US/fbds.js';
-    var s = document.getElementsByTagName('script')[0];
-    s.parentNode.insertBefore(fbds, s);
-    _fbq.loaded = true;
+  @media (min-width: 340px) {
+    .banner-container {
+      background-image: url({{ shop.metafields.offer-count-down.background-xs }});
+      background-size: auto 50px!important;
+    }
+    
   }
-})();
-window._fbq = window._fbq || [];
-window._fbq.push(['track', '6019482697246', {'value':'0.01','currency':'USD'}]);
-</script>
-<noscript><img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?ev=6019482697246&amp;cd[value]=0.01&amp;cd[currency]=USD&amp;noscript=1" /></noscript>
-{% endif %}
+
+  @media (min-width: 480px) {
+    .banner-container {
+      background-image: url({{ shop.metafields.offer-count-down.background-sm }});
+      background-size: auto 60px!important;
+    }
+    
+  }
+
+  @media (min-width: 768px) {
+    .banner-container {
+      background-image: url({{ shop.metafields.offer-count-down.background-md }});
+      background-size: auto 77px!important;
+    }
+    
+  }
+
+  @media (min-width: 992px) {
+    .banner-container {
+      background-image: url({{ shop.metafields.offer-count-down.background-lg }});
+    }
+    
+  }
+
+  @media (min-width: 1200px) {
+    .banner-container {
+      background-image: url({{ shop.metafields.offer-count-down.background }});
+    }
+    
+  }
+
+
+  </style>
   <script>(function() {
     var _fbq = window._fbq || (window._fbq = []);
     if (!_fbq.loaded) {
@@ -152,6 +134,17 @@ window._fbq.push(['track', '6019482697246', {'value':'0.01','currency':'USD'}]);
   </script>
   <noscript><img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?id=1402631380055177&amp;ev=PixelInitialized" /></noscript>
 
+  {% if template contains 'cart' %}
+
+
+      <!-- Facebook Conversion Code for Starter Kit - Adds to Cart -->
+      <script>
+      window._fbq = window._fbq || [];
+      window._fbq.push(['track', '6019482697246', {'value':'0.00','currency':'USD'}]);
+      </script>
+      <noscript><img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?ev=6019482697246&amp;cd[value]=0.00&amp;cd[currency]=USD&amp;noscript=1" /></noscript>
+      
+  {% endif %}
   {% if product.metafields.inventory.ShappifyHidden == "true" %}
     <meta name="robots" content="noindex">
   {% endif %}
@@ -999,10 +992,6 @@ window._fbq.push(['track', '6019482697246', {'value':'0.01','currency':'USD'}]);
         {% if template contains 'cart' %}
 
 
-          <script type="text/javascript">
-             // alert('You have not added a starter kit');
-
-            </script>
           {% for item in cart.items %}
             {% if item.price == '19.99' %}
               {% assign has_pod = true %}

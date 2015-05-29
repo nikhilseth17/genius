@@ -136,7 +136,7 @@
   {% if product.handle == 'aromatherapy-shower-kit' %}
     <!-- Facebook Conversion Code for Starter Kit - Adds to Cart -->
     <script>
-    
+    (function() {
       //add clickevent for fb tracking
       $('#add-to-cart').click(function(e) {
         console.log('clicked');
@@ -144,7 +144,7 @@
         window._fbq.push(['track', '6019482697246', {'value':'0.01','currency':'USD'}]);
         $('body').append('<img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?ev=6019482697246&amp;cd[value]=0.01&amp;cd[currency]=USD&amp;noscript=1" />');
       });
-
+    })();
     </script>
   {% endif %}
   

@@ -1034,7 +1034,7 @@
             if (variant && variant.available) {
               jQuery('#add-to-cart').removeAttr('disabled').removeClass('disabled'); // remove unavailable class from add-to-cart button, and re-enable button
              
-              if(  variant.inventory_quantity < {{product.metafields.inventory-threshold.level}} ) {  jQuery('#add-to-cart').addClass('disabled').attr('disabled', 'disabled').html('Unavailable'); jQuery('#stockinfo').html('Out of Stock');jQuery('#stockinfo').css("color","red"); jQuery('#deliveryinfo').html(', None left for now, please check back later'); }  
+              if(  variant.inventory_quantity <= {% if pproduct.metafields.inventory-threshold.level %}{{product.metafields.inventory-threshold.level}}{% else %}0{% endif %} ) {  jQuery('#add-to-cart').addClass('disabled').attr('disabled', 'disabled').html('Unavailable'); jQuery('#stockinfo').html('Out of Stock');jQuery('#stockinfo').css("color","red"); jQuery('#deliveryinfo').html(', None left for now, please check back later'); }  
             
                 else {jQuery('#add-to-cart').html('Add to Cart'); }
               if(variant.price < variant.compare_at_price){
